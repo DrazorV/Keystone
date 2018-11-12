@@ -1,10 +1,8 @@
 const Discord = require('discord.js');
-const {config,google_api} = require('./lib/config.json');
 const client = new Discord.Client();
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
 const fs = require('fs');
-const youtube = new YouTube(google_api);
 const queue = new Map();
 let guildArray = client.guilds.array();
 
@@ -27,10 +25,10 @@ client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
 
 client.on('message', (message) => {
     // Our bot needs to know if it will execute a command
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
 
-    if (message.content.substring(0,1) === config.prefix) {
-        const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    if (message.content.substring(0,1) === process.env.prefix) {
+        const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
         let cmd = args.shift().toLowerCase();
         const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
         switch(cmd) {
@@ -127,4 +125,4 @@ client.on('message', (message) => {
     }
 });
 
-client.login(config.token);
+client.login(process.env.TOKEN);
