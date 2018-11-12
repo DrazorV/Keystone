@@ -7,3 +7,4 @@ A hope for something big.
 Create a very convenient music bot with all the features of the popular bots.<br/>
 Create a /help command to display all available commands.<br/>
 Create a /prefix command to change the prefix of the bot.<br/>
+Improve the already existing code. <br/>
