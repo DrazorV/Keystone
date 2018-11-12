@@ -47,28 +47,27 @@ client.on('message', (message) => {
                     const channel = message.member.voiceChannel;
                     if(channel==null){
                         embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
-                    }else{
+                    }else {
                         embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
-                    }
-
-                    while (targets.length>0){
-                        var options ={
-                            maxAge: 600,
-                            maxUses: 1,
-                            unique: true
-                        };
-                        const user = targets.pop();
-                        if(!channel.members.has(user.id)){
-                            message.channel.send("✅ " +user.username + " has been informed!");
-                            user.send(embed);
-                            if(channel!=null){
-                                message.member.voiceChannel.createInvite(options)
-                                    .then(invite => user.send(invite.toString()))
-                                    .catch(console.error);
+                        while (targets.length > 0) {
+                            var options = {
+                                maxAge: 600,
+                                maxUses: 1,
+                                unique: true
+                            };
+                            const user = targets.pop();
+                            if (!channel.members.has(user.id)) {
+                                message.channel.send("✅ " + user.username + " has been informed!");
+                                user.send(embed);
+                                if (channel != null) {
+                                    message.member.voiceChannel.createInvite(options)
+                                        .then(invite => user.send(invite.toString()))
+                                        .catch(console.error);
+                                }
                             }
-                        }
-                        else{
-                            message.channel.send("❌ "+user.username+" is already in your voice channel!");
+                            else {
+                                message.channel.send("❌ " + user.username + " is already in your voice channel!");
+                            }
                         }
                     }
                 }
