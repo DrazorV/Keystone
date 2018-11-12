@@ -1,8 +1,6 @@
 {
   "name": "keystone",
   "version": "1.0.0",
-  
-  
   "scripts": {
     "start": "node bot.js"
   },
@@ -10,11 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/discordjs/discord.js.git"
   },
-  
-  
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "^4.1.0",
     "discord-yt-player": "^1.1.1",
     "discord.js": "^11.4.2",
     "enmap": "^4.3.3",
@@ -24,11 +18,8 @@
     "iterate-js": "^1.1.0",
     "libsodium": "^0.7.3",
     "long": "latest",
-    "morgan": "~1.9.0",
     "node-opus": "0.3.1",
-    "pug": "^2.0.3",
     "simple-youtube-api": "^5.1.1",
-    "superagent": "latest",
     "uws": "^99.0.0",
     "ytdl-core": "latest"
   }
