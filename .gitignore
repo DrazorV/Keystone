@@ -1,3 +1,5 @@
 # Authentication
 
 lib/config.json
+*.json
+lib/config.json
