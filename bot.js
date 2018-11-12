@@ -46,7 +46,12 @@ client.on('message', (message) => {
                     let targets = message.mentions.users.array();
                     const channel = message.member.voiceChannel;
                     if(channel==null){
-                        embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
+                        while (targets.length > 0) {
+                            const user = targets.pop();
+                            embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
+                            user.send(embed);
+                            message.channel.send("✅ " + user.username + " has been informed!");
+                        }
                     }else {
                         embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
                         while (targets.length > 0) {
