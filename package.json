@@ -9,15 +9,8 @@
     "url": "git+https://github.com/discordjs/discord.js.git"
   },
   "dependencies": {
-    "discord-yt-player": "^1.1.1",
     "discord.js": "^11.4.2",
-    "enmap": "^4.3.3",
-    "erlpack": "^0.1.2",
-    "express": "~4.16.0",
-    "http-errors": "^1.7.1",
-    "iterate-js": "^1.1.0",
     "libsodium": "^0.7.3",
-    "long": "latest",
     "node-opus": "0.3.1",
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",

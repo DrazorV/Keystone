@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const ytdl = require('ytdl-core');
 const YouTube = require('simple-youtube-api');
-const fs = require('fs');
-const queue = new Map();
 
 client.on('warn', console.warn);
 
