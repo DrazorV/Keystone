@@ -4,10 +4,16 @@ A hope for something big.
 
 
 ## Goals ⚽
-Create a very convenient music bot with all the features of the popular bots.<br/>
-Create a /help command to display all available commands.<br/>
-Create a /prefix command to change the prefix of the bot.<br/>
-Improve the already existing code. <br/>
+
+- [ ] Clean up the code a bit.
+    - [ ] Clean up the code some more.
+    - [x] More modulating.
+- [ ] Add permissions to certain commands.
+    - [ ] Make permissions alittle more advanced.
+- [ ] Create a /help command to display all available commands.
+- [ ] Clean up the root directory.
+- [ ] Create a /prefix command to change the prefix of the bot.
+- [ ] Create a very convenient music bot with all the features of the popular bots.
 
 
 ## About me 🤷
