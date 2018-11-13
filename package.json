@@ -11,7 +11,6 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "libsodium": "^0.7.3",
-    "node-opus": "0.3.1",
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",
     "ytdl-core": "latest"
