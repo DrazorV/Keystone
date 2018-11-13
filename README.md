@@ -7,7 +7,7 @@ A hope for something big.
 
 - [ ] Clean up the code a bit.
     - [ ] Clean up the code some more.
-    - [x] More modulating.
+    - [ ] More modulating.
 - [ ] Add permissions to certain commands.
     - [ ] Make permissions alittle more advanced.
 - [ ] Create a /help command to display all available commands.
