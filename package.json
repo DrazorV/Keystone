@@ -13,6 +13,7 @@
     "libsodium": "^0.7.3",
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",
-    "ytdl-core": "latest"
+    "ytdl-core": "latest",
+    "express": "4.16.4"
   }
 }
