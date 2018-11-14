@@ -1,6 +1,6 @@
 # Authentication
 .idea/
 node_modules/
-lib/config.json
+config.json
 package-lock.json
 .idea/workspace.xml
