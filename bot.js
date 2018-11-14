@@ -23,7 +23,7 @@ setInterval(() => {
 client.on('ready',()=> {
     console.log("Keystone has been initialized...");
     client.user.setActivity("🍑Extra MyThicc🍑",{type: 'WATCHING'})
-        .then(presence => console.log("Activity set to " +presence.game))
+        .then(presence => console.log("Activity set to " + presence.game))
         .catch(console.error);
 });
 
@@ -71,17 +71,21 @@ client.on('message', (message) => {
                                 unique: true
                             };
                             const user = targets.pop();
-                            if (!channel.members.has(user.id)) {
-                                message.channel.send("✅ " + user.username + " has been informed!");
-                                user.send(embed);
-                                if (channel != null) {
-                                    message.member.voiceChannel.createInvite(options)
-                                        .then(invite => user.send(invite.toString()))
-                                        .catch(console.error);
+                            if(user.bot){
+                                message.channel.send("❌ Bots usually don't hang out with humans!")
+                            }else {
+                                if (!channel.members.has(user.id)) {
+                                    message.channel.send("✅ " + user.username + " has been informed!");
+                                    user.send(embed);
+                                    if (channel != null) {
+                                        message.member.voiceChannel.createInvite(options)
+                                            .then(invite => user.send(invite.toString()))
+                                            .catch(console.error);
+                                    }
                                 }
-                            }
-                            else {
-                                message.channel.send("❌ " + user.username + " is already in your voice channel!");
+                                else {
+                                    message.channel.send("❌ " + user.username + " is already in your voice channel!");
+                                }
                             }
                         }
                     }
