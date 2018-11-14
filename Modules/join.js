@@ -1,9 +1,9 @@
-module.exports = {
+var exports = module.exports = {
     command: function (client,message) {
         if (message.member.voiceChannel) {
             var guild = client.guilds.get(message.guild.id);
             if (!guild.voiceConnection){
-                voiceJoin(message)
+                exports.voiceJoin(message)
             } else {
                 if (guild.voiceConnection.channel.members.array().length > 1) {
                     message.channel.send("❌ I am already in " + guild.voiceConnection.channel.name)
