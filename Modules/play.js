@@ -7,7 +7,7 @@ const queue = new Map();
 
 var exports = module.exports = {
     command: function (client,message) {
-        const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+        const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
         const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
         const searchString = args.slice(1).join(' ');
         var guild = client.guilds.get(message.guild.id);
