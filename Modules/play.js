@@ -4,12 +4,12 @@ const YouTube = require('simple-youtube-api');
 
 const youtube = new YouTube('./env.goggle_api');
 const queue = new Map();
-const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
-const searchString = args.slice(1).join(' ');
-const serverQueue = queue.get(message.guild.id);
 
 var exports = module.exports = {
     command: function (client,message) {
+        const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+        const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
+        const searchString = args.slice(1).join(' ');
         var guild = client.guilds.get(message.guild.id);
         const voiceChannel = message.member.voiceChannel;
         const permissions = voiceChannel.permissionsFor(message.client.user);
@@ -100,11 +100,13 @@ var exports = module.exports = {
                 if (reason === 'Stream is not generating quickly enough.') console.log('Song ended.');
                 else console.log(reason);
                 serverQueue.songs.shift();
-                play(guild, serverQueue.songs[0]);
+                exports.play(guild, serverQueue.songs[0]);
             })
             .on('error', error => console.error(error));
         dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
         serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
     }
 };
+
+
 
