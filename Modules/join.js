@@ -17,7 +17,7 @@ var exports = module.exports = {
 
             }
         } else {
-            message.reply("You need to join a voice channel to use this command!");
+            message.reply("❌ You need to join a voice channel to use this command!");
         }
     },
     voiceJoin: function (message) {
