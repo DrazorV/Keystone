@@ -50,7 +50,7 @@ client.on('message', (message) => {
                 come.command(message);
                 break;
             case "join":
-                join.command(message);
+                join.command(client,message);
                 break;
             case "play":
                 play.command(message);

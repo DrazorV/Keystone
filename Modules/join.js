@@ -1,5 +1,5 @@
 module.exports = {
-    command: function (message) {
+    command: function (client,message) {
         if(message.member.voiceChannel) {
             var guild = client.guilds.get(message.guild.id);
             if (!guild.voiceConnection) {

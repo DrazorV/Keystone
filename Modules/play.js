@@ -13,7 +13,7 @@ module.exports = {
             return message.channel.send('I cannot speak in this voice channel, make sure I have the proper permissions!');
         }
 
-        if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
+        if (true) {
 
         }else{
 
