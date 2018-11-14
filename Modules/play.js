@@ -1,5 +1,12 @@
+const ytdl = require("ytdl-core");
+const streamOptions = { seek: 0, volume: 0.5};
+const join = require('./join');
+
+
+
 module.exports = {
-    command: function (message) {
+    command: function (client,message) {
+        var guild = client.guilds.get(message.guild.id);
         const voiceChannel = message.member.voiceChannel;
         const permissions = voiceChannel.permissionsFor(message.client.user);
         if(!voiceChannel) {
@@ -13,7 +20,8 @@ module.exports = {
             return message.channel.send('I cannot speak in this voice channel, make sure I have the proper permissions!');
         }
 
-        if (true) {
+        if (!guild.voiceConnection) {
+            join.voiceJoin(message)
 
         }else{
 

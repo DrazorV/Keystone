@@ -57,7 +57,7 @@ client.on('message', (message) => {
                 leave.command(client,message);
                 break;
             case "play":
-                play.command(message);
+                play.command(client,message);
                break;
             case "avatar":
                 avatar.command(message);
