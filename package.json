@@ -14,6 +14,8 @@
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",
     "ytdl-core": "latest",
-    "express": "4.16.4"
+    "express": "4.16.4",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-binaries": "4.0.0"
   }
 }
