@@ -22,4 +22,4 @@ The reason I started this project is that there is not any bot out there with al
 ⬇️You can join our discord server(where I test the bot) by clicking on the image below⬇️
 <br/>
 <br/>
-<a href=""><img src="https://i.imgur.com/OUvlR93.png"></a>
+<a href="https://discord.gg/Uq5jgV"><img src="https://i.imgur.com/OUvlR93.png"></a>
