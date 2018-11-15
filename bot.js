@@ -50,15 +50,6 @@ client.on('message', (message) => {
             case "come" :
                 come.command(message);
                 break;
-            case "join":
-                join.command(client,message);
-                break;
-			case "leave":
-                leave.command(client,message);
-                break;
-            case "play":
-                play.command(client,message);
-               break;
             case "avatar":
                 avatar.command(message);
                 break;
