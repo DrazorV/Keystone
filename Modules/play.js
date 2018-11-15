@@ -70,7 +70,6 @@ var  exports =  module.exports = {
             }
         } else {
             serverQueue.songs.push(song);
-            console.log(serverQueue.songs);
             if (playlist) return undefined;
             else return message.channel.send(`✅ **${song.title}** has been added to the queue!`);
         }
@@ -83,7 +82,6 @@ var  exports =  module.exports = {
             queue.delete(guild.id);
             return;
         }
-        console.log(serverQueue.songs);
 
         const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
             .on('end', reason => {
@@ -98,7 +96,6 @@ var  exports =  module.exports = {
         serverQueue.textChannel.send(`🎶 Start playing: **${song.title}**`);
     }
 };
-
 
 
 

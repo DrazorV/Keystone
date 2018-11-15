@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "discord.js": "^11.4.2",
+    "express": "4.16.4",
     "libsodium": "^0.7.3",
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",
     "ytdl-core": "latest",
-    "express": "4.16.4",
-    "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "4.0.0"
+    "ffmpeg": "^0.0.4",
+    "opusscript": "^0.0.6"
   }
 }

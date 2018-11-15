@@ -1,10 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var come = require('./Modules/come.js');
-var join = require('./Modules/join.js');
+var help = require('./Modules/help.js');
 var avatar = require('./Modules/avatar.js');
-var play = require('./Modules/play.js');
-var leave = require('./Modules/leave.js');
 
 client.on('warn', console.warn);
 
@@ -50,18 +48,11 @@ client.on('message', (message) => {
             case "come" :
                 come.command(message);
                 break;
-            case "join":
-                join.command(client,message);
-                break;
-			case "leave":
-                leave.command(client,message);
-                break;
-            case "play":
-                play.command(client,message);
-               break;
             case "avatar":
                 avatar.command(message);
                 break;
+            case "help":
+                help.command(message,process.env.prefix);
         }
     }
 });
