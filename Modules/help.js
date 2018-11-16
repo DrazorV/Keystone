@@ -6,8 +6,7 @@ const embed = new Discord.RichEmbed();
 
 module.exports = {
     command: function (message,prefix) {
-        embed.setAuthor(message.guild.me.user.username, message.guild.me.user.avatarURL);
-        embed.setTitle(message.guild.me.user.username +" Commands 📋");
+        embed.setTitle("List of Commands 📋");
         embed.setColor([255,90,0]);
         embed.addField(prefix +"come @mention","🤙 Informs one or more server members that you are waiting for them in one of the voice channels",false);
         embed.addField(prefix + "avatar @mention","🎴 Gives you a link with his avatar",false);

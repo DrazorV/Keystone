@@ -52,7 +52,8 @@ client.on('message', (message) => {
                 avatar.command(message);
                 break;
             case "help":
-                help.command(process.env.prefix,message);
+                help.command(message,process.env.prefix);
+                break;
         }
     }
 });
