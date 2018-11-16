@@ -1,6 +1,5 @@
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
-const youtube = new YouTube('');
 const queue = new Map();
 var ffmpeg = require('ffmpeg');
 

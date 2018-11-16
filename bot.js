@@ -53,6 +53,7 @@ client.on('message', (message) => {
                 break;
             case "help":
                 help.command(message,process.env.prefix);
+                break;
         }
     }
 });
