@@ -38,7 +38,7 @@ module.exports = {
                     } else {
                         if (!channel.members.has(user.id)) {
                             message.channel.send("✅ " + user.username + " has been informed!");
-                            user.send("",embed);
+                            user.send(embed);
                             if (channel != null) {
                                 message.member.voiceChannel.createInvite(options)
                                     .then(invite => user.send(invite.toString()))
