@@ -6,10 +6,10 @@ module.exports = {
     command: function (args,message) {
         if(message.channel.nsfw) {
             let mes = args.join(" ");
-            const result = null;
+            var result=null;
             const Searcher = new Pornsearch(mes,"Sex");
             try {
-                const result = Searcher.gifs();
+                var result = Searcher.gifs();
             }catch (error) {
                 console.log(error)
             }
