@@ -3,6 +3,15 @@ const client = new Discord.Client();
 var come = require('./Modules/come.js');
 var help = require('./Modules/help.js');
 var avatar = require('./Modules/avatar.js');
+var snoowrap = require('snoowrap');
+
+const red = new snoowrap({
+    userAgent: process.env.user_agent,
+    clientId: process.env.client_id,
+    clientSecret: process.env.client_secret,
+    username: process.env.username,
+    password: process.env.password
+});
 
 client.on('warn', console.warn);
 
