@@ -7,7 +7,7 @@ module.exports = {
     command: function (args,message) {
         if(message.channel.nsfw) {
             let mes = args.join(" ");
-            console.log(Pornsearch.current());
+            console.log(Pornsearch.default());
             Pornsearch
                 .search(mes)
                 .gifs(1)
