@@ -19,9 +19,9 @@ module.exports = {
                     embed.setTimestamp(new Date());
                     embed.setFooter("Automated message", message.guild.iconURL);
                     embed.setURL(gif.webm);
-                    console.log(Pornsearch.current());
                     message.channel.send(embed);
                 });
+            console.log(Pornsearch.current());
         }else{
             message.channel.send("❌You have to be in a NSFW🔞 channel to use this command")
         }
