@@ -17,6 +17,6 @@
     "ytdl-core": "latest",
     "ffmpeg": "^0.0.4",
     "opusscript": "^0.0.6",
-    "snoowrap": "^1.15.2"
+    "pornsearch": "2.4.3"
   }
 }
