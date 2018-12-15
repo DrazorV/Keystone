@@ -4,6 +4,7 @@ var come = require('./Modules/come.js');
 var help = require('./Modules/help.js');
 var avatar = require('./Modules/avatar.js');
 const porn = require('./Modules/porn.js');
+const meme = require('./Modules/meme.js');
 
 client.on('warn', console.warn);
 
@@ -57,6 +58,9 @@ client.on('message', (message) => {
                 break;
             case "porn":
                 porn.command(args,message);
+                break;
+            case "meme":
+                meme.command(message);
                 break;
         }
     }
