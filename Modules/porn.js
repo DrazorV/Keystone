@@ -19,6 +19,7 @@ module.exports = {
                     embed.setColor(message.member.colorRole.color);
                     embed.setTimestamp(new Date());
                     embed.setFooter("Automated message", message.guild.iconURL);
+                    embed.setUrl(gif.webm);
                     message.channel.send(embed);
                 });
         }else{
