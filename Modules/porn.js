@@ -7,7 +7,6 @@ module.exports = {
     command: function (args,message) {
         if(message.channel.nsfw) {
             let mes = args.join(" ");
-
             Pornsearch
                 .search(mes)
                 .gifs(1)
@@ -20,6 +19,7 @@ module.exports = {
                     embed.setTimestamp(new Date());
                     embed.setFooter("Automated message", message.guild.iconURL);
                     embed.setURL(gif.webm);
+                    console.log(Pornsearch.current());
                     message.channel.send(embed);
                 });
         }else{
