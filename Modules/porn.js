@@ -7,8 +7,8 @@ module.exports = {
     command: function (args,message) {
         if(message.channel.nsfw) {
             let mes = args.join(" ");
-            Pornsearch
-                .search(mes)
+            const Searcher = new Pornsearch(mes,"Sex");
+            Searcher
                 .gifs(1)
                 .then(gifs => {
                     gifs = gifs.splice(gifs.length - 10);
@@ -18,9 +18,9 @@ module.exports = {
                     embed.setColor(message.member.colorRole.color);
                     embed.setTimestamp(new Date());
                     embed.setFooter("Automated message", message.guild.iconURL);
-                    embed.setURL(gif.webm);
+                    embed.setURL(gif.url);
                     message.channel.send(embed);
-                })
+                });
         }else{
             message.channel.send("❌You have to be in a NSFW🔞 channel to use this command")
         }
