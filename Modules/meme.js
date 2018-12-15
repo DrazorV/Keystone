@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const embed = new Discord.RichEmbed();
-const config = require('../config.json');
 var getMemeUrls  = require('get-meme-urls');
 
 var categories = ["Willy Wonka","Philosoraptor",
