@@ -11,7 +11,7 @@ module.exports = {
 
                 msg.delete();
                 embed.addField("⏱Server" ,Math.round(message.client.ping) + ' ms');
-                embed.addField("⌛Keystone" , message.createdTimestamp - Date.now() - 1000 + ' ms');
+                embed.addField("⌛Keystone" , Date.now() - message.createdTimestamp + ' ms');
                 message.channel.send(embed);
             })
     }
