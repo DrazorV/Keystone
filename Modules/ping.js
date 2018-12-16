@@ -8,11 +8,10 @@ module.exports = {
         embed.setFooter("Automated message", message.guild.iconURL);
         message.channel.send("Pinging ...")
             .then((msg) => {
-
-                msg.delete();
-                embed.addField("⏱Server" ,Math.round(message.client.ping) + ' ms');
-                embed.addField("⌛Keystone" , Date.now() - message.createdTimestamp + ' ms');
-                message.channel.send(embed);
-            })
+                      msg.delete()
+            });
+        embed.addField("⏱Server" ,Math.round(message.client.ping) + ' ms');
+        embed.addField("⌛Keystone" , Date.now() - message.createdTimestamp + ' ms');
+        message.channel.send(embed);
     }
 };
