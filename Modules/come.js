@@ -10,6 +10,7 @@ module.exports = {
             embed.setTitle("Join the voice chat on " + message.guild.name);
             embed.setTimestamp(new Date());
             embed.setFooter("Automated message", message.guild.iconURL);
+
             let targets = message.mentions.users.array();
             const channel = message.member.voiceChannel;
             if (channel == null) {

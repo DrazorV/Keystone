@@ -5,6 +5,8 @@ var help = require('./Modules/help.js');
 var avatar = require('./Modules/avatar.js');
 const porn = require('./Modules/porn.js');
 const meme = require('./Modules/meme.js');
+const ping = require('./Modules/ping.js');
+const prefix = require('./Modules/prefix.js');
 
 client.on('warn', console.warn);
 
@@ -45,7 +47,7 @@ client.on('message', (message) => {
         const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
         switch(cmd) {
             case 'ping':
-                message.channel.send("pong!");
+                ping.command(message);
                 break;
             case "come" :
                 come.command(message);
@@ -61,6 +63,9 @@ client.on('message', (message) => {
                 break;
             case "meme":
                 meme.command(message);
+                break;
+            case "prefix":
+                prefix.command(message);
                 break;
         }
     }
