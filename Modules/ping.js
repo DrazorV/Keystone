@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
-const embed = new Discord.RichEmbed();
+
 
 module.exports = {
     command: function (message) {
+        const embed = new Discord.RichEmbed();
         embed.setColor(0x2ed32e);
         embed.setTimestamp(new Date());
         embed.setFooter("Automated message", message.guild.iconURL);
