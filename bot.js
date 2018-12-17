@@ -46,7 +46,6 @@ client.on('message', (message) => {
     if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
     if (message.content.substring(0,1) === process.env.prefix) {
         const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
-        console.log(message.guildID);
         let cmd = args.shift().toLowerCase();
         switch(cmd) {
             case 'ping':

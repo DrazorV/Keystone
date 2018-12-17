@@ -13,7 +13,7 @@ module.exports = {
             embed.setTitle("Here is the meme you ordered! 📦");
             embed.setColor(message.member.colorRole.color);
             embed.setTimestamp(new Date());
-            embed.setFooter("Automated message", message.guild.iconURL);
+            embed.setFooter("Automated message", "https://cdn.discordapp.com/icons/308903005875470338/a306375be4d56f9dd85c5321f3f92343.jpg");
             message.channel.send(embed);
         });
     },
@@ -25,8 +25,8 @@ module.exports = {
                 embed.setTitle("⚡Meme of the! 📦");
                 embed.setColor('#017E2D');
                 embed.setTimestamp(new Date());
-                embed.setFooter("Automated message", message.guild.iconURL);
-                message.channel.send(embed);
+                embed.setFooter("Automated message", "https://cdn.discordapp.com/icons/308903005875470338/a306375be4d56f9dd85c5321f3f92343.jpg");
+                //message.channel.send(embed);
             })
     }
 };
