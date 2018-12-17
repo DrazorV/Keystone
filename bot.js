@@ -7,6 +7,7 @@ const porn = require('./Modules/porn.js');
 const meme = require('./Modules/meme.js');
 const ping = require('./Modules/ping.js');
 const prefix = require('./Modules/prefix.js');
+var schedule = require('node-schedule');
 
 client.on('warn', console.warn);
 
@@ -30,6 +31,8 @@ client.on('ready',()=> {
     client.user.setActivity("🍑Extra MyThicc🍑",{type: 'WATCHING'})
         .then(presence => console.log("Activity set to " + presence.game))
         .catch(console.error);
+
+    var j = schedule.scheduleJob('9 11 * * *', meme.schedule())
 });
 
 client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
@@ -43,8 +46,8 @@ client.on('message', (message) => {
     if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
     if (message.content.substring(0,1) === process.env.prefix) {
         const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
+        console.log(message.guildID);
         let cmd = args.shift().toLowerCase();
-        const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
         switch(cmd) {
             case 'ping':
                 ping.command(message);
