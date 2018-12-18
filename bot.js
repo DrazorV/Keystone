@@ -1,14 +1,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var come = require('./Modules/come.js');
-var help = require('./Modules/help.js');
-var avatar = require('./Modules/avatar.js');
+const come = require('./Modules/come.js');
+const help = require('./Modules/help.js');
+const avatar = require('./Modules/avatar.js');
 const porn = require('./Modules/porn.js');
 const meme = require('./Modules/meme.js');
 const ping = require('./Modules/ping.js');
 const prefix = require('./Modules/prefix.js');
 const defaultChannel = require('./Modules/defaultChannel.js');
-var CronJob  = require('cron').CronJob;
+const CronJob  = require('cron').CronJob;
 
 client.on('warn', console.warn);
 
@@ -91,4 +91,4 @@ client.on('message', (message) => {
     }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN).catch(error => console.log(error));
