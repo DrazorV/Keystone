@@ -10,6 +10,7 @@ const prefix = require('./Modules/prefix.js');
 const defaultChannel = require('./Modules/defaultChannel.js');
 const CronJob  = require('cron').CronJob;
 const prefixs = require(__dirname + "/Modules/prefixs.json");
+const fs = require('fs');
 
 client.on('warn', console.warn);
 
