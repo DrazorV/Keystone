@@ -14,11 +14,15 @@
     "ffmpeg": "^0.0.4",
     "libsodium": "^0.7.3",
     "memejsfork": "^1.0.4",
+<<<<<<< HEAD
     "cron": "^1.6.0",
+=======
+>>>>>>> f2cfe0cd214fd202f368921f01668d4baae5fa12
     "opusscript": "^0.0.6",
     "pornsearch": "2.4.3",
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",
-    "ytdl-core": "latest"
+    "ytdl-core": "latest",
+    "cron": "^1.6.0"
   }
 }
