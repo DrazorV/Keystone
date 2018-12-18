@@ -10,7 +10,7 @@ A hope for something big.
     - [ ] More modulating.
 - [ ] Add permissions to certain commands.
     - [ ] Make permissions alittle more advanced.
-- [ ] Test and debug the new features
+- [ ] Test and debug the new features.
 - [ ] Clean up the root directory.
 - [ ] Create a /prefix command to change the prefix of the bot.
 - [ ] Create a very convenient music bot with all the features of the popular bots.
