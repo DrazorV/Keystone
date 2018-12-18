@@ -12,7 +12,6 @@ const CronJob  = require('cron').CronJob;
 const prefixs = require(__dirname + "/Modules/prefixs.json");
 const fs = require('fs');
 const guilds = require(__dirname + "/Modules/guilds.json");
-const config = require('./config');
 
 client.on('warn', console.warn);
 
