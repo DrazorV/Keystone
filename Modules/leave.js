@@ -1,3 +1,4 @@
+
 module.exports = {
     command: function (client,message) {
         var guild = client.guilds.get(message.guild.id);

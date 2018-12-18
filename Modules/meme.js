@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const meme = require('memejsfork');
 const isImageUrl = require('is-image-url');
 
-
 var modules = module.exports = {
     command: function (message) {
         meme(function(data) {

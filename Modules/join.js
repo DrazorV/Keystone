@@ -1,3 +1,4 @@
+
 var exports = module.exports = {
     command: function (client,message) {
         if (message.member.voiceChannel) {

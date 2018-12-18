@@ -12,14 +12,10 @@ const CronJob  = require('cron').CronJob;
 const prefixs = require(__dirname + "/Modules/prefixs.json");
 const fs = require('fs');
 const guilds = require(__dirname + "/Modules/guilds.json");
-
-client.on('warn', console.warn);
-
-client.on('error', console.error);
-
 const http = require('http');
 const express = require('express');
 const app = express();
+
 app.get("/", (request, response) => {
     console.log(Date.now() + " Ping Received");
     response.sendStatus(200);
@@ -29,6 +25,8 @@ setInterval(() => {
     http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 
+client.on('warn', console.warn);
+client.on('error', console.error);
 
 client.on('ready',()=> {
     console.log("Keystone has been initialized...");
