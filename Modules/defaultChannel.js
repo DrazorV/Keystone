@@ -1,5 +1,4 @@
 const guilds = require(__dirname + "/guilds.json");
-const fs = require("fs");
 
 module.exports = {
     command: function (channel,message) {
