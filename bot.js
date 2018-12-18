@@ -34,7 +34,7 @@ client.on('ready',()=> {
         .catch(console.error);
 
     if(process.env.channel!=="") {
-        new CronJob('0 6 * * * *', function () {
+        new CronJob('0 20 * * * *', function () {
             var guilds = client.guilds.array();
             while (guilds.length > 0) {
                 var guil = guilds.pop();
