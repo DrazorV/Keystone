@@ -1,4 +1,4 @@
-# Keystone 🤖
+# Keystone ⏳
 * Another bot for Discord but maybe not like the others!
 * The default prefix is "/"
 
@@ -17,11 +17,14 @@
 
 
 ## Features & Commands 👻
-- Get the avatar image of anyone in the guild
--
-- 
--
--
+- Get the avatar of anyone in the guild.
+- Inform your friends that you are in a channel with an appropriate link to join you.
+- Set the default channel for your daily meme dosage!
+- Get a random meme from a big subreddit list.
+- Check the ping of the bot and it's server
+- Get hot porn gifs
+- Change the prefix of the bot commands
+- More to come!
 
 ## About me 🤷
 My name is Vagelis, I am 21 years old, born and raised in Greece.<br/>
