@@ -10,7 +10,7 @@ A hope for something big.
     - [ ] More modulating.
 - [ ] Add permissions to certain commands.
     - [ ] Make permissions alittle more advanced.
-- [ ] Create a /help command to display all available commands.
+- [ ] Test and debug the new features
 - [ ] Clean up the root directory.
 - [ ] Create a /prefix command to change the prefix of the bot.
 - [ ] Create a very convenient music bot with all the features of the popular bots.
@@ -22,4 +22,4 @@ The reason I started this project is that there is not any bot out there with al
 ⬇️You can join our discord server(where I test the bot) by clicking on the image below⬇️
 <br/>
 <br/>
-<a href="https://discord.gg/Uq5jgV"><img src="https://i.imgur.com/OUvlR93.png"></a>
+<a href="https://discord.gg/3fS2vEB"><img src="https://i.imgur.com/OUvlR93.png"></a>
