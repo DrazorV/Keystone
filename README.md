@@ -13,13 +13,12 @@
     - [ ] Make permissions a little more advanced.
 - [ ] Test and debug the new features.
 - [ ] Clean up the root directory.
-- [ ] Create a /prefix command to change the prefix of the bot.
-- [ ] Create a very convenient music bot with all the features of the popular bots.
+- [ ] Create a very convenient music bot with great features.
 
 
 ## Features & Commands 👻
 - Get the avatar of anyone in the guild.
-- Inform your friends that you are in a channel with an appropriate link to join you.
+- Inform your friends that you are in a voice channel with an appropriate link to join you.
 - Set the default channel for your daily meme dosage!
 - Get a random meme from a big subreddit list.
 - Check the ping of the bot and it's server
