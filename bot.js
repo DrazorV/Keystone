@@ -32,20 +32,11 @@ client.on('ready',()=> {
     client.user.setActivity("🍑Extra MyThicc🍑",{type: 'WATCHING'})
         .then(presence => console.log("Activity set to " + presence.game))
         .catch(console.error);
-
-    if(process.env.channel!=="") {
-        new CronJob('0 8 * * * *', function () {
-            var guilds = client.guilds.array();
-            while (guilds.length > 0) {
-                var guil = guilds.pop();
-                if (guil.channels.get("512414446237384726") != null) {
-                    meme.schedule(guil.channels.get("512414446237384726"));
-                }
-
-            }
-        }, null, true);
-    }
+    new CronJob('0 8 * * * *', function () {
+        defaultChannel.job(client)
+    },null, true)
 });
+
 
 client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
 
