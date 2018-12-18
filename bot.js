@@ -49,7 +49,7 @@ client.on("guildCreate", guild => {
     fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(guilds),"utf8");
     fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(prefixs),"utf8");
     console.log("Joined a new guild: " + guild.name);
-    console.log(prefix);
+    console.log(prefixs);
 });
 
 client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
