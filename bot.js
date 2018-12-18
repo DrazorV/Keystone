@@ -34,12 +34,12 @@ client.on('ready',()=> {
         .catch(console.error);
 
     if(process.env.channel!=="") {
-        new CronJob('0 20 * * * *', function () {
+        new CronJob('1 * * * * *', function () {
             var guilds = client.guilds.array();
             while (guilds.length > 0) {
                 var guil = guilds.pop();
-                if (guil.channels.get(process.env.channel) != null) {
-                    meme.schedule(guil.channels.get(process.env.channel));
+                if (guil.channels.get("512414446237384726") != null) {
+                    meme.schedule(guil.channels.get("512414446237384726"));
                 }
 
             }
@@ -83,6 +83,9 @@ client.on('message', (message) => {
                 break;
             case "default":
                  defaultChannel.command(args[0],message);
+                break;
+            case "test":
+                message.channel.send(process.env.channel);  
                 break;
         }
     }

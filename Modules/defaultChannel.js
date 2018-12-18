@@ -5,6 +5,7 @@ module.exports = {
             var target = channels.pop();
             if ((channel === target.name) || (channel === target.id)) {
                 process.env.channel = target.id;
+                console.log(process.env.channel);
                 target.send("✅ This is the default meme's channel from now on.⚓");
                 return;
             }
