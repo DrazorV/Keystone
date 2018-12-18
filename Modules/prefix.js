@@ -2,6 +2,7 @@ const prefixs = require('../Modules/prefixs.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 
+
 module.exports = {
     command: function (message) {
         if(message.member.hasPermission("ADMINISTRATOR")){

@@ -1,3 +1,4 @@
+
 module.exports = {
     command: function (message) {
         let targets = message.mentions.users.array();

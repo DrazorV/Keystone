@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const embed = new Discord.RichEmbed();
 
 
-
-
 module.exports = {
     command: function (message,prefix) {
         embed.setTitle("List of Commands 📋");

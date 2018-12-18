@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 
-
 module.exports = {
     command: function (message) {
         const embed = new Discord.RichEmbed();

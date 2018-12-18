@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const embed = new Discord.RichEmbed();
 
-
 module.exports = {
     command: function (message) {
         embed.setAuthor(message.author.username + " said:", message.author.avatarURL);

@@ -1,6 +1,7 @@
 const guilds = require(__dirname + "/guilds.json");
 const meme = require("../Modules/meme.js");
 
+
 module.exports = {
     command: function (channel,message) {
         if(message.member.hasPermission("ADMINISTRATOR")) {
