@@ -1,6 +1,7 @@
 # Keystone ⏳
 * Another bot for Discord but maybe not like the others!
 * The default prefix is "/"
+* For more info use the "/help" command to find anything you need!
 
 
 ## Goals ⚽
@@ -33,3 +34,11 @@ The reason I started this project is that there is not any bot out there with al
 <br/>
 <br/>
 <a href="https://discord.gg/3fS2vEB"><img src="https://i.imgur.com/OUvlR93.png"></a>
+
+## Disclaimer ⚠️
++ This is bot is maintained and developed only by me
++ Bugs and unintended actions may exists
++ The bot is being hosted in www.glitch.com and thus limitations exists
++ Any kind of help is very welcome
++ I will try my best to provide a well functioning discord bot
++ If you want to see any new commands/functions please contact me on my discord server or my email address: vagelisp.97@gmail.com
