@@ -11,6 +11,7 @@ const defaultChannel = require('./Modules/defaultChannel.js');
 const CronJob  = require('cron').CronJob;
 const prefixs = require(__dirname + "/Modules/prefixs.json");
 const fs = require('fs');
+const guilds = require(__dirname + "/Modules/guilds.json");
 
 client.on('warn', console.warn);
 
