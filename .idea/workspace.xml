@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9e89ab9-6b52-403b-90c5-ac0fc197acc8" name="Default Changelist" comment="New commands on the way">
-      <change beforePath="$PROJECT_DIR$/Modules/prefixs.json" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/prefixs.json" afterDir="false" />
+    <list default="true" id="d9e89ab9-6b52-403b-90c5-ac0fc197acc8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,16 +15,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+            <state relative-caret-position="221">
+              <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modules/prefixs.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
@@ -92,6 +92,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>process</find>
+      <find>fs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -117,8 +118,8 @@
         <option value="$PROJECT_DIR$/Modules/defaultChannel.js" />
         <option value="$PROJECT_DIR$/Modules/help.js" />
         <option value="$PROJECT_DIR$/Modules/prefix.js" />
-        <option value="$PROJECT_DIR$/bot.js" />
         <option value="$PROJECT_DIR$/Modules/prefixs.json" />
+        <option value="$PROJECT_DIR$/bot.js" />
       </list>
     </option>
   </component>
@@ -241,20 +242,6 @@
       <workItem from="1545142034356" duration="1452000" />
       <workItem from="1545154645636" duration="2493000" />
       <workItem from="1545161033030" duration="358000" />
-    </task>
-    <task id="LOCAL-00001" summary="Changed /come a bit">
-      <created>1542187552280</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1542187552280</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Made some modular changes">
-      <created>1542201809103</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1542201809103</updated>
     </task>
     <task id="LOCAL-00003" summary="Made some modular changes">
       <created>1542202010446</created>
@@ -585,11 +572,25 @@
       <option name="project" value="LOCAL" />
       <updated>1545168458009</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="New commands on the way">
+      <created>1545168515782</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1545168515782</updated>
+    </task>
+    <task id="LOCAL-00051" summary="New commands on the way">
+      <created>1545168597879</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1545168597879</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30358000" />
+    <option name="totallyTimeSpent" value="30598000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -726,17 +727,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modules/prefixs.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
         </state>
       </provider>
     </entry>

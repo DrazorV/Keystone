@@ -1,5 +1,6 @@
 const guilds = require(__dirname + "/guilds.json");
 const meme = require("../Modules/meme.js");
+const fs = require('fs');
 
 module.exports = {
     command: function (channel,message) {

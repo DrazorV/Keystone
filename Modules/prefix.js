@@ -1,5 +1,5 @@
 const prefixs = require('../Modules/prefixs.json');
-
+const fs = require('fs');
 
 module.exports = {
     command: function (message) {
