@@ -9,6 +9,7 @@ const ping = require('./Modules/ping.js');
 const prefix = require('./Modules/prefix.js');
 const defaultChannel = require('./Modules/defaultChannel.js');
 const CronJob  = require('cron').CronJob;
+const prefixs = require(__dirname + "/Modules/prefixs.json");
 
 client.on('warn', console.warn);
 
@@ -40,15 +41,22 @@ client.on('ready',()=> {
 
 client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
 
-client.on("guildCreate", guild => {console.log("Joined a new guild: " + guild.name);});
+client.on("guildCreate", guild => {
+    prefixs[guild.name] = "/";
+    guilds[guild.name] = "";
+    fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(guilds),"utf8");
+    fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(prefixs),"utf8");
+    console.log("Joined a new guild: " + guild.name);
+    console.log(prefix);
+});
 
 client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
 
 client.on('message', (message) => {
     // Our bot needs to know if it will execute a command
-    if (!message.content.startsWith(process.env.prefix) || message.author.bot) return;
-    if (message.content.substring(0,1) === process.env.prefix) {
-        const args = message.content.slice(process.env.prefix.length).trim().split(/ +/g);
+    if (!message.content.startsWith(prefixs[message.guild.name]) || message.author.bot) return;
+    if (message.content.substring(0,1) === prefixs[message.guild.name]) {
+        const args = message.content.slice(prefixs[message.guild.name].length).trim().split(/ +/g);
         let cmd = args.shift().toLowerCase();
         switch(cmd) {
             case 'ping':
@@ -61,7 +69,7 @@ client.on('message', (message) => {
                 avatar.command(message);
                 break;
             case "help":
-                help.command(message,process.env.prefix);
+                help.command(message,prefixs[message.guild.name]);
                 break;
             case "porn":
                 porn.command(args,message);
@@ -74,9 +82,6 @@ client.on('message', (message) => {
                 break;
             case "default":
                  defaultChannel.command(args[0],message);
-                break;
-            case "test":
-                message.channel.send(process.env.channel);  
                 break;
         }
     }
