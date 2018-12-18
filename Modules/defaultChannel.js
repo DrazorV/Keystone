@@ -1,6 +1,5 @@
 const guilds = require(__dirname + "/guilds.json");
 const meme = require("../Modules/meme.js");
-const fs = require('fs');
 
 module.exports = {
     command: function (channel,message) {
@@ -11,7 +10,7 @@ module.exports = {
                 const target = channels.pop();
                 if ((channel === target.name) || (channel === target.id)) {
                     guilds[message.guild.name] = target.id;
-                    fs.writeFileSync(__dirname + "/guilds.json", JSON.stringify(guilds), "utf8");
+                    fs.writeFileSync(__dirname + "/guilds.json", JSON.stringify(guilds,null,"\t"), "utf8");
                     target.send("This is the default channel for memes.");
                     return;
                 }

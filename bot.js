@@ -12,6 +12,7 @@ const CronJob  = require('cron').CronJob;
 const prefixs = require(__dirname + "/Modules/prefixs.json");
 const fs = require('fs');
 const guilds = require(__dirname + "/Modules/guilds.json");
+const config = require('./config');
 
 client.on('warn', console.warn);
 
@@ -21,12 +22,12 @@ const http = require('http');
 const express = require('express');
 const app = express();
 app.get("/", (request, response) => {
-  console.log(Date.now() + " Ping Received");
-  response.sendStatus(200);
+    console.log(Date.now() + " Ping Received");
+    response.sendStatus(200);
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 
 
@@ -46,8 +47,8 @@ client.on("disconnect",() => console.log("I just disconnected, just making sure 
 client.on("guildCreate", guild => {
     prefixs[guild.name] = "/";
     guilds[guild.name] = "";
-    fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(guilds),"utf8");
-    fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(prefixs),"utf8");
+    fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(guilds,null,"\t"),"utf8");
+    fs.writeFileSync(__dirname + "/Modules/guilds.json",JSON.stringify(prefixs,null,"\t"),"utf8");
     console.log("Joined a new guild: " + guild.name);
     console.log(prefixs);
 });
@@ -83,7 +84,7 @@ client.on('message', (message) => {
                 prefix.command(message);
                 break;
             case "default":
-                 defaultChannel.command(args[0],message);
+                defaultChannel.command(args[0],message);
                 break;
         }
     }
