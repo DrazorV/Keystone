@@ -34,7 +34,7 @@ client.on('ready',()=> {
         .catch(console.error);
 
     if(process.env.channel!=="") {
-        new CronJob('1 * * * * *', function () {
+        new CronJob('0 6 * * * *', function () {
             var guilds = client.guilds.array();
             while (guilds.length > 0) {
                 var guil = guilds.pop();
@@ -84,7 +84,7 @@ client.on('message', (message) => {
             case "default":
                 var memechannel = defaultChannel.command(args[0],message);
                 if(memechannel!=null){
-                    memechannel.send("✔This is the default meme's channel from now on.⚓");
+                    memechannel.send("✔️This is the default meme's channel from now on.⚓");
                     process.env.channel = memechannel.id
                 }else{
                     message.channel.send("❌This channel does not exist. Please try again!");
