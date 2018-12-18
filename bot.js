@@ -33,7 +33,7 @@ client.on('ready',()=> {
     client.user.setActivity("🍑Extra MyThicc🍑",{type: 'WATCHING'})
         .then(presence => console.log("Activity set to " + presence.game))
         .catch(console.error);
-    new CronJob('0 8 * * * *', function () {
+    new CronJob('0 20 * * *', function () {
         defaultChannel.job(client)
     },null, true)
 });
