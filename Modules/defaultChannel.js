@@ -4,7 +4,7 @@ module.exports = {
         while (channels.length > 0) {
             var target = channels.pop();
             if ((channel === target.name) || (channel === target.id)) {
-                process.env.channel = target.id;
+                process.env.channel = target.id.toString();
                 target.send("✅ This is the default meme's channel from now on.⚓");
                 return;
             }
