@@ -82,13 +82,7 @@ client.on('message', (message) => {
                 prefix.command(message);
                 break;
             case "default":
-                var memechannel = defaultChannel.command(args[0],message);
-                if(memechannel!=null){
-                    memechannel.send("✔️This is the default meme's channel from now on.⚓");
-                    process.env.channel = memechannel.id
-                }else{
-                    message.channel.send("❌This channel does not exist. Please try again!");
-                }
+                 defaultChannel.command(args[0],message);
                 break;
         }
     }
