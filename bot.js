@@ -7,7 +7,8 @@ const porn = require('./Modules/porn.js');
 const meme = require('./Modules/meme.js');
 const ping = require('./Modules/ping.js');
 const prefix = require('./Modules/prefix.js');
-var schedule = require('node-schedule');
+const defaultChannel = require('./Modules/defaultChannel.js');
+var CronJob  = require('cron').CronJob;
 
 client.on('warn', console.warn);
 
@@ -32,12 +33,23 @@ client.on('ready',()=> {
         .then(presence => console.log("Activity set to " + presence.game))
         .catch(console.error);
 
-    var j = schedule.scheduleJob('9 11 * * *', meme.schedule())
+    if(process.env.channel!=="") {
+        new CronJob('1 * * * * *', function () {
+            var guilds = client.guilds.array();
+            while (guilds.length > 0) {
+                var guil = guilds.pop();
+                if (guil.channels.get(process.env.channel) != null) {
+                    meme.schedule(guil.channels.get(process.env.channel));
+                }
+
+            }
+        }, null, true);
+    }
 });
 
 client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
 
-client.on("guildCreate", guild => {console.log("Joined a new guild: " + guild.name)});
+client.on("guildCreate", guild => {console.log("Joined a new guild: " + guild.name);});
 
 client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
 
@@ -68,6 +80,15 @@ client.on('message', (message) => {
                 break;
             case "prefix":
                 prefix.command(message);
+                break;
+            case "default":
+                var memechannel = defaultChannel.command(args[0],message);
+                if(memechannel!=null){
+                    memechannel.send("This is the default channel for memes.");
+                    process.env.channel = memechannel.id
+                }else{
+                    message.channel.send("This channel does not exist!");
+                }
                 break;
         }
     }
