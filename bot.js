@@ -55,6 +55,7 @@ client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
 
 client.on('message', (message) => {
     // Our bot needs to know if it will execute a command
+  if(message.channel.type !== "dm") {
     if (!message.content.startsWith(prefixs[message.guild.name]) || message.author.bot) return;
     if (message.content.substring(0,1) === prefixs[message.guild.name]) {
         const args = message.content.slice(prefixs[message.guild.name].length).trim().split(/ +/g);
@@ -89,6 +90,7 @@ client.on('message', (message) => {
                 break;
         }
     }
+  }
 });
 
-client.login(process.env.TOKEN).catch(error => console.log(error));
+//client.login(process.env.TOKEN).catch(error => console.log(error));
