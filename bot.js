@@ -15,6 +15,7 @@ const guilds = require(__dirname + "/Modules/guilds.json");
 const http = require('http');
 const express = require('express');
 const app = express();
+const webhook = require('./Modules/webhooks.js');
 
 app.get("/", (request, response) => {
     console.log(Date.now() + " Ping Received");
@@ -82,6 +83,9 @@ client.on('message', (message) => {
                 break;
             case "default":
                 defaultChannel.command(args[0],message);
+                break;
+            case "webhook":
+                webhook.command(message);
                 break;
         }
     }

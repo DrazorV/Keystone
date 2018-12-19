@@ -1,7 +1,6 @@
 const guilds = require(__dirname + "/guilds.json");
 const meme = require("../Modules/meme.js");
 
-
 module.exports = {
     command: function (channel,message) {
         if(message.member.hasPermission("ADMINISTRATOR")) {
@@ -12,13 +11,13 @@ module.exports = {
                 if ((channel === target.name) || (channel === target.id)) {
                     guilds[message.guild.name] = target.id;
                     fs.writeFileSync(__dirname + "/guilds.json", JSON.stringify(guilds,null,"\t"), "utf8");
-                    target.send("This is the default channel for memes.");
+                    target.send("🚧 This is the default channel for memes.");
                     return;
                 }
             }
-            message.channel.send("This channel does not exist!");
+            message.channel.send("❌ This channel does not exist!");
         }else{
-            message.channel.send("You need to be an admin to change the prefix of the bot.")
+            message.channel.send("❌ You need to be an admin to change the prefix of the bot.")
         }
     },
     job: function (client) {

@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const embed = new Discord.RichEmbed();
 const Pornsearch = require('pornsearch');
 
-
 module.exports = {
     command: function (args,message) {
         if(message.channel.nsfw) {
@@ -10,7 +9,7 @@ module.exports = {
             var result=null;
             const Searcher = new Pornsearch(mes,"Sex");
             try {
-                var result = Searcher.gifs();
+                result = Searcher.gifs();
             }catch (error) {
                 console.log(error)
             }
