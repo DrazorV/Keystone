@@ -19,14 +19,14 @@ module.exports = {
                     embed0.setDescription("Time to choose subreddit");
                     embed0.addField("Please insert the link of the subreddit","Example: https://www.reddit.com/r/gaming",false);
                     message.channel.send(embed0);
-                    break;
+                    return;
                 case "2":
                     const embed1 = new Discord.RichEmbed();
                     embedmaker(embed1);
                     embed1.setDescription("Time to choose hashtag");
                     embed1.addField("Please insert the Instagram hashtag","Example: https://www.instagram.com/explore/tags/gaming/",false)
                     message.channel.send(embed1);
-                    break;
+                    return;
                 default:
                     const embed2 = new Discord.RichEmbed();
                     embedmaker(embed2);
