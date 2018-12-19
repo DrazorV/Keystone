@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-const embed = new Discord.RichEmbed();
 
 module.exports = {
     command: function (message) {
+        const embed = new Discord.RichEmbed();
         embed.setAuthor(message.author.username + " said:", message.author.avatarURL);
         if (message.channel.type !== "dm") {
             embed.setColor(message.member.colorRole.color);
