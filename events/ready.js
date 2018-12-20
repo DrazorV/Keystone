@@ -9,7 +9,7 @@ module.exports = async client =>{
     client.user.setActivity("🍑Extra MyThicc🍑",{type: 'WATCHING'})
         .then(presence => console.log("Activity set to " + presence.game))
         .catch(console.error);
-    new CronJob('0 18 * * * *', function () {
+    new CronJob('0 0 18 * * *', function () {
         defaults.job(client)
     },null, true);
 
