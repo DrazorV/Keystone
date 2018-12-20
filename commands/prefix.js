@@ -13,7 +13,6 @@ exports.run = async (client,message,args)=>{
             console.log(prefix.content);
             message.channel.send("The new prefix is set to '" + prefixs[message.guild.name] + "'");
         });
-
     }else {
         message.channel.send("You need to be an admin to change the prefix of the bot.")
     }
