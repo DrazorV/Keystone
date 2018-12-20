@@ -17,11 +17,11 @@
 
 
 ## Features & Commands 👻
-- Get the avatar of anyone in the guild.
-- Inform your friends that you are in a voice channel with an appropriate link to join you.
-- Set the default channel for your daily meme dosage!
+- See anyone's guild avatar at full resolution
+- Send invitations at your friends to join you in your chat channel, quickly and easily
+- Set a channel to become your source of daily memes, as this bot will post memes daily
 - Get a random meme from a big subreddit list.
-- Check the ping of the bot and it's server.
+- Check the ping of the bot and its server.
 - Get hot porn gifs.
 - Change the prefix of the bot commands.
 - More to come!
