@@ -6,6 +6,7 @@ exports.run = async (client,message,args)=>{
     if(message.channel.nsfw) {
         let mes = args.join(" ");
         var result = null;
+        if(mes==="") mes = "porn";
         const Searcher = new Pornsearch(mes,"Sex");
         try {
             result = Searcher.gifs();
@@ -16,7 +17,7 @@ exports.run = async (client,message,args)=>{
             result.then(gifs => {
                 gifs = gifs.splice(gifs.length - 10);
                 let gif = gifs[Math.floor(Math.random() * gifs.length)];
-                embed.setTitle("Here is the " + args + " you ordered! 📦");
+                embed.setTitle("Here is the " + mes + " you ordered! 📦");
                 embed.setImage(gif.url);
                 embed.setColor(message.member.colorRole.color);
                 embed.setTimestamp(new Date());
