@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const prefixs = require("../data/prefixs.json");
 
 exports.run = async (client,message,args)=>{
