@@ -15,6 +15,6 @@ exports.run = async (client,message,args)=>{
     });
     collector.on("end",() => {
         if (temp) message.channel.send("I've got tired of waiting! 😫 \nPlease try again! 🔁");
-        if (!temp) message.channel.send("🎉 The 🆕 prefix is set to '" + prefixs[message.guild.name] + "'");
+        if (!temp) message.channel.send("🎉 The 🆕 prefix is set to \"" + prefixs[message.guild.name] + "\"");
     });
 };
