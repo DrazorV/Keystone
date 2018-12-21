@@ -6,25 +6,25 @@
 
 ## Goals ⚽
 
-- [ ] Clean up the code a bit.
-    - [ ] Clean up the code some more.
-    - [ ] More modulating.
-- [ ] Add permissions to certain commands.
-    - [ ] Make permissions a little more advanced.
-- [ ] Test and debug the new features.
-- [ ] Clean up the root directory.
-- [ ] Create a very convenient music bot with great features.
+* [ ] Clean up the code a bit.
+    * [ ] Clean up the code some more.
+    * [ ] More modulating.
+* [ ] Add permissions to certain commands.
+    * [ ] Make permissions a little more advanced.
+* [ ] Test and debug the new features.
+* [ ] Clean up the root directory.
+* [ ] Create a very convenient music bot with great features.
 
 
 ## Features & Commands 👻
-- See anyone's guild avatar at full resolution
-- Send invitations at your friends to join you in your voice channel, quickly and easily
-- Set a channel to become your source of daily memes, as this bot will post memes daily
-- Get a random meme from a big subreddit list.
-- Check the ping of the bot and its server.
-- Get hot porn gifs.
-- Change the prefix of the bot commands.
-- More to come!
+* See anyone's guild avatar at full resolution
+* Send invitations at your friends to join you in your voice channel, quickly and easily
+* Set a channel to become your source of daily memes, as this bot will post memes daily
+* Get a random meme from a big subreddit list.
+* Check the ping of the bot and its server.
+* Get hot porn gifs.
+* Change the prefix of the bot commands.
+* More to come!
 
 ## About me 🤷
 My name is Vagelis, I am 21 years old, born and raised in Greece.<br/>
