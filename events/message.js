@@ -1,8 +1,10 @@
 const prefixs = require('../data/prefixs');
+const Discord = require('discord.js');
 
 module.exports = async (client, message) => {
-    if (message.author.bot) return;
-    if (!message.content.startsWith(prefixs[message.guild.name])) return;
+    if(message.author.bot) return;
+    if(message.isMentioned(client.user)) message.channel.send(createEmbed(message));
+    if(!message.content.startsWith(prefixs[message.guild.name])) return;
 
     const args = message.content.slice(prefixs[message.guild.name].length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -14,3 +16,17 @@ module.exports = async (client, message) => {
 
     cmd.run(client, message, args);
 };
+
+
+
+function createEmbed(message) {
+    const embed = new Discord.RichEmbed();
+    embed.setTitle("Keystone ⏳");
+    embed.setDescription("The bot prefix is \""+prefixs[message.guild.name]+"\"");
+    embed.addField("💁‍ You can always use the command \""+prefixs[message.guild.name]+"help\"", "There you can find anything you need🔰", false);
+    embed.setURL("https://github.com/DrazorV/Keystone");
+    embed.setColor(message.member.colorRole.color);
+    embed.setTimestamp(new Date());
+    embed.setFooter("Automated message", "https://cdn.discordapp.com/icons/308903005875470338/a306375be4d56f9dd85c5321f3f92343.jpg");
+    return embed;
+}
