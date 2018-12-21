@@ -27,10 +27,7 @@ const init = async () => {
     });
     client.login(process.env.TOKEN).catch(error => console.log(error));
 };
-
 init().then();
-
-client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
 
 
 
