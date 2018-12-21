@@ -18,9 +18,8 @@ exports.run = async (client,message,args)=>{
     if (channel == null) {
         while (targets.length > 0) {
             const user = targets.pop();
-            if (user.bot) {
-                message.channel.send("❌ Bots usually don't hang out with humans!")
-            } else {
+            if (user.bot) message.channel.send("❌ Bots usually don't hang out with humans!");
+            else {
                 embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
                 user.send(embed);
                 message.channel.send("✅ " + user.username + " has been informed!");
