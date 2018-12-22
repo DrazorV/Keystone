@@ -21,9 +21,11 @@ exports.run = async (client,message,args)=>{
             const channel = message.member.voiceChannel;
             if (channel == null) {
                 embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
-                user.send(embed);
                 if(user === message.author) message.channel.send("🤔 Who invites himself anyway?");
-                else message.channel.send("✅ " + user.username + " has been informed!");
+                else {
+                    user.send(embed);
+                    message.channel.send("✅ " + user.username + " has been informed!");
+                }
             } else {
                 embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
                 if (!channel.members.has(user.id)) {
