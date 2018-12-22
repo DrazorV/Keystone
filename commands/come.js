@@ -18,6 +18,7 @@ exports.run = async (client,message,args)=>{
         const user = targets.pop();
         if (user.bot) message.channel.send("❌ Bots usually don't hang out with humans!");
         else {
+            if(user === message.author) message.channel.send("🤔 Who invites himself anyway?");
             const channel = message.member.voiceChannel;
             if (channel == null) {
                 embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
