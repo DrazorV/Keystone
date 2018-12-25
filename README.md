@@ -17,7 +17,7 @@
 
 
 ## Features & Commands 👻
-* See anyone's guild avatar at full resolution
+* See anyone's avatar at full resolution
 * Send invitations at your friends to join you in your voice channel, quickly and easily
 * Set a channel to become your source of daily memes, as this bot will post memes daily
 * Get a random meme from a big subreddit list.
