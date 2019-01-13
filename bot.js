@@ -3,6 +3,8 @@ const client = new Discord.Client();
 const fs = require('fs');
 const Enmap = require("enmap");
 client.commands = new Enmap();
+const http = require('http');
+const app = require('express')();
 
 const init = async () => {
     fs.readdir("./commands/",(err,files) =>{
@@ -25,8 +27,19 @@ const init = async () => {
             client.on(eventName ,event.bind(null,client));
         });
     });
+  
     client.login(process.env.TOKEN).catch(error => console.log(error));
 };
+
+app.get("/", (request, response) => {
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+},200000);
+
 init().then();
 
 
