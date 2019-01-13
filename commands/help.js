@@ -8,7 +8,7 @@ exports.run = async (client,message,args)=>{
     embed.setColor([255,90,0]);
     embed.addField(prefix + "avatar @mention","🎴 Gives you a link with his avatar",false);
     embed.addField(prefix + "come @mention","🤙 Informs one or more server members that you are waiting for them in one of the voice channels",false);
-    embed.addField(prefix + "default [name/id]","🗓️ Sets the channel where the bot posts memes daily.");
+    embed.addField(prefix + "default [name/id]","🗓️ Sets the channel where the bot posts memes daily");
     embed.addField(prefix + "meme","🚧 To get a random meme from a huge collection",false);
     embed.addField(prefix + "ping","🏓 Checks the ping of the server",false);
     embed.addField(prefix + "porn [input]","🔞 To get a random porn gif based on the input",false);
