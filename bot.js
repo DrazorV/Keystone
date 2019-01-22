@@ -6,6 +6,7 @@ const http = require('http');
 const app = require('express')();
 client.commands = new Enmap();
 
+
 const init = async () => {
     fs.readdir("./commands/",(err,files) =>{
         if (err) return console.error(err);
