@@ -2,9 +2,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const Enmap = require("enmap");
-client.commands = new Enmap();
 const http = require('http');
 const app = require('express')();
+client.commands = new Enmap();
+
 
 const init = async () => {
     fs.readdir("./commands/",(err,files) =>{
