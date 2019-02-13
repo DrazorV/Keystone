@@ -1,4 +1,4 @@
-const guilds = require("../data/guilds");
+const guilds = require("../../Keystone/data/guilds");
 const meme = require("./meme.js");
 
 exports.run = async (client,message,args)=>{

@@ -1,4 +1,4 @@
-const prefixs = require('../data/prefixs.json');
+const prefixs = require('../../Keystone/data/prefixs.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 

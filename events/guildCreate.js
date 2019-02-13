@@ -1,6 +1,6 @@
-const prefixs = require("../data/prefixs.json");
+const prefixs = require("../../Keystone/data/prefixs.json");
 const fs = require('fs');
-const guilds = require( "../data/guilds.json");
+const guilds = require( "../../Keystone/data/guilds.json");
 
 
 module.exports = (client, guild) =>{

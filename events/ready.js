@@ -1,4 +1,4 @@
-const defaults = require("../commands/setdefault");
+const defaults = require("../../app/commands/setdefault");
 const CronJob  = require('cron').CronJob;
 const http = require('http');
 const app = require('express')();

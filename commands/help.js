@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const prefixs = require("../data/prefixs.json");
+const prefixs = require("../../Keystone/data/prefixs.json");
 
 exports.run = async (client,message,args)=>{
     const prefix = prefixs[message.guild.id];
