@@ -14,33 +14,32 @@ exports.run = async (client,message,args)=>{
     embed.setTimestamp(new Date());
     embed.setFooter("Automated message", message.guild.iconURL);
     let roles = [];
+    let bool = false;
     for(const rol of message.mentions.roles.array()) for(const mem of rol.members.array()) roles.push(mem.user);
     let targets = message.mentions.users.array();
     for (const rol of roles) if (!targets.includes(rol)) targets.push(rol);
     while (targets.length > 0) {
         const user = targets.pop();
-        if(user)
-            if (user.presence.status==="online") {
-                if (user.bot) message.channel.send("❌ Bots usually don't hang out with humans!");
-                else {
-                    const channel = message.member.voiceChannel;
-                    if (channel == null) {
-                        embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
-                        if (user !== message.author) {
-                            user.send(embed);
-                            message.channel.send("✅ " + user.username + " has been informed!");
-                        }
-                    } else {
-                        embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
-                        if (!channel.members.has(user.id)) {
-                            message.channel.send("✅ " + user.username + " has been informed!");
-                            user.send(embed)
-                                .then(message.member.voiceChannel.createInvite(options)
-                                    .then(invite => user.send(invite.toString()))
-                                    .catch(console.error));
-                        } else if (user !== message.author) message.channel.send("❌ " + user.username + " is already in your voice channel!");
-                    }
+        if (user.bot||user.presence.status !== "online") bool = true;
+        else {
+            const channel = message.member.voiceChannel;
+            if (channel == null) {
+                embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
+                if (user !== message.author) {
+                    user.send(embed);
+                    message.channel.send("✅ " + user.username + " has been informed!");
                 }
+            } else {
+                embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
+                if (!channel.members.has(user.id)) {
+                    message.channel.send("✅ " + user.username + " has been informed!");
+                    user.send(embed)
+                        .then(message.member.voiceChannel.createInvite(options)
+                            .then(invite => user.send(invite.toString()))
+                            .catch(console.error));
+                } else if (user !== message.author) message.channel.send("❌ " + user.username + " is already in your voice channel!");
             }
+        }
     }
+    if(bool) message.channel.send("❌ Offline users and bots cannot be invited.");
 };
