@@ -8,7 +8,7 @@ exports.run = async (client,message,args)=>{
         while (channels.length > 0) {
             const target = channels.pop();
             if ((message.channel === target.name) || (message.channel === target.id)) {
-                guilds[message.guild.name] = target.id;
+                guilds[message.guild.id] = target.id;
                 fs.writeFileSync("/data/guilds.json", JSON.stringify(guilds,null,"\t"), "utf8");
                 target.send("🚧 This is the default channel for memes.");
                 return;
@@ -25,8 +25,8 @@ exports.job = async (client,message,args)=>{
     while (clans.length > 0){
         let clan = clans.pop();
         JSON.stringify(guilds);
-        if(guilds[clan.name]!==""){
-            meme.schedule(clan.channels.get(guilds[clan.name]));
+        if(guilds[clan.id]!==""){
+            meme.schedule(clan.channels.get(guilds[clan.id]));
         }
     }
 };

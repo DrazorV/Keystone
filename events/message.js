@@ -4,9 +4,9 @@ const Discord = require("discord.js");
 module.exports = async (client, message) => {
     if(message.author.bot) return;
     if(message.isMentioned(client.user)) message.channel.send(createEmbed(message));
-    if(!message.content.startsWith(prefixs[message.guild.name])) return;
+    if(!message.content.startsWith(prefixs[message.guild.id])) return;
 
-    const args = message.content.slice(prefixs[message.guild.name].length).trim().split(/ +/g);
+    const args = message.content.slice(prefixs[message.guild.id].length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     if (message.guild && !message.member) await message.guild.fetchMember(message.author);
@@ -22,8 +22,8 @@ module.exports = async (client, message) => {
 function createEmbed(message) {
     const embed = new Discord.RichEmbed();
     embed.setTitle("Keystone ⏳");
-    embed.setDescription("The bot prefix is \""+prefixs[message.guild.name]+"\"");
-    embed.addField("💁‍ You can always use the command \""+prefixs[message.guild.name]+"help\"", "There you can find anything you need🔰", false);
+    embed.setDescription("The bot prefix is \""+prefixs[message.guild.id]+"\"");
+    embed.addField("💁‍ You can always use the command \""+prefixs[message.guild.id]+"help\"", "There you can find anything you need🔰", false);
     embed.setURL("https://github.com/DrazorV/Keystone");
     embed.setColor(message.member.colorRole.color);
     embed.setTimestamp(new Date());

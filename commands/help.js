@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const prefixs = require("../data/prefixs.json");
 
 exports.run = async (client,message,args)=>{
-    const prefix = prefixs[message.guild.name];
+    const prefix = prefixs[message.guild.id];
     const embed = new Discord.RichEmbed();
     embed.setTitle("List of Commands 📋");
     embed.setColor([255,90,0]);
