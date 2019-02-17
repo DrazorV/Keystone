@@ -1,4 +1,4 @@
-const prefixs = require('../../Keystone/data/prefixs');
+const prefixs = require('../data/prefixs');
 const Discord = require("discord.js");
 
 module.exports = async (client, message) => {
