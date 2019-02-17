@@ -14,13 +14,14 @@ exports.run = async (client,message,args)=>{
     embed.setTimestamp(new Date());
     embed.setFooter("Automated message", message.guild.iconURL);
     let roles = [];
-    let bool = false,bool2 = false;
+    let bool = false,bool2 = false,bool3 = false;
     for(const rol of message.mentions.roles.array()) for(const mem of rol.members.array()) roles.push(mem.user);
     let targets = message.mentions.users.array();
     for (const rol of roles) if (!targets.includes(rol)) targets.push(rol);
+    if(targets.length === 1) bool3 = true;
     while (targets.length > 0) {
         const user = targets.pop();
-        if (user.bot||user.presence.status !== "online") bool = true;
+        if ((user.bot||user.presence.status !== "online")&& !bool3) bool = true;
         else {
             const channel = message.member.voiceChannel;
             if (channel == null) {
