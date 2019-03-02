@@ -11,7 +11,9 @@ exports.run = async (client,message,args)=>{
     while (targets.length>0){
         const user = targets.pop();
         try{
-            message.channel.send(user.avatarURL);
+            message.channel.send("This is " + user + "'s avatar.",{
+                file: user.avatarURL
+            });
         }catch (e) {
             message.channel.send("This user has no Avatar.")
         }
