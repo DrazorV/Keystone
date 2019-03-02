@@ -19,6 +19,11 @@ exports.run = async (client,message,args)=>{
     let targets = message.mentions.users.array();
     for (const rol of roles) if (!targets.includes(rol)) targets.push(rol);
     if(targets.length === 1) bool3 = true;
+    try{
+        message.delete();
+    }catch (e) {
+
+    }
     while (targets.length > 0) {
         const user = targets.pop();
         if ((user.bot||user.presence.status !== "online")&& !bool3) bool = true;
