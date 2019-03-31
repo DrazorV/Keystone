@@ -6,13 +6,13 @@
 
 ## Goals ⚽
 
-* [ ] Clean up the code a bit.
+* [X] Clean up the code a bit.
     * [ ] Clean up the code some more.
-    * [ ] More modulating.
+    * [X] More modulating.
 * [ ] Add permissions to certain commands.
     * [ ] Make permissions a little more advanced.
-* [ ] Test and debug the new features.
-* [ ] Clean up the root directory.
+* [X] Test and debug the new features.
+* [X] Clean up the root directory.
 * [ ] Create a very convenient music bot with great features.
 
 
