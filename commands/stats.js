@@ -1,6 +1,6 @@
 const db = require('quick.db');
 const serverstats = new db.table('ServerStats',null);
-const prefixs = require('../../Keystone/data/prefixs.json');
+const prefixs = require('../data/prefixs.json');
 
 let flag = true;
 
