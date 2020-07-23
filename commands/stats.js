@@ -1,8 +1,8 @@
 const db = require('quick.db');
 const serverstats = new db.table('ServerStats',null);
 const prefixs = require('../data/prefixs.json');
-
-let flag = true;
+const stats = require('../data/stats.json')
+const fs = require('fs');
 
 
 exports.run = async (client,message,args)=>{
@@ -56,8 +56,9 @@ exports.run = async (client,message,args)=>{
                 })
             })
         })
-        message.channel.send(`:white_check_mark: Serverstats enabled for this server.`)
-        flag = true;
+        stats[message.guild.id] = 'true';
+        fs.writeFileSync(__dirname + "..\\..\\data\\stats.json",JSON.stringify(stats,null,"\t"),"utf8");
+        message.channel.send(`:white_check_mark: Server Stats enabled for this server.`)
     } else if (args[0] === 'disable') {
         let categ = await serverstats.fetch(`Stats_${message.guild.id}`, { target: '.categid' })
 
@@ -69,26 +70,27 @@ exports.run = async (client,message,args)=>{
         client.channels.get(categ).delete()
 
         serverstats.delete(`Stats_${message.guild.id}`)
-        message.channel.send(`:white_check_mark: Serverstats disabled for this server.`)
-        flag = false;
+        stats[message.guild.id] = 'false';
+        fs.writeFileSync(__dirname + "..\\..\\data\\stats.json",JSON.stringify(stats,null,"\t"),"utf8");
+        message.channel.send(`:white_check_mark: Server Stats disabled for this server.`)
     }
 }
 
 exports.job = async (client) =>{
-    if(flag) {
-        let clans = client.guilds.array();
-        while (clans.length > 0) {
-            let clan = clans.pop();
 
+    let clans = client.guilds.array();
+    while (clans.length > 0) {
+        let clan = clans.pop();
+        if(stats[clan.id]===("true")) {
             const totalsize = clan.memberCount;
             const botsize = clan.members.filter(m => m.user.bot).size;
             const humansize = totalsize - botsize;
             const onlinesize = clan.members.filter(m => m.user.presence.status !== "offline").size;
 
-            let totusers = serverstats.fetch(`Stats_${clan.id}`, { target: '.totusers' })
-            let membcount = serverstats.fetch(`Stats_${clan.id}`, { target: '.membcount' })
-            let botcount = serverstats.fetch(`Stats_${clan.id}`, { target: '.botcount' })
-            let online = serverstats.fetch(`Stats_${clan.id}`,{target: '.online'})
+            let totusers = serverstats.fetch(`Stats_${clan.id}`, {target: '.totusers'})
+            let membcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.membcount'})
+            let botcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.botcount'})
+            let online = serverstats.fetch(`Stats_${clan.id}`, {target: '.online'})
 
             client.channels.get(totusers).setName("Total Users : " + totalsize)
             client.channels.get(membcount).setName("Human Users  : " + humansize)
