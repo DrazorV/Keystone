@@ -25,7 +25,7 @@ exports.run = async (client,message,args)=>{
                 message.channel.send(embed);
             });
         }else{
-            message.channel.send("❌No results for '"+mes+"'.")
+            await message.channel.send("❌No results for '" + mes + "'.")
         }
     }else{
         message.channel.send("❌You have to be in a NSFW🔞 channel to use this command")
