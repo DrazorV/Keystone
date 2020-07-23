@@ -15,7 +15,6 @@ exports.run = async (client,message,args)=>{
         }
         if(result != null) {
             result.then(gifs => {
-                gifs = gifs.splice(gifs.length - 10);
                 let gif = gifs[Math.floor(Math.random() * gifs.length)];
                 embed.setTitle("Here is the " + mes + " you ordered! 📦");
                 embed.setImage(gif.url);
