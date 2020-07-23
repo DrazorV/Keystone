@@ -97,15 +97,13 @@ exports.job = async (client) =>{
                 let botcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.botcount'})
                 let online = serverstats.fetch(`Stats_${clan.id}`, {target: '.online'})
 
-                try {
-                    client.channels.cache.get(totusers).setName("🌍 Total Users : " + totalsize)
-                    client.channels.cache.get(membcount).setName("🤵 Human Users  : " + humansize)
-                    client.channels.cache.get(botcount).setName("🤖 Bot Users : " + botsize)
-                    client.channels.cache.get(online).setName("🔴 Online Users: " + onlinesize)
-                }catch (e) {
-                    console.log(e)
+                let cache_ = client.channels.cache;
+                if(cache_.get(totusers) !== undefined){
+                    cache_.get(totusers).setName("🌍 Total Users : " + totalsize)
+                    cache_.get(membcount).setName("🤵 Human Users  : " + humansize)
+                    cache_.get(botcount).setName("🤖 Bot Users : " + botsize)
+                    cache_.get(online).setName("🔴 Online Users: " + onlinesize)
                 }
-
             }
     }
 }
