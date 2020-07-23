@@ -36,7 +36,7 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT);
 setInterval(() => {
-    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+    http.get(`http://${process.env.PROJECT_DOMAIN}.herokuapp.com/`);
 },200000);
 init().then();
 
