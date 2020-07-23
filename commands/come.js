@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-
 let options = {
     maxAge: 600,
     maxUses: 1,
@@ -25,7 +24,7 @@ exports.run = async (client,message,args)=>{
         const user = targets.pop();
         if (user.bot||user.presence.status === "offline") bool = true;
         else {
-            createEmbed(message,embed,user)
+            await createEmbed(message,embed,user)
         }
     }
 
@@ -40,7 +39,7 @@ exports.run = async (client,message,args)=>{
                 } else {
                     if (!channel.members.has(user.id)) bool2 = false;
                 }
-                createEmbed(message, embed, user)
+                await createEmbed(message, embed, user)
             }
         }
     }
@@ -48,22 +47,22 @@ exports.run = async (client,message,args)=>{
 };
 
 
-function createEmbed(message, embed,user){
+async function createEmbed(message, embed,user){
     const channel = message.member.voice.channel;
     if (channel == null) {
         embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
         if (user !== message.author) {
             user.send(embed);
-            message.channel.send("✅ " + user.username + " has been informed!");
+            await message.channel.send("✅ " + user.username + " has been informed!");
         }
     } else {
         embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
         if (!channel.members.has(user.id)) {
-            message.channel.send("✅ " + user.username + " has been informed!");
+            await message.channel.send("✅ " + user.username + " has been informed!");
             user.send(embed)
                 .then(message.member.voice.channel.createInvite(options)
                     .then(invite => user.send(invite.toString()))
                     .catch(console.error));
-        } else if (user !== message.author) message.channel.send("❌ " + user.username + " is already in your voice channel!");
+        } else if (user !== message.author) await message.channel.send("❌ " + user.username + " is already in your voice channel!");
     }
 }

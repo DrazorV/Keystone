@@ -97,6 +97,7 @@ exports.job = async (client) =>{
                 let botcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.botcount'})
                 let online = serverstats.fetch(`Stats_${clan.id}`, {target: '.online'})
 
+
                 let cache_ = client.channels.cache;
                 if(cache_.get(totusers) !== undefined){
                     cache_.get(totusers).setName("🌍 Total Users : " + totalsize)
