@@ -1,7 +1,6 @@
 const defaults = require("../../app/commands/setdefault");
 const CronJob  = require('cron').CronJob;
-const http = require('http');
-const app = require('express')();
+const stats = require("../../app/commands/stats");
 
 
 module.exports = async client =>{
@@ -11,5 +10,9 @@ module.exports = async client =>{
         .catch(console.error);
     new CronJob('0 0 18 * * *', function () {
         defaults.job(client)
+    },null, true);
+
+    new CronJob('*/1 * * * *', function () {
+        stats.job(client)
     },null, true);
 };

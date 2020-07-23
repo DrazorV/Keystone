@@ -5,9 +5,9 @@ const Pornsearch = require('pornsearch');
 exports.run = async (client,message,args)=>{
     if(message.channel.nsfw) {
         let mes = args.join(" ");
-        var result = null;
+        let result = null;
         if(mes==="") mes = "porn";
-        const Searcher = new Pornsearch(mes,"Sex");
+        const Searcher = new Pornsearch(mes,"Pornhub");
         try {
             result = Searcher.gifs();
         }catch (error) {
