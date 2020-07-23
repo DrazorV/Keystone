@@ -9,6 +9,7 @@
     "url": "git+https://github.com/discordjs/discord.js.git"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "cron": "^1.6.0",
     "discord-music-player": "^4.0.8",
     "discord.js": "12.2.0",
