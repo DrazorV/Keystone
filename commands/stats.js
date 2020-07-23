@@ -26,25 +26,25 @@ exports.run = async (client,message,args)=>{
             deny: ['CONNECT']
         }]).then(channel => {
             channel.setPosition(0)
-            message.guild.createChannel("Total Users : " + totalsize, 'voice', [{
+            message.guild.createChannel("🌍 Total Users : " + totalsize, 'voice', [{
                 id: message.guild.id,
                 deny: ['CONNECT']
             }]).then(channel1 => {
                 channel1.setParent(channel.id)
                 let x = channel1.id
-                message.guild.createChannel("Human Users  : " + humansize, 'voice', [{
+                message.guild.createChannel("🤵 Human Users  : " + humansize, 'voice', [{
                     id: message.guild.id,
                     deny: ['CONNECT']
                 }]).then(channel2 => {
                     channel2.setParent(channel.id)
                     let y = channel2.id
-                    message.guild.createChannel("Bot Users : " + botsize, 'voice', [{
+                    message.guild.createChannel("🤖 Bot Users : " + botsize, 'voice', [{
                         id: message.guild.id,
                         deny: ['CONNECT']
                     }]).then(channel3 => {
                         channel3.setParent(channel.id)
                         let z = channel3.id
-                        message.guild.createChannel("Online Users: " + onlinesize, 'voice',[{
+                        message.guild.createChannel("🔴 Online Users: " + onlinesize, 'voice',[{
                             id: message.guild.id,
                             deny: ['CONNECT']
                         }]).then(channel4 =>{
