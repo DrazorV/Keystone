@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const embed = new Discord.RichEmbed();
+const embed = new Discord.MessageEmbed();
 const Pornsearch = require('pornsearch');
 
 exports.run = async (client,message,args)=>{
@@ -18,16 +18,16 @@ exports.run = async (client,message,args)=>{
                 let gif = gifs[Math.floor(Math.random() * gifs.length)];
                 embed.setTitle("Here is the " + mes + " you ordered! 📦");
                 embed.setImage(gif.url);
-                embed.setColor(message.member.colorRole.color);
+                embed.setColor(message.member.roles.color.color);
                 embed.setTimestamp(new Date());
                 embed.setFooter("Automated message", message.guild.iconURL);
                 embed.setURL(gif.url);
                 message.channel.send(embed);
             });
         }else{
-            await message.channel.send("❌No results for '" + mes + "'.")
+            await message.channel.send("❌No results for '"+mes+"'.")
         }
     }else{
-        message.channel.send("❌You have to be in a NSFW🔞 channel to use this command")
+        await message.channel.send("❌You have to be in a NSFW🔞 channel to use this command")
     }
 };

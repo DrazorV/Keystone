@@ -3,7 +3,7 @@ const prefixs = require("../data/prefixs.json");
 
 exports.run = async (client,message,args)=>{
     const prefix = prefixs[message.guild.id];
-    const embed = new Discord.RichEmbed();
+    const embed = new Discord.MessageEmbed();
     embed.setTitle("List of Commands 📋");
     embed.setColor([255,90,0]);
     embed.addField(prefix + "avatar @mention","🎴 Gives you a link with his avatar",false);
@@ -16,5 +16,5 @@ exports.run = async (client,message,args)=>{
     embed.addField("@Keystone","💡 If you ever forget the bot prefix, just mention it!",false);
     embed.setTimestamp(new Date());
     embed.setFooter("Automated message", "https://i.imgur.com/5Px5FeR.png");
-    message.channel.send(embed);
+    await message.channel.send(embed);
 };

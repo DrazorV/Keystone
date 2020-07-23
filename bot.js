@@ -4,7 +4,10 @@ const fs = require('fs');
 const Enmap = require("enmap");
 const http = require('http');
 const app = require('express')();
+const { Player } = require("discord-music-player"); // Require the module
+const player = new Player(client, process.env.google_api);
 client.commands = new Enmap();
+client.player = player;
 
 
 const init = async () => {

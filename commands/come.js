@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+
 let options = {
     maxAge: 600,
     maxUses: 1,
@@ -7,9 +8,9 @@ let options = {
 
 exports.run = async (client,message,args)=>{
     if (message.channel.type === "dm") return;
-    const embed = new Discord.RichEmbed();
-    embed.setAuthor(message.author.username + " said:", message.author.avatarURL);
-    embed.setColor(message.member.colorRole.color);
+    const embed = new Discord.MessageEmbed();
+    embed.setAuthor(message.author.username + " said:", message.author.avatarURL({"format":"png","dynamic":true,"size":4096}));
+    embed.setColor(message.member.roles.color.color);
     embed.setTitle("Join the voice chat on " + message.guild.name);
     embed.setTimestamp(new Date());
     embed.setFooter("Automated message", message.guild.iconURL);
@@ -33,7 +34,7 @@ exports.run = async (client,message,args)=>{
             const user = targets2.pop();
             if (user.bot || user.presence.status !== "online") bool = true;
             else {
-                const channel = message.member.voiceChannel;
+                const channel = message.member.voice.channel
                 if (channel == null) {
                     if (user !== message.author) bool2 = false;
                 } else {
@@ -43,12 +44,12 @@ exports.run = async (client,message,args)=>{
             }
         }
     }
-    if(bool && bool2) message.channel.send("❌ Inactive users and bots cannot be invited.");
+    if(bool && bool2) await message.channel.send("❌ Inactive users and bots cannot be invited.");
 };
 
 
 function createEmbed(message, embed,user){
-    const channel = message.member.voiceChannel;
+    const channel = message.member.voice.channel;
     if (channel == null) {
         embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
         if (user !== message.author) {
@@ -60,7 +61,7 @@ function createEmbed(message, embed,user){
         if (!channel.members.has(user.id)) {
             message.channel.send("✅ " + user.username + " has been informed!");
             user.send(embed)
-                .then(message.member.voiceChannel.createInvite(options)
+                .then(message.member.voice.channel.createInvite(options)
                     .then(invite => user.send(invite.toString()))
                     .catch(console.error));
         } else if (user !== message.author) message.channel.send("❌ " + user.username + " is already in your voice channel!");
