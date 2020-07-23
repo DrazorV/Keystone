@@ -92,10 +92,10 @@ exports.job = async (client) =>{
             let botcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.botcount'})
             let online = serverstats.fetch(`Stats_${clan.id}`, {target: '.online'})
 
-            client.channels.get(totusers).setName("Total Users : " + totalsize)
-            client.channels.get(membcount).setName("Human Users  : " + humansize)
-            client.channels.get(botcount).setName("Bot Users : " + botsize)
-            client.channels.get(online).setName("Online Users: " + onlinesize)
+            client.channels.get(totusers).setName("🌍 Total Users : " + totalsize)
+            client.channels.get(membcount).setName("🤵 Human Users  : " + humansize)
+            client.channels.get(botcount).setName("🤖 Bot Users : " + botsize)
+            client.channels.get(online).setName("🔴 Online Users: " + onlinesize)
         }
     }
 }
