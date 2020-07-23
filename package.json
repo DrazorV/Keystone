@@ -11,6 +11,7 @@
   "dependencies": {
     "cron": "^1.6.0",
     "discord.js": "^11.4.2",
+    "enmap": "^4.5.0",
     "express": "4.16.4",
     "ffmpeg": "^0.0.4",
     "is-image-url": "^1.1.8",
@@ -18,9 +19,9 @@
     "memejsfork": "^1.0.4",
     "opusscript": "^0.0.6",
     "pornsearch": "2.4.3",
+    "quick.db": "^7.1.1",
     "simple-youtube-api": "^5.1.1",
     "uws": "^99.0.0",
-    "ytdl-core": "latest",
-    "enmap": "^4.5.0"
+    "ytdl-core": "latest"
   }
 }
