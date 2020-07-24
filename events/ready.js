@@ -14,9 +14,9 @@ module.exports = async client =>{
             stats[clan.id] = ["false","","","","",""]
             prefixs[clan.id] = "/";
             guilds[clan.id] = "";
-            fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(guilds,null,"\t"),"utf8");
-            fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(prefixs,null,"\t"),"utf8");
-            fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(stats,null,"\t"),"utf8");
+            fs.writeFileSync(__dirname + "..\\..\\data\\guilds.json",JSON.stringify(guilds,null,"\t"),"utf8");
+            fs.writeFileSync(__dirname + "..\\..\\data\\guilds.json",JSON.stringify(prefixs,null,"\t"),"utf8");
+            fs.writeFileSync(__dirname + "..\\..\\data\\guilds.json",JSON.stringify(stats,null,"\t"),"utf8");
         }
     }
 
