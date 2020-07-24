@@ -1,20 +1,19 @@
-const db = require('quick.db');
-const serverstats = new db.table('ServerStats',null);
 const prefixs = require('../data/prefixs.json');
 const stats = require('../data/stats.json')
 const fs = require('fs');
 
 
 exports.run = async (client,message,args)=>{
-    let totusers = await serverstats.fetch(`Stats_${message.guild.id}`, { target: '.totusers' })
-    let membcount = await serverstats.fetch(`Stats_${message.guild.id}`, { target: '.membcount' })
-    let botcount = await serverstats.fetch(`Stats_${message.guild.id}`, { target: '.botcount' })
-    let online = await serverstats.fetch(`Stats_${message.guild.id}`,{target: '.online'})
+    let categ = stats[message.guild.id][1]
+    let totusers = stats[message.guild.id][2]
+    let membcount = stats[message.guild.id][3]
+    let botcount = stats[message.guild.id][4]
+    let online =  stats[message.guild.id][5]
 
     if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`:x: You need **MANAGE_GUILD** permission to use this command.`)
     if (!args[0]) return message.channel.send(":x: Invalid parameters. Correct usage: `" + prefixs[message.guild.id]+"stats enable` |`" + prefixs[message.guild.id] + "stats disable`.");
     if(args[0] === 'enable') {
-        if(totusers !== null || membcount !== null || botcount !== null || online !== null) return message.channel.send(`:x: Server stats are already enabled for this server.`)
+        if(categ !== "" ||totusers !== "" || membcount !== "" || botcount !== "" || online !== "") return message.channel.send(`:x: Server stats are already enabled for this server.`)
         if(!message.guild.me.hasPermission(`MANAGE_CHANNELS`)) return message.channel.send(`:x: I don't have **MANAGE_CHANNELS** permission.`);
         const totalsize = message.guild.memberCount;
         const botsize = message.guild.members.cache.filter(m => m.user.bot).size;
@@ -27,6 +26,7 @@ exports.run = async (client,message,args)=>{
             deny: ['CONNECT']
         }).then(channel => {
             channel.setPosition(0)
+            let w = channel.id
             message.guild.channels.create("🌍 Total Users : " + totalsize, {
                 type: 'voice',
                 id: message.guild.id,
@@ -54,28 +54,35 @@ exports.run = async (client,message,args)=>{
                             deny: ['CONNECT']
                         }).then(channel4 =>{
                             channel4.setParent(channel.id)
-                            let xy =channel4.id
-                            serverstats.set(`Stats_${message.guild.id}`, { guildid: message.guild.id, totusers: x, membcount: y, botcount: z, online: xy, categid: channel.id})
+                            let xy = channel4.id
+                            stats[message.guild.id][1] = w;
+                            stats[message.guild.id][2] = x;
+                            stats[message.guild.id][3] = y;
+                            stats[message.guild.id][4] = z;
+                            stats[message.guild.id][5] = xy;
+                            fs.writeFileSync(__dirname + "..\\..\\data\\stats.json",JSON.stringify(stats,null,"\t"),"utf8");
                         })
                     })
                 })
             })
         })
-        stats[message.guild.id] = 'true';
+        stats[message.guild.id][0] = 'true';
         fs.writeFileSync(__dirname + "..\\..\\data\\stats.json",JSON.stringify(stats,null,"\t"),"utf8");
         await message.channel.send(`:white_check_mark: Server Stats enabled for this server.`)
     } else if (args[0] === 'disable') {
-        let categ = await serverstats.fetch(`Stats_${message.guild.id}`, { target: '.categid' })
 
-        if(totusers === null || membcount === null || botcount === null || online === null) return message.channel.send(`:x: Serverstats for this server is not enabled.`)
+        if(categ === "" ||totusers === "" || membcount === "" || botcount === "" || online === "") return message.channel.send(`:x: Serverstats for this server is not enabled.`)
         client.channels.cache.get(totusers).delete()
         client.channels.cache.get(membcount).delete()
         client.channels.cache.get(botcount).delete()
         client.channels.cache.get(online).delete()
         client.channels.cache.get(categ).delete()
-
-        serverstats.delete(`Stats_${message.guild.id}`)
-        stats[message.guild.id] = 'false';
+        stats[message.guild.id][0] = 'false';
+        stats[message.guild.id][1] = "";
+        stats[message.guild.id][2] = "";
+        stats[message.guild.id][3] = "";
+        stats[message.guild.id][4] = "";
+        stats[message.guild.id][5] = "";
         fs.writeFileSync(__dirname + "..\\..\\data\\stats.json",JSON.stringify(stats,null,"\t"),"utf8");
         await message.channel.send(`:white_check_mark: Server Stats disabled for this server.`)
     }
@@ -83,28 +90,28 @@ exports.run = async (client,message,args)=>{
 
 exports.job = async (client) =>{
 
-        let clans = client.guilds.cache.array();
-        while (clans.length > 0) {
-            let clan = clans.pop();
-            if(stats[clan.id]===("true")) {
-                const totalsize = clan.memberCount;
-                const botsize = clan.members.cache.filter(m => m.user.bot).size;
-                const humansize = totalsize - botsize;
-                const onlinesize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
+    let clans = client.guilds.cache.array();
+    while (clans.length > 0) {
+        let clan = clans.pop();
+        if(stats[clan.id][0]===("true")) {
+            const totalsize = clan.memberCount;
+            const botsize = clan.members.cache.filter(m => m.user.bot).size;
+            const humansize = totalsize - botsize;
+            const onlinesize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
 
-                let totusers = serverstats.fetch(`Stats_${clan.id}`, {target: '.totusers'})
-                let membcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.membcount'})
-                let botcount = serverstats.fetch(`Stats_${clan.id}`, {target: '.botcount'})
-                let online = serverstats.fetch(`Stats_${clan.id}`, {target: '.online'})
+            let totusers = stats[clan.id][2]
+            let membcount = stats[clan.id][3]
+            let botcount = stats[clan.id][4]
+            let online =  stats[clan.id][5]
 
 
-                let cache_ = client.channels.cache;
-                if(cache_.get(totusers) !== undefined){
-                    cache_.get(totusers).setName("🌍 Total Users : " + totalsize)
-                    cache_.get(membcount).setName("🤵 Human Users  : " + humansize)
-                    cache_.get(botcount).setName("🤖 Bot Users : " + botsize)
-                    cache_.get(online).setName("🔴 Online Users: " + onlinesize)
-                }
+            let cache_ = client.channels.cache;
+            if(cache_.get(totusers) !== undefined){
+                cache_.get(totusers).setName("🌍 Total Users : " + totalsize)
+                cache_.get(membcount).setName("🤵 Human Users  : " + humansize)
+                cache_.get(botcount).setName("🤖 Bot Users : " + botsize)
+                cache_.get(online).setName("🔴 Online Users: " + onlinesize)
             }
+        }
     }
 }
