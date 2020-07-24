@@ -63,12 +63,18 @@ exports.run = async (client,message,args)=>{
             })
         })
     } else if (args[0] === 'disable') {
-        if(!stats[message.guild.id][0]) return message.channel.send(`:x: Serverstats for this server is not enabled.`)
-        client.channels.cache.get(stats[message.guild.id][1]).delete()
-        client.channels.cache.get(stats[message.guild.id][2]).delete()
-        client.channels.cache.get(stats[message.guild.id][3]).delete()
-        client.channels.cache.get(stats[message.guild.id][4]).delete()
-        client.channels.cache.get(stats[message.guild.id][5]).delete()
+        if(!stats[message.guild.id][0]) return message.channel.send(`:x: Server Stats for this server is not enabled.`)
+        try {
+            client.channels.cache.get(stats[message.guild.id][1]).delete()
+            client.channels.cache.get(stats[message.guild.id][2]).delete()
+            client.channels.cache.get(stats[message.guild.id][3]).delete()
+            client.channels.cache.get(stats[message.guild.id][4]).delete()
+            client.channels.cache.get(stats[message.guild.id][5]).delete()
+        }catch (e) {
+            console.log("----------------------Could not delete!----------------------")
+            await message.channel.send(`:x: Something went wrong, couldn't delete channels!.`)
+        }
+
         stats[message.guild.id][0] = false;
         stats[message.guild.id][1] = "";
         stats[message.guild.id][2] = "";
