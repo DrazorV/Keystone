@@ -9,7 +9,7 @@ module.exports = async client =>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
-        if (stats[clan.id][0] !== undefined){
+        if (stats[clan.id] === undefined){
             stats[clan.id] = ["false","","","","",""]
             prefixs[clan.id] = "/";
             guilds[clan.id] = "";
