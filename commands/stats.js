@@ -10,7 +10,7 @@ exports.run = async (client,message,args)=>{
         if(stats[message.guild.id][0]) return message.channel.send(`:x: Server stats are already enabled for this server.`)
         if(!message.guild.me.hasPermission(`MANAGE_CHANNELS`)) return message.channel.send(`:x: I don't have **MANAGE_CHANNELS** permission.`);
         const totalSize = message.guild.memberCount;
-        const botSize = message.guild.members.cache.filter(m => m.user.bot).size - 1;
+        const botSize = message.guild.members.cache.filter(m => m.user.bot).size;
         const humanSize = totalSize - botSize;
         const onlineSize = message.guild.members.cache.filter(m => m.user.presence.status!=="offline").size;
 
@@ -94,7 +94,7 @@ exports.job = async (client) =>{
         if (stats[clan.id] !== undefined) {
             if (stats[clan.id][0]) {
                 const totalSize = clan.memberCount;
-                const botSize = clan.members.cache.filter(m => m.user.bot).size - 1;
+                const botSize = clan.members.cache.filter(m => m.user.bot).size;
                 const humanSize = totalSize - botSize;
                 const onlineSize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
 
