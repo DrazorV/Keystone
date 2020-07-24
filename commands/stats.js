@@ -93,24 +93,27 @@ exports.job = async (client) =>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
-        if(stats[clan.id][0]===("true")) {
-            const totalsize = clan.memberCount;
-            const botsize = clan.members.cache.filter(m => m.user.bot).size;
-            const humansize = totalsize - botsize;
-            const onlinesize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
-
-            let totusers = stats[clan.id][2]
-            let membcount = stats[clan.id][3]
-            let botcount = stats[clan.id][4]
-            let online =  stats[clan.id][5]
+        if (stats[clan.id] !== null){
+            if(stats[clan.id][0]===("true")) {
+                const totalsize = clan.memberCount;
+                const botsize = clan.members.cache.filter(m => m.user.bot).size;
+                const humansize = totalsize - botsize;
+                const onlinesize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
 
 
-            let cache_ = client.channels.cache;
-            if(cache_.get(totusers) !== undefined){
-                cache_.get(totusers).setName("🌍 Total Users : " + totalsize)
-                cache_.get(membcount).setName("🤵 Human Users  : " + humansize)
-                cache_.get(botcount).setName("🤖 Bot Users : " + botsize)
-                cache_.get(online).setName("🔴 Online Users: " + onlinesize)
+                let totusers = stats[clan.id][2]
+                let membcount = stats[clan.id][3]
+                let botcount = stats[clan.id][4]
+                let online =  stats[clan.id][5]
+
+
+                let cache_ = client.channels.cache;
+                if(cache_.get(totusers) !== undefined){
+                    cache_.get(totusers).setName("🌍 Total Users : " + totalsize)
+                    cache_.get(membcount).setName("🤵 Human Users  : " + humansize)
+                    cache_.get(botcount).setName("🤖 Bot Users : " + botsize)
+                    cache_.get(online).setName("🔴 Online Users: " + onlinesize)
+                }
             }
         }
     }
