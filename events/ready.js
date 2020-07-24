@@ -3,6 +3,7 @@ const stats = require("../../app/commands/stats");
 const CronJob  = require('cron').CronJob;
 const prefixs = require('../data/prefixs.json');
 const guilds = require('../data/guilds.json')
+const fs = require('fs')
 
 
 module.exports = async client =>{
@@ -15,6 +16,7 @@ module.exports = async client =>{
             guilds[clan.id] = "";
             fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(guilds,null,"\t"),"utf8");
             fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(prefixs,null,"\t"),"utf8");
+            fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(stats,null,"\t"),"utf8");
         }
     }
 
