@@ -10,7 +10,7 @@ exports.run = async (client,message,args)=>{
         if(stats[message.guild.id][0]) return message.channel.send(`:x: Server stats are already enabled for this server.`)
         if(!message.guild.me.hasPermission(`MANAGE_CHANNELS`)) return message.channel.send(`:x: I don't have **MANAGE_CHANNELS** permission.`);
         const totalSize = message.guild.memberCount;
-        const botSize = message.guild.members.cache.filter(m => m.user.bot).size;
+        const botSize = message.guild.members.cache.filter(m => m.user.bot).size - 1;
         const humanSize = totalSize - botSize;
         const onlineSize = message.guild.members.cache.filter(m => m.user.presence.status!=="offline").size;
 
@@ -94,7 +94,7 @@ exports.job = async (client) =>{
         if (stats[clan.id] !== undefined) {
             if (stats[clan.id][0]) {
                 const totalSize = clan.memberCount;
-                const botSize = clan.members.cache.filter(m => m.user.bot).size;
+                const botSize = clan.members.cache.filter(m => m.user.bot).size - 1;
                 const humanSize = totalSize - botSize;
                 const onlineSize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
 
@@ -105,6 +105,55 @@ exports.job = async (client) =>{
                     cache_.get(stats[clan.id][4]).setName("🤖 Bot Users : " + botSize)
                     cache_.get(stats[clan.id][5]).setName("🔴 Online Users: " + onlineSize)
                     console.log("------------------Stats updated!------------------")
+                }else {
+                    client.channels.create('📈Server Statistics📈', {
+                        type:'category',
+                        id: client.guild.id,
+                        deny: ['CONNECT']
+                    }).then(channel => {
+                        channel.setPosition(0)
+                        let w = channel.id
+                        client.channels.create("🌍 Total Users : " + totalSize, {
+                            type: 'voice',
+                            id: client.guild.id,
+                            deny: ['CONNECT']
+                        }).then(channel1 => {
+                            channel1.setParent(channel.id)
+                            let x = channel1.id
+                            client.channels.create("🤵 Human Users  : " + humanSize, {
+                                type: 'voice',
+                                id: client.guild.id,
+                                deny: ['CONNECT']
+                            }).then(channel2 => {
+                                channel2.setParent(channel.id)
+                                let y = channel2.id
+                                client.guild.channels.create("🤖 Bot Users : " + botSize, {
+                                    type: 'voice',
+                                    id: client.guild.id,
+                                    deny: ['CONNECT']
+                                }).then(channel3 => {
+                                    channel3.setParent(channel.id)
+                                    let z = channel3.id
+                                    client.channels.create("🔴 Online Users: " + onlineSize, {
+                                        type: 'voice',
+                                        id: client.guild.id,
+                                        deny: ['CONNECT']
+                                    }).then(channel4 => {
+                                        channel4.setParent(channel.id)
+                                        let xy = channel4.id
+                                        stats[client.guild.id][0] = true;
+                                        stats[client.guild.id][1] = w;
+                                        stats[client.guild.id][2] = x;
+                                        stats[client.guild.id][3] = y;
+                                        stats[client.guild.id][4] = z;
+                                        stats[client.guild.id][5] = xy;
+                                        fs.writeFileSync(__dirname + "..\\..\\data\\stats.json", JSON.stringify(stats, null, "\t"), "utf8");
+                                        client.channel.send(`:white_check_mark: Server Stats enabled for this server.`)
+                                    })
+                                })
+                            })
+                        })
+                    })
                 }
             } else {
                 stats[clan.id][0] = false;
