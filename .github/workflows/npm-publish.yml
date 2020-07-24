@@ -4,8 +4,6 @@
 name: Node.js Package
 
 on:
-  schedule:
-    - cron: "0 2 * * 0-7"
   pull_request:
     branches: 
       - master
