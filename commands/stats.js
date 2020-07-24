@@ -106,49 +106,49 @@ exports.job = async (client) =>{
                     cache_.get(stats[clan.id][5]).setName("🔴 Online Users: " + onlineSize)
                     console.log("------------------Stats updated!------------------")
                 }else {
-                    client.channels.create('📈Server Statistics📈', {
+                    clan.channels.create('📈Server Statistics📈', {
                         type:'category',
-                        id: client.guild.id,
+                        id: clan.guild.id,
                         deny: ['CONNECT']
                     }).then(channel => {
                         channel.setPosition(0)
                         let w = channel.id
-                        client.channels.create("🌍 Total Users : " + totalSize, {
+                        clan.channels.create("🌍 Total Users : " + totalSize, {
                             type: 'voice',
-                            id: client.guild.id,
+                            id: clan.guild.id,
                             deny: ['CONNECT']
                         }).then(channel1 => {
                             channel1.setParent(channel.id)
                             let x = channel1.id
-                            client.channels.create("🤵 Human Users  : " + humanSize, {
+                            clan.channels.create("🤵 Human Users  : " + humanSize, {
                                 type: 'voice',
-                                id: client.guild.id,
+                                id: clan.guild.id,
                                 deny: ['CONNECT']
                             }).then(channel2 => {
                                 channel2.setParent(channel.id)
                                 let y = channel2.id
-                                client.guild.channels.create("🤖 Bot Users : " + botSize, {
+                                clan.guild.channels.create("🤖 Bot Users : " + botSize, {
                                     type: 'voice',
-                                    id: client.guild.id,
+                                    id: clan.guild.id,
                                     deny: ['CONNECT']
                                 }).then(channel3 => {
                                     channel3.setParent(channel.id)
                                     let z = channel3.id
-                                    client.channels.create("🔴 Online Users: " + onlineSize, {
+                                    clan.channels.create("🔴 Online Users: " + onlineSize, {
                                         type: 'voice',
-                                        id: client.guild.id,
+                                        id: clan.guild.id,
                                         deny: ['CONNECT']
                                     }).then(channel4 => {
                                         channel4.setParent(channel.id)
                                         let xy = channel4.id
-                                        stats[client.guild.id][0] = true;
-                                        stats[client.guild.id][1] = w;
-                                        stats[client.guild.id][2] = x;
-                                        stats[client.guild.id][3] = y;
-                                        stats[client.guild.id][4] = z;
-                                        stats[client.guild.id][5] = xy;
+                                        stats[clan.guild.id][0] = true;
+                                        stats[clan.guild.id][1] = w;
+                                        stats[clan.guild.id][2] = x;
+                                        stats[clan.guild.id][3] = y;
+                                        stats[clan.guild.id][4] = z;
+                                        stats[clan.guild.id][5] = xy;
                                         fs.writeFileSync(__dirname + "..\\..\\data\\stats.json", JSON.stringify(stats, null, "\t"), "utf8");
-                                        client.channel.send(`:white_check_mark: Server Stats enabled for this server.`)
+                                        clan.channel.send(`:white_check_mark: Server Stats enabled for this server.`)
                                     })
                                 })
                             })
