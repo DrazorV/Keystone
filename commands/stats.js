@@ -85,29 +85,29 @@ exports.job = async (client) =>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
-        if (stats[clan.id] !== undefined){
-            if(stats[clan.id][0]) {
+        if (stats[clan.id] !== undefined) {
+            if (stats[clan.id][0]) {
                 const totalSize = clan.memberCount;
                 const botSize = clan.members.cache.filter(m => m.user.bot).size;
                 const humanSize = totalSize - botSize;
                 const onlineSize = clan.members.cache.filter(m => m.user.presence.status !== "offline").size;
 
                 let cache_ = client.channels.cache;
-                if(cache_.get(stats[clan.id][1]) !== undefined){
+                if (cache_.get(stats[clan.id][1]) !== undefined) {
                     cache_.get(stats[clan.id][2]).setName("🌍 Total Users : " + totalSize)
                     cache_.get(stats[clan.id][3]).setName("🤵 Human Users  : " + humanSize)
                     cache_.get(stats[clan.id][4]).setName("🤖 Bot Users : " + botSize)
                     cache_.get(stats[clan.id][5]).setName("🔴 Online Users: " + onlineSize)
                     console.log("------------------Stats updated!------------------")
-                }else{
-                    stats[clan.id][0] = false;
-                    stats[clan.id][1] = "";
-                    stats[clan.id][2] = "";
-                    stats[clan.id][3] = "";
-                    stats[clan.id][4] = "";
-                    stats[clan.id][5] = "";
-                    fs.writeFileSync(__dirname + "..\\..\\data\\stats.json",JSON.stringify(stats,null,"\t"),"utf8");
                 }
+            } else {
+                stats[clan.id][0] = false;
+                stats[clan.id][1] = "";
+                stats[clan.id][2] = "";
+                stats[clan.id][3] = "";
+                stats[clan.id][4] = "";
+                stats[clan.id][5] = "";
+                fs.writeFileSync(__dirname + "..\\..\\data\\stats.json", JSON.stringify(stats, null, "\t"), "utf8");
             }
         }
     }
