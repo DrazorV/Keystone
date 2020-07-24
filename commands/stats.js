@@ -94,6 +94,9 @@ exports.job = async (client) =>{
     while (clans.length > 0) {
         let clan = clans.pop();
         if (stats[clan.id] !== null){
+            console.log(clan.name);
+            console.log(stats[clan.id]);
+            console.log(stats[clan.id][0]);
             if(stats[clan.id][0]===("true")) {
                 const totalsize = clan.memberCount;
                 const botsize = clan.members.cache.filter(m => m.user.bot).size;
