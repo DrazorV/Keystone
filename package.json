@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/discordjs/discord.js.git"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "dependencies": {
     "axios": "^0.19.2",
     "cron": "^1.6.0",
