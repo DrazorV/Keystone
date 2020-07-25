@@ -63,19 +63,19 @@ exports.run = async (client,message,args)=>{
             })
         })
     } else if (args[0] === 'disable') {
-        if(!stats[message.guild.id][0]) return message.channel.send(`:x: Server Stats for this server is not enabled.`)
-        try {
-            client.channels.cache.get(stats[message.guild.id][1]).delete()
-            client.channels.cache.get(stats[message.guild.id][2]).delete()
-            client.channels.cache.get(stats[message.guild.id][3]).delete()
-            client.channels.cache.get(stats[message.guild.id][4]).delete()
-            client.channels.cache.get(stats[message.guild.id][5]).delete()
-        }catch (e) {
-            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Total Users"))).delete()
-            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Human Users"))).delete()
-            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Bot Users"))).delete()
-            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Online Users"))).delete()
-            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Server Statistics"))).delete()
+        if(!stats[message.guild.id][0]){
+            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Users: "))).delete()
+            return message.channel.send(`:x: Server Stats for this server is not enabled.`)
+        } else {
+            try {
+                client.channels.cache.get(stats[message.guild.id][1]).delete()
+                client.channels.cache.get(stats[message.guild.id][2]).delete()
+                client.channels.cache.get(stats[message.guild.id][3]).delete()
+                client.channels.cache.get(stats[message.guild.id][4]).delete()
+                client.channels.cache.get(stats[message.guild.id][5]).delete()
+            }catch (e) {
+                client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Users: "))).delete()
+            }
         }
 
         stats[message.guild.id][0] = false;
