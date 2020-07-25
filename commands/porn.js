@@ -1,5 +1,4 @@
-const Discord = require('discord.js');
-const embed = new Discord.MessageEmbed();
+const embed = require("../utils/embed")
 const Pornsearch = require('pornsearch');
 
 exports.run = async (client,message,args)=>{
@@ -13,22 +12,31 @@ exports.run = async (client,message,args)=>{
         }catch (error) {
             console.log(error)
         }
+        let emb;
         if(result != null) {
+            let gif;
             result.then(gifs => {
-                let gif = gifs[Math.floor(Math.random() * gifs.length)];
-                embed.setTitle("Here is the " + mes + " you ordered! 📦");
-                embed.setImage(gif.url);
-                embed.setColor(message.member.roles.color.color);
-                embed.setTimestamp(new Date());
-                embed.setFooter("Automated message", message.guild.iconURL);
-                embed.setURL(gif.url);
-                message.channel.send(embed)
-                    .then(sent =>{
+                gif = gifs[Math.floor(Math.random() * gifs.length)];
+                emb = embed.create(
+                    null,
+                    null,
+                    "Here is the " + mes + " you ordered! 📦",
+                    null,
+                    null,
+                    gif.url,
+                    message.member.roles.color.color,
+                    "Automated message",
+                    message.guild.iconURL,
+                    gif.url
+                )
+
+                message.channel.send(emb)
+                    .then(sent => {
                         sent.delete({
-                            timeout:600000
+                            timeout: 600000
                         })
-                    });
-            });
+                    })
+            })
         }else{
             await message.channel.send("❌No results for '"+mes+"'.")
         }

@@ -1,24 +1,30 @@
-const Discord = require('discord.js');
+const embed = require("../utils/embed")
 
 exports.run = async (client,message,args)=>{
     let targets = message.mentions.users.array();
-    try{
-        message.delete();
-    }catch (e) {
-    }
-    while (targets.length>0){
+
+    while (targets.length > 0){
         const user = targets.pop();
+        let avatar;
         try {
-            const embed = new Discord.MessageEmbed();
-            embed.setURL(user.avatarURL())
-            .setTitle("🖼️ Here is " + user.username + "'s Avatar")
-            .setImage(user.avatarURL({"format":"png","dynamic":true,"size":4096}))
-            .setColor(message.member.roles.color.color)
-            .setTimestamp(new Date())
-            .setFooter("Automated message", "https://cdn.discordapp.com/icons/308903005875470338/a306375be4d56f9dd85c5321f3f92343.jpg");
-            await message.channel.send(embed);
+            avatar = user.avatarURL()
         }catch (e) {
             await message.channel.send("This user has no Avatar.")
         }
+
+        let emb = await embed.create(
+            null,
+            null,
+            "🖼️ Here is " + user.username + "'s Avatar",
+            null,
+            null,
+            avatar,
+            message.member.roles.color.color,
+            "Automated message",
+            "https://cdn.discordapp.com/avatars/509836105932079133/7d0e92ee1040a9a83d74230a854c79d7.webp",
+            user.avatarURL({"format":"png","dynamic":true,"size":4096})
+        )
+
+        await message.channel.send(emb);
     }
 };

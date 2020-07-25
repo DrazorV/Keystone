@@ -1,8 +1,8 @@
-const Discord = require('discord.js');
 const Axios = require('axios');
 const db = require('quick.db');
 const Server = new db.table('Server',null);
 const setdefault = require("./setdefault")
+const embed = require("../utils/embed")
 
 const subreddits = {
     "en": ['memes', 'dankmemes', 'meirl'],
@@ -15,7 +15,30 @@ module.exports.run = async (client,message,args)=>{
         await setdefault.run(client, message, args);
     }
     const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
-    await message.channel.send(createEmbed(message, await buildMeme(url)));
+    let data = await buildMeme(url);
+
+    let field = {
+        name: "You can find more on the the subreddit: ",
+        value:" https://www.reddit.com/r/" + data.subreddit
+    }
+
+    let fields = [field]
+
+
+    let emb = await embed.create(
+        null,
+        null,
+        "Here is the meme you ordered! 📦",
+        "🚛 Title: \n" + data.title,
+        fields,
+        "https://www.reddit.com" + data.permalink,
+        message.member.roles.color.color,
+        "Automated message",
+        data.thumbnail,
+        data.url
+    )
+
+    await message.channel.send(emb);
 };
 
 
@@ -27,7 +50,30 @@ exports.job = async (client,message,args)=>{
         const defaultChannel = Server.fetch(`Server_${clan.id}`,{ target: '.default' });
         if(defaultChannel !== ""){
             const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
-            await message.channel.send(createEmbed2(await buildMeme(url)));
+
+            let field = {
+                name: "You can find more on the the subreddit: ",
+                value:" https://www.reddit.com/r/" + data.subreddit
+            }
+
+            let fields = [field]
+
+            let data = await buildMeme(url);
+
+            let emb = await embed.create(
+                null,
+                null,
+                "⚡Meme of the Day! 📦 ",
+                "🚛 Title: \n" + data.title,
+                fields,
+                "https://www.reddit.com" + data.permalink,
+                '#017E2D',
+                "Automated message",
+                data.thumbnail,
+                data.url
+            )
+
+            await message.channel.send(emb);
         }
     }
 };
@@ -60,31 +106,4 @@ async function buildMeme(url) {
     } catch (e) {
         throw new Error(e);
     }
-}
-
-function createEmbed(message, data) {
-    const embed = new Discord.MessageEmbed();
-    embed.setURL("https://www.reddit.com" + data.permalink);
-    embed.setTitle("Here is the meme you ordered! 📦");
-    embed.setDescription("🚛 Title: \n" + data.title);
-    embed.addField("You can find more on the the subreddit: ", "https://www.reddit.com/r/" + data.subreddit, false);
-    embed.setImage(data.url);
-    embed.setColor(message.member.roles.color.color);
-    embed.setTimestamp(new Date());
-    embed.setFooter("Automated message", data.thumbnail);
-    return embed;
-}
-
-
-function createEmbed2(data) {
-    const embed = new Discord.MessageEmbed();
-    embed.setURL("https://www.reddit.com" + data.permalink);
-    embed.setTitle("⚡Meme of the Day! 📦 ");
-    embed.setDescription("🚛 Title: " + data.title);
-    embed.addField("You can find more on the the subreddit: ", "https://www.reddit.com/r/" + data.subreddit, false);
-    embed.setImage(data.url);
-    embed.setColor('#017E2D');
-    embed.setTimestamp(new Date());
-    embed.setFooter("Automated message", data.thumbnail);
-    return embed;
 }

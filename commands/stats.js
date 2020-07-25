@@ -100,11 +100,16 @@ exports.job = async (client) =>{
         let online = ServeStats.fetch(`Stats_${clan.id}`, {target: '.online'})
 
         if(totUsers !== null || memberCount !== null || botCount !== null || online !== null){
-            await clan.channels.cache.find(channel => channel.id === totUsers).setName("🌍 Total Users : " + totalSize)
-            await clan.channels.cache.find(channel => channel.id === memberCount).setName("🤵 Human Users  : " + humanSize)
-            await clan.channels.cache.find(channel => channel.id === botCount).setName("🤖 Bot Users : " + botSize)
-            await clan.channels.cache.find(channel => channel.id === online).setName("🔴 Online Users: " + onlineSize)
-            console.log("------------------Stats updated for" + clan.name + "------------------")
+            try {
+                await clan.channels.cache.find(channel => channel.id === totUsers).setName("🌍 Total Users : " + totalSize)
+                await clan.channels.cache.find(channel => channel.id === memberCount).setName("🤵 Human Users  : " + humanSize)
+                await clan.channels.cache.find(channel => channel.id === botCount).setName("🤖 Bot Users : " + botSize)
+                await clan.channels.cache.find(channel => channel.id === online).setName("🔴 Online Users: " + onlineSize)
+                console.log("------------------Stats updated for" + clan.name + "------------------")
+            }catch (e) {
+                console.log("------------------Couldn't update!------------------")
+            }
+
         }
     }
 }

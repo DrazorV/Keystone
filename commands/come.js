@@ -1,4 +1,5 @@
-const Discord = require('discord.js');
+const embed = require("../utils/embed")
+
 let options = {
     maxAge: 600,
     maxUses: 1,
@@ -7,12 +8,6 @@ let options = {
 
 exports.run = async (client,message,args)=>{
     if (message.channel.type === "dm") return;
-    const embed = new Discord.MessageEmbed();
-    embed.setAuthor(message.author.username + " said:", message.author.avatarURL({"format":"png","dynamic":true,"size":4096}));
-    embed.setColor(message.member.roles.color.color);
-    embed.setTitle("Join the voice chat on " + message.guild.name);
-    embed.setTimestamp(new Date());
-    embed.setFooter("Automated message", message.guild.iconURL);
     let roles = [];
     let bool = false, bool2 = true;
     for(const rol of message.mentions.roles.array()) for(const mem of rol.members.array()) roles.push(mem.user);
@@ -24,7 +19,7 @@ exports.run = async (client,message,args)=>{
         const user = targets.pop();
         if (user.bot||user.presence.status === "offline") bool = true;
         else {
-            await createEmbed(message, embed, user)
+            await createEmbed(message, user)
         }
     }
 
@@ -39,7 +34,7 @@ exports.run = async (client,message,args)=>{
                 } else {
                     if (!channel.members.has(user.id)) bool2 = false;
                 }
-                await createEmbed(message, embed, user)
+                await createEmbed(message, user)
             }
         }
     }
@@ -47,22 +42,35 @@ exports.run = async (client,message,args)=>{
 };
 
 
-async function createEmbed(message, embed,user){
+async function createEmbed(message,user){
+    let description;
+    let author = message.author.username + " said:";
+    let authorUrl = message.author.avatarURL({"format":"png","dynamic":true,"size":4096});
+    let title = "Join the voice chat on " + message.guild.name;
+    let color = message.member.roles.color.color;
+    let url = "https://github.com/DrazorV/Keystone";
+    let footerText = message.author.username + " said:";
+    let footerValue = message.author.username + " said:";
     const channel = message.member.voice.channel;
+
     if (channel == null) {
-        embed.setDescription("You can choose one of the voice channels and he will join you ASAP");
+        description = "You can choose one of the voice channels and he will join you ASAP";
         if (user !== message.author) {
-            user.send(embed);
+            let emb = await embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
+            user.send(emb);
             await message.channel.send("✅ " + user.username + " has been informed!");
-        }
+        }else await message.channel.send("❌ You can't invite yourself!");
+
     } else {
-        embed.setDescription(":arrow_down: Click the button bellow to join him :arrow_down:");
+        description = ":arrow_down: Click the button bellow to join him :arrow_down:";
         if (!channel.members.has(user.id)) {
             await message.channel.send("✅ " + user.username + " has been informed!");
-            user.send(embed)
+            let emb = await embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
+            user.send(emb)
                 .then(message.member.voice.channel.createInvite(options)
                     .then(invite => user.send(invite.toString()))
                     .catch(console.error));
         } else if (user !== message.author) await message.channel.send("❌ " + user.username + " is already in your voice channel!");
+        else await message.channel.send("❌ You can't invite yourself!");
     }
 }
