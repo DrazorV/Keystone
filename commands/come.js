@@ -49,8 +49,8 @@ async function createEmbed(message,user){
     let title = "Join the voice chat on " + message.guild.name;
     let color = message.member.roles.color.color;
     let url = "https://github.com/DrazorV/Keystone";
-    let footerText = message.author.username + " said:";
-    let footerValue = message.author.username + " said:";
+    let footerText = "Automated message";
+    let footerValue = message.guild.iconURL;
     const channel = message.member.voice.channel;
 
     if (channel == null) {
