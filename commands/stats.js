@@ -71,11 +71,16 @@ exports.run = async (client,message,args)=>{
             client.channels.cache.get(stats[message.guild.id][4]).delete()
             client.channels.cache.get(stats[message.guild.id][5]).delete()
         }catch (e) {
+            console.log("Delete by id failed!")
+        }
+        try {
             client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Total Users"))).delete()
             client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Online Users"))).delete()
             client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Bot Users"))).delete()
             client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Human Users"))).delete()
             client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Server Statistics"))).delete()
+        }catch (e) {
+            console.log("Delete by name failed!")
         }
 
         stats[message.guild.id][0] = false;
