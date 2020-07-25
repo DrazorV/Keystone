@@ -3,8 +3,9 @@ const Server = new db.table('Server',null);
 const embed = require("../utils/embed")
 
 module.exports = async (client, message) => {
-    let prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
     if(message.author.bot) return;
+
+    let prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
     let field = {
         name:"💁‍ You can always use the command \"" + prefix + "help\"",
         value:"There you can find anything you need🔰"
@@ -23,8 +24,8 @@ module.exports = async (client, message) => {
         "https://cdn.discordapp.com/icons/308903005875470338/a306375be4d56f9dd85c5321f3f92343.jpg",
         null
     )
-
     if(message.mentions.has(client.user)) await message.channel.send(emb);
+
     if(!message.content.startsWith(prefix)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
