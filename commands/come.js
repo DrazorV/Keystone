@@ -24,7 +24,7 @@ exports.run = async (client,message,args)=>{
         const user = targets.pop();
         if (user.bot||user.presence.status === "offline") bool = true;
         else {
-            await createEmbed(message,embed,user)
+            await createEmbed(message, embed, user)
         }
     }
 

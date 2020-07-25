@@ -1,9 +1,9 @@
-const prefixs = require('../data/prefixs.json');
 const db = require('quick.db');
 const ServeStats = new db.table('ServerStats',null);
-
+const Server = new db.table('Server',null);
 
 exports.run = async (client,message,args)=>{
+    const prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
     let totUsers = await ServeStats.fetch(`Stats_${message.guild.id}`, { target: '.totUsers' })
     let memberCount = await ServeStats.fetch(`Stats_${message.guild.id}`, { target: '.memberCount' })
     let botCount = await ServeStats.fetch(`Stats_${message.guild.id}`, { target: '.botCount' })
@@ -11,7 +11,7 @@ exports.run = async (client,message,args)=>{
 
 
     if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`:x: You need **MANAGE_GUILD** permission to use this command.`)
-    if (!args[0]) return message.channel.send(":x: Invalid parameters. Correct usage: `" + prefixs[message.guild.id]+"stats enable` |`" + prefixs[message.guild.id] + "stats disable`.");
+    if (!args[0]) return message.channel.send(":x: Invalid parameters. Correct usage: `" + prefix +"stats enable` |`" + prefix + "stats disable`.");
     if(args[0] === 'enable') {
 
         if(totUsers !== null || memberCount !== null || botCount !== null || online !== null) return message.channel.send(`:x: Server stats are already enabled for this server.`)
@@ -88,6 +88,7 @@ exports.job = async (client) =>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
+
         const totalSize = clan.memberCount;
         const botSize = clan.members.cache.filter(m => m.user.bot).size;
         const humanSize = totalSize - botSize;

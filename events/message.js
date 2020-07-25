@@ -1,12 +1,14 @@
-const prefixs = require('../data/prefixs');
+const db = require('quick.db');
+const Server = new db.table('Server',null);
 const Discord = require("discord.js");
 
 module.exports = async (client, message) => {
+    let prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
     if(message.author.bot) return;
     if(message.mentions.has(client.user)) await message.channel.send(createEmbed(message));
-    if(!message.content.startsWith(prefixs[message.guild.id])) return;
+    if(!message.content.startsWith(prefix)) return;
 
-    const args = message.content.slice(prefixs[message.guild.id].length).trim().split(/ +/g);
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     if (message.guild && !message.member) await message.guild.fetch(message.author);
@@ -20,10 +22,11 @@ module.exports = async (client, message) => {
 
 
 function createEmbed(message) {
+    let prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
     const embed = new Discord.MessageEmbed();
     embed.setTitle("Keystone ⏳");
-    embed.setDescription("The bot prefix is \""+prefixs[message.guild.id]+"\"");
-    embed.addField("💁‍ You can always use the command \""+prefixs[message.guild.id]+"help\"", "There you can find anything you need🔰", false);
+    embed.setDescription("The bot prefix is \"" + prefix +"\"");
+    embed.addField("💁‍ You can always use the command \""+ prefix +"help\"", "There you can find anything you need🔰", false);
     embed.setURL("https://github.com/DrazorV/Keystone");
     try{
         embed.setColor(message.member.roles.color.color);

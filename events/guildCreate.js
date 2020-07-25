@@ -1,13 +1,11 @@
-const prefixs = require("../data/prefixs.json");
-const fs = require('fs');
-const guilds = require("../data/guilds.json");
+const db = require('quick.db');
+const Server = new db.table('Server',null);
 
 
 module.exports = (client, guild) =>{
-    prefixs[guild.id] = "/";
-    guilds[guild.id] = "";
-    fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(guilds,null,"\t"),"utf8");
-    fs.writeFileSync(__dirname + "/data/guilds.json",JSON.stringify(prefixs,null,"\t"),"utf8");
+    Server.set(`Server_${guild.id}`, {
+        prefix: "/",
+        default: "",
+    })
     console.log("Joined a new guild: " + guild.name);
-    console.log(prefixs);
 };

@@ -22,7 +22,12 @@ exports.run = async (client,message,args)=>{
                 embed.setTimestamp(new Date());
                 embed.setFooter("Automated message", message.guild.iconURL);
                 embed.setURL(gif.url);
-                message.channel.send(embed);
+                message.channel.send(embed)
+                    .then(sent =>{
+                        sent.delete({
+                            timeout:600000
+                        })
+                    });
             });
         }else{
             await message.channel.send("❌No results for '"+mes+"'.")

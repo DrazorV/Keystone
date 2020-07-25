@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
-const prefixs = require("../data/prefixs.json");
+const db = require('quick.db');
+const Server = new db.table('Server',null);
 
 exports.run = async (client,message,args)=>{
-    const prefix = prefixs[message.guild.id];
+
+    const prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
     const embed = new Discord.MessageEmbed();
     embed.setTitle("List of Commands 📋");
     embed.setColor([255,90,0]);

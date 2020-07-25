@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const Axios = require('axios');
-const guilds = require("../data/guilds");
+const db = require('quick.db');
+const Server = new db.table('Server',null);
 const setdefault = require("./setdefault")
 
 const subreddits = {
@@ -9,7 +10,8 @@ const subreddits = {
 
 
 module.exports.run = async (client,message,args)=>{
-    if(guilds[message.guild.id]===""){
+    const defaultChannel = Server.fetch(`Server_${message.guild.id}`,{ target: '.default' });
+    if(defaultChannel === ""){
         await setdefault.run(client, message, args);
     }
     const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
@@ -18,11 +20,12 @@ module.exports.run = async (client,message,args)=>{
 
 
 exports.job = async (client,message,args)=>{
+
     let clans = client.guilds.cache.array();
     while (clans.length > 0){
         let clan = clans.pop();
-        JSON.stringify(guilds);
-        if(guilds[clan.id]!==""){
+        const defaultChannel = Server.fetch(`Server_${clan.id}`,{ target: '.default' });
+        if(defaultChannel !== ""){
             const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
             await message.channel.send(createEmbed2(await buildMeme(url)));
         }
