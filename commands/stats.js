@@ -63,19 +63,19 @@ exports.run = async (client,message,args)=>{
             })
         })
     } else if (args[0] === 'disable') {
-        if(!stats[message.guild.id][0]){
-            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Users: "))).delete()
-            return message.channel.send(`:x: Server Stats for this server is not enabled.`)
-        } else {
-            try {
-                client.channels.cache.get(stats[message.guild.id][1]).delete()
-                client.channels.cache.get(stats[message.guild.id][2]).delete()
-                client.channels.cache.get(stats[message.guild.id][3]).delete()
-                client.channels.cache.get(stats[message.guild.id][4]).delete()
-                client.channels.cache.get(stats[message.guild.id][5]).delete()
-            }catch (e) {
-                client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Users: "))).delete()
-            }
+        if(!stats[message.guild.id][0]) return message.channel.send(`:x: Server Stats for this server is not enabled.`)
+        try {
+            client.channels.cache.get(stats[message.guild.id][1]).delete()
+            client.channels.cache.get(stats[message.guild.id][2]).delete()
+            client.channels.cache.get(stats[message.guild.id][3]).delete()
+            client.channels.cache.get(stats[message.guild.id][4]).delete()
+            client.channels.cache.get(stats[message.guild.id][5]).delete()
+        }catch (e) {
+            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Total Users"))).delete()
+            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Online Users"))).delete()
+            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Bot Users"))).delete()
+            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Human Users"))).delete()
+            client.channels.cache.get(client.channels.cache.find(channel => channel.name.includes("Server Statistics"))).delete()
         }
 
         stats[message.guild.id][0] = false;
@@ -108,57 +108,8 @@ exports.job = async (client) =>{
                     cache_.get(stats[clan.id][4]).setName("🤖 Bot Users : " + botSize)
                     cache_.get(stats[clan.id][5]).setName("🔴 Online Users: " + onlineSize)
                     console.log("------------------Stats updated!------------------")
-                }else {
-                    clan.channels.create('📈Server Statistics📈', {
-                        type:'category',
-                        id: clan.id,
-                        deny: ['CONNECT']
-                    }).then(channel => {
-                        channel.setPosition(0)
-                        let w = channel.id
-                        clan.channels.create("🌍 Total Users : " + totalSize, {
-                            type: 'voice',
-                            id: clan.id,
-                            deny: ['CONNECT']
-                        }).then(channel1 => {
-                            channel1.setParent(channel.id)
-                            let x = channel1.id
-                            clan.channels.create("🤵 Human Users  : " + humanSize, {
-                                type: 'voice',
-                                id: clan.id,
-                                deny: ['CONNECT']
-                            }).then(channel2 => {
-                                channel2.setParent(channel.id)
-                                let y = channel2.id
-                                clan.channels.create("🤖 Bot Users : " + botSize, {
-                                    type: 'voice',
-                                    id: clan.id,
-                                    deny: ['CONNECT']
-                                }).then(channel3 => {
-                                    channel3.setParent(channel.id)
-                                    let z = channel3.id
-                                    clan.channels.create("🔴 Online Users: " + onlineSize, {
-                                        type: 'voice',
-                                        id: clan.id,
-                                        deny: ['CONNECT']
-                                    }).then(channel4 => {
-                                        channel4.setParent(channel.id)
-                                        let xy = channel4.id
-                                        stats[clan.id][0] = true;
-                                        stats[clan.id][1] = w;
-                                        stats[clan.id][2] = x;
-                                        stats[clan.id][3] = y;
-                                        stats[clan.id][4] = z;
-                                        stats[clan.id][5] = xy;
-                                        fs.writeFileSync(__dirname + "..\\..\\data\\stats.json", JSON.stringify(stats, null, "\t"), "utf8");
-                                    })
-                                })
-                            })
-                        })
-                    })
                 }
             } else {
-                stats[clan.id][0] = false;
                 stats[clan.id][1] = "";
                 stats[clan.id][2] = "";
                 stats[clan.id][3] = "";
