@@ -88,7 +88,6 @@ exports.job = async (client) =>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
-
         const totalSize = clan.memberCount;
         const botSize = clan.members.cache.filter(m => m.user.bot).size;
         const humanSize = totalSize - botSize;
