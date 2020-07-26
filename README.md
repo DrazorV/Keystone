@@ -3,7 +3,7 @@
 * The default prefix is "/"
 * For more info use the "/help" command to find anything you need!
 
-
+[![Run on Repl.it](https://repl.it/badge/github/DrazorV/Keystone)](https://repl.it/github/DrazorV/Keystone)
 ## Goals ⚽
 
 * [X] Clean up the code a bit.
