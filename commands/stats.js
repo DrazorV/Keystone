@@ -80,7 +80,7 @@ exports.run = async (client,message,args)=>{
             client.channels.cache.find(channel => channel.id === botCount).delete()
             client.channels.cache.find(channel => channel.id === online).delete()
             client.channels.cache.find(channel => channel.id === category).delete()
-            console.log("deleted by id")
+            console.log("Stats deleted by id")
         } catch (e) {
             if (client.channels.cache.find(channel => channel.name.includes("Server Statistics")) !== undefined){
                 client.channels.cache.find(channel => channel.name.includes("Total Users")).delete()
@@ -88,10 +88,18 @@ exports.run = async (client,message,args)=>{
                 client.channels.cache.find(channel => channel.name.includes("Bot Users")).delete()
                 client.channels.cache.find(channel => channel.name.includes("Online Users")).delete()
                 client.channels.cache.find(channel => channel.name.includes("Server Statistics")).delete()
-                console.log("deleted by name")
-            }else console.log("couldn't delete")
+                console.log("Stats deleted by name")
+            }else console.log("Stats couldn't delete")
         }
 
+        ServeStats.set(`Stats_${message.guild.id}`, {
+            guildId: message.guild.id,
+            totUsers: null,
+            memberCount: null,
+            botCount: null,
+            online: null,
+            categoryId: null
+        })
 
         await message.channel.send(`:white_check_mark: Server Stats disabled for this server.`)
     }
@@ -118,9 +126,9 @@ exports.job = async (client) =>{
                 await clan.channels.cache.find(channel => channel.id === memberCount).setName("🤵 Human Users  : " + humanSize)
                 await clan.channels.cache.find(channel => channel.id === botCount).setName("🤖 Bot Users : " + botSize)
                 await clan.channels.cache.find(channel => channel.id === online).setName("🔴 Online Users: " + onlineSize)
-                console.log("------------------Stats updated for" + clan.name + "------------------")
+                console.log("------------------Stats updated for " + clan.name + "------------------")
             }catch (e) {
-                console.log("------------------Couldn't update!------------------")
+                console.log("------------------Couldn't update " + clan.name + "------------------")
             }
 
         }
