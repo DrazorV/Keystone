@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const Enmap = require("enmap");
-require('dotenv').config()
 const http = require('http');
 const app = require('express')();
 const { Player } = require("discord-music-player"); // Require the module
