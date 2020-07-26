@@ -74,11 +74,24 @@ exports.run = async (client,message,args)=>{
         let category = await ServeStats.fetch(`Stats_${message.guild.id}`, { target: '.categoryId' })
         if(totUsers === null || memberCount === null || botCount === null || online === null) return message.channel.send(`:x: Server Stats for this server is not enabled.`)
 
-        client.channels.cache.find(channel => channel.id === totUsers).delete()
-        client.channels.cache.find(channel => channel.id === memberCount).delete()
-        client.channels.cache.find(channel => channel.id === botCount).delete()
-        client.channels.cache.find(channel => channel.id === online).delete()
-        client.channels.cache.find(channel => channel.id === category).delete()
+        try {
+            client.channels.cache.find(channel => channel.id === totUsers).delete()
+            client.channels.cache.find(channel => channel.id === memberCount).delete()
+            client.channels.cache.find(channel => channel.id === botCount).delete()
+            client.channels.cache.find(channel => channel.id === online).delete()
+            client.channels.cache.find(channel => channel.id === category).delete()
+            console.log("deleted by id")
+        } catch (e) {
+            if (client.channels.cache.find(channel => channel.name.includes("Server Statistics")) !== undefined){
+                client.channels.cache.find(channel => channel.name.includes("Total Users")).delete()
+                client.channels.cache.find(channel => channel.name.includes("Human Users")).delete()
+                client.channels.cache.find(channel => channel.name.includes("Bot Users")).delete()
+                client.channels.cache.find(channel => channel.name.includes("Online Users")).delete()
+                client.channels.cache.find(channel => channel.name.includes("Server Statistics")).delete()
+                console.log("deleted by name")
+            }else console.log("couldn't delete")
+        }
+
 
         await message.channel.send(`:white_check_mark: Server Stats disabled for this server.`)
     }
