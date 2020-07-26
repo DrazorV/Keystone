@@ -29,7 +29,7 @@ const init = async () => {
             client.on(eventName ,event.bind(null,client));
         });
     });
-    client.login(process.env.token).catch(error => console.log(error));
+    client.login(process.env.TOKEN).catch(error => console.log(error));
 
 };
 
