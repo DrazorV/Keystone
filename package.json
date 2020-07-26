@@ -8,23 +8,27 @@
     "type": "git",
     "url": "git+https://github.com/discordjs/discord.js.git"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "axios": "^0.19.2",
-    "cron": "^1.6.0",
+    "better-sqlite-pool": "github:eslachance/better-sqlite-pool",
+    "better-sqlite3": "^7.1.0",
+    "cron": "^1.8.2",
     "discord-music-player": "^4.0.8",
     "discord.js": "12.2.0",
-    "enmap": "^4.5.0",
-    "express": "4.16.4",
+    "enmap": "^5.4.1",
+    "express": "4.17.1",
     "ffmpeg": "^0.0.4",
     "is-image-url": "^1.1.8",
-    "libsodium": "^0.7.3",
+    "libsodium": "^0.7.6",
     "memejsfork": "^1.0.4",
-    "opusscript": "^0.0.6",
+    "opusscript": "^0.0.7",
     "pornsearch": "2.4.3",
     "quick.db": "^7.1.1",
-    "simple-youtube-api": "^5.1.1",
-    "uws": "^99.0.0",
+    "simple-youtube-api": "^5.2.1",
+    "uws": "^100.0.1",
     "ytdl-core": "latest"
   }
 }

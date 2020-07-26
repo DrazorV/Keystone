@@ -5,9 +5,9 @@ const Discord = require("discord.js");
 exports.create = (author, authorUrl, title, description, fields , url, color, footerText, footerUrl, img) => {
     const embed = new Discord.MessageEmbed();
     if (fields !== null){
-        fields.forEach(function (field) {
-            if (field.name !== null) embed.addField(field.name, field.value, false);
-        })
+        for(let i = 0; i < fields.length; i++){
+            if (fields[i].name !== null) embed.addField(fields[i].name, fields[i].value, false);
+        }
     }
 
     if (author !== null) embed.setAuthor(author);

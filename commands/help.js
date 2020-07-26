@@ -15,13 +15,19 @@ exports.run = async (client,message)=>{
         value: "🤙 Informs one or more server members that you are waiting for them in one of the voice channels"
     }
     let field2 = {
-        name: prefix + "default [name/id]",
+        name: prefix + "setdefault [name/id]",
         value: "🗓️ Sets the channel where the bot posts memes daily"
     }
     let field3 = {
         name: prefix + "meme",
         value: "🚧 To get a random meme from a huge collection"
     }
+
+    let field8 = {
+        name: prefix + "food",
+        value: "🍔 To get a random food from a huge collection"
+    }
+
     let field4 = {
         name: prefix + "ping",
         value: "🏓 Checks the ping of the server"
@@ -40,7 +46,7 @@ exports.run = async (client,message)=>{
     }
 
 
-    let fields = [field, field1, field2, field3, field4, field5, field6, field7]
+    let fields = [field, field1, field2, field3, field8, field4, field5, field6, field7]
     let emb = await embed.create(
         null,
         null,

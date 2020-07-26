@@ -21,7 +21,7 @@ module.exports = async (client, message) => {
         "https://github.com/DrazorV/Keystone",
         message.member.roles.color.color,
         "Automated message",
-        "https://cdn.discordapp.com/icons/308903005875470338/a306375be4d56f9dd85c5321f3f92343.jpg",
+        "https://i.imgur.com/5Px5FeR.png",
         null
     )
     if(message.mentions.has(client.user)) await message.channel.send(emb);

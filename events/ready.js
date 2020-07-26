@@ -25,8 +25,7 @@ module.exports = async client =>{
         meme.job(client)
     },null, true);
 
-    new CronJob('*/1 * * * *', function () {
+    new CronJob('30 * * * * *', function () {
         stats.job(client)
     },null, true);
-
 };
