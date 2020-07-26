@@ -3,9 +3,8 @@
 * The default prefix is "/"
 * For more info use the "/help" command to find anything you need!
 
-[![Run on Repl.it](https://repl.it/badge/github/DrazorV/Keystone)](https://repl.it/github/DrazorV/Keystone)
-## Goals ⚽
 
+## Goals ⚽
 * [X] Clean up the code a bit.
     * [X] Clean up the code some more.
     * [X] More modulating.
@@ -27,6 +26,7 @@
 * Get statistics for your server with live updates.
 * More to come!
 
+
 ## About me 🤷
 My name is Vagelis, I am 23 years old, born and raised in Greece.<br/>
 The reason I started this project is that there is not any bot out there with all the cool features for free.<br/>
@@ -34,6 +34,7 @@ The reason I started this project is that there is not any bot out there with al
 <br/>
 <br/>
 <a href="https://discord.gg/3fS2vEB"><img src="https://i.imgur.com/OUvlR93.png"></a>
+
 
 ## Disclaimer ⚠️
 + This is bot is maintained and developed only by me
