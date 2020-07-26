@@ -2,7 +2,7 @@ const db = require('quick.db');
 const Server = new db.table('Server',null);
 let prefix
 
-exports.run = async (client,message,args)=>{
+exports.run = async (client,message)=>{
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You need to be an admin to change the prefix of the bot.");
     await message.channel.send("💻 Please type the new prefix");
     message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 30000}).then(collected => {

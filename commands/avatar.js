@@ -1,6 +1,6 @@
 const embed = require("../utils/embed")
 
-exports.run = async (client,message,args)=>{
+exports.run = async (client,message)=>{
     let targets = message.mentions.users.array();
 
     while (targets.length > 0){

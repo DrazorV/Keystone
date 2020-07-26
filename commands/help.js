@@ -2,7 +2,7 @@ const db = require('quick.db');
 const Server = new db.table('Server',null);
 const embed = require("../utils/embed")
 
-exports.run = async (client,message,args)=>{
+exports.run = async (client,message)=>{
 
     const prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
 

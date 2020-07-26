@@ -42,7 +42,7 @@ module.exports.run = async (client,message,args)=>{
 };
 
 
-exports.job = async (client,message,args)=>{
+exports.job = async (client,message)=>{
 
     let clans = client.guilds.cache.array();
     while (clans.length > 0){
@@ -51,14 +51,14 @@ exports.job = async (client,message,args)=>{
         if(defaultChannel !== ""){
             const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
 
+            let data = await buildMeme(url);
+
             let field = {
                 name: "You can find more on the the subreddit: ",
                 value:" https://www.reddit.com/r/" + data.subreddit
             }
 
             let fields = [field]
-
-            let data = await buildMeme(url);
 
             let emb = await embed.create(
                 null,

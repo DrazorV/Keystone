@@ -1,6 +1,6 @@
 const embed = require("../utils/embed")
 
-exports.run = async (client,message,args)=>{
+exports.run = async (client,message)=>{
     message.channel.send("Pinging ...").then((msg) => msg.delete());
     let field = {
         name:"⏱Server",
@@ -21,7 +21,8 @@ exports.run = async (client,message,args)=>{
         null,
         0x2ed32e,
         "Automated message",
-        message.guild.iconURL,
+        message.guild.iconURL(),
+        null
     )
 
     await message.channel.send(emb);

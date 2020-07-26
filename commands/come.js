@@ -6,7 +6,7 @@ let options = {
     unique: true
 };
 
-exports.run = async (client,message,args)=>{
+exports.run = async (client,message)=>{
     if (message.channel.type === "dm") return;
     let roles = [];
     let bool = false, bool2 = true;
@@ -50,7 +50,7 @@ async function createEmbed(message,user){
     let color = message.member.roles.color.color;
     let url = "https://github.com/DrazorV/Keystone";
     let footerText = "Automated message";
-    let footerValue = message.guild.iconURL;
+    let footerValue = message.guild.iconURL();
     const channel = message.member.voice.channel;
 
     if (channel == null) {

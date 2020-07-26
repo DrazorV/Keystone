@@ -26,7 +26,7 @@ exports.run = async (client,message,args)=>{
                     gif.url,
                     message.member.roles.color.color,
                     "Automated message",
-                    message.guild.iconURL,
+                    message.guild.iconURL(),
                     gif.url
                 )
 
