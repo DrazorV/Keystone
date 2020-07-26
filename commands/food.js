@@ -5,19 +5,19 @@ const setdefault = require("./setdefault")
 const embed = require("../utils/embed")
 
 const subreddits = {
-    "en": ['memes', 'dankmemes', 'meirl'],
+    "en": ['foodporn'],
 };
 
 
 module.exports.run = async (client,message,args)=>{
-    const defaultChannel = Server.fetch(`Server_${message.guild.id}`,{ target: '.meme' });
+    const defaultChannel = Server.fetch(`Server_${message.guild.id}`,{ target: '.food' });
 
     if(defaultChannel === undefined){
-        await setdefault.meme(client, message);
+        await setdefault.food(client, message);
     }
 
     const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
-    let data = await buildMeme(url);
+    let data = await buildFood(url);
 
     let field = {
         name: "You can find more on the the subreddit: ",
@@ -26,17 +26,16 @@ module.exports.run = async (client,message,args)=>{
 
     let fields = [field]
 
-
     let emb = await embed.create(
         null,
         null,
-        "Here is the meme you ordered! 📦",
+        "Here is the food you ordered! 📦",
         "🚛 Title: \n" + data.title,
         fields,
         "https://www.reddit.com" + data.permalink,
         message.member.roles.color.color,
         "Automated message",
-        "https://i.imgur.com/5Px5FeR.png",
+        data.thumbnail,
         data.url
     )
 
@@ -49,13 +48,11 @@ exports.job = async (client,message)=>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0){
         let clan = clans.pop();
-        const defaultChannel = Server.fetch(`Server_${clan.id}`,{ target: '.meme' });
-
-
+        const defaultChannel = Server.fetch(`Server_${clan.id}`,{ target: '.default' });
         if(defaultChannel !== undefined){
             const url = `https://www.reddit.com/r/${subreddits.en[randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
 
-            let data = await buildMeme(url);
+            let data = await buildFood(url);
 
             let field = {
                 name: "You can find more on the the subreddit: ",
@@ -73,7 +70,7 @@ exports.job = async (client,message)=>{
                 "https://www.reddit.com" + data.permalink,
                 '#017E2D',
                 "Automated message",
-                data.thumbnail,
+                "https://i.imgur.com/5Px5FeR.png",
                 data.url
             )
 
@@ -90,7 +87,7 @@ function checkURL(url) {
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
 }
 
-async function buildMeme(url) {
+async function buildFood(url) {
     try {
         const result = await Axios.get(url);
 
