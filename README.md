@@ -1,4 +1,4 @@
-<a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot"><img src="https://i.imgur.com/W6Hg8XP.png"></a>
+<a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot"><img height=100px src="https://i.imgur.com/W6Hg8XP.png"></a>
 
 
 # Keystone ⏳
