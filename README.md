@@ -1,12 +1,10 @@
-# Invite to Server ✉️
-<a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot"><img height=300px src="https://i.imgur.com/W6Hg8XP.png"></a>
-
-
 # Keystone ⏳
 * Another bot for Discord but maybe not like the others!
 * The default prefix is "/"
 * For more info use the "/help" command to find anything you need!
 
+# Invite to Server ✉️
+<a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot"><img height=300px src="https://i.imgur.com/W6Hg8XP.png"></a>
 
 ## Goals ⚽
 * [X] Clean up the code a bit.
