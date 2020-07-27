@@ -31,15 +31,6 @@
 * More to come!
 
 
-## About me 🤷
-My name is Vagelis, I am 23 years old, born and raised in Greece.<br/>
-The reason I started this project is that there is not any bot out there with all the cool features for free.<br/>
-⬇️You can join our discord server(where I test the bot) by clicking on the image below⬇️
-<br/>
-<br/>
-<a href="https://discord.gg/3fS2vEB"><img src="https://i.imgur.com/OUvlR93.png"></a>
-
-
 ## Disclaimer ⚠️
 + This is bot is maintained and developed only by me
 + Bugs and unintended actions may exists
