@@ -12,7 +12,7 @@ const subreddits = {
 module.exports.run = async (client,message)=>{
     const defaultChannel = Server.fetch(`Server_${message.guild.id}`,{ target: '.meme' });
 
-    if(defaultChannel === undefined){
+    if(defaultChannel === undefined || defaultChannel === ""){
         await setdefault.meme(client, message);
     }
 
@@ -44,7 +44,7 @@ module.exports.run = async (client,message)=>{
 };
 
 
-exports.job = async (client,message)=>{
+exports.job = async (client)=>{
 
     let clans = client.guilds.cache.array();
     while (clans.length > 0){
@@ -77,7 +77,7 @@ exports.job = async (client,message)=>{
                 data.url
             )
 
-            await message.channel.send(emb);
+            clan.channels.cache.find(channel => channel.id === defaultChannel).send(emb)
         }
     }
 };
