@@ -1,4 +1,7 @@
-# <a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot">Keystone ⏳</a>
+<a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot"># CLICK TO INVITE TO SERVER</a>
+
+
+# Keystone ⏳
 * Another bot for Discord but maybe not like the others!
 * The default prefix is "/"
 * For more info use the "/help" command to find anything you need!
