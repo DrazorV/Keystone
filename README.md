@@ -6,7 +6,7 @@
 # Invite to Server ✉️
 <a href="https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot"><img height=300px src="https://i.imgur.com/W6Hg8XP.png"></a>
 
-[Invite][https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot]
+[Invite](https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot)
 
 ## Goals ⚽
 * [X] Clean up the code a bit.
