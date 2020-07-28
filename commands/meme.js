@@ -1,5 +1,8 @@
-const db = require('quick.db');
-const Server = new db.table('Server',null);
+const Keyv = require("keyv");
+const db = new Keyv('sqlite://json.sqlite', {
+    table:"Server",
+});
+
 const setdefault = require("./setdefault")
 const embed = require("../utils/embed")
 const reddit = require("../utils/reddit")
@@ -10,7 +13,8 @@ const subreddits = {
 
 
 module.exports.run = async (client,message)=>{
-    const defaultChannel = Server.fetch(`Server_${message.guild.id}`,{ target: '.meme' });
+    let json = await db.get(`Server_${message.guild.id}`);
+    const defaultChannel = json.meme;
 
     if(defaultChannel === undefined || defaultChannel === ""){
         await setdefault.meme(client, message);
@@ -45,11 +49,10 @@ module.exports.run = async (client,message)=>{
 
 
 exports.job = async (client)=>{
-
     let clans = client.guilds.cache.array();
-    while (clans.length > 0){
-        let clan = clans.pop();
-        const defaultChannel = Server.fetch(`Server_${clan.id}`,{ target: '.meme' });
+    for(let clan of clans){
+        let json = await db.get(`Server_${clan.id}`);
+        const defaultChannel = json.meme;
 
 
         if(defaultChannel !== undefined){

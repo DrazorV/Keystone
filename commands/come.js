@@ -15,8 +15,7 @@ exports.run = async (client,message)=>{
     let targets2 = [];
     for (const rol of roles) if (!targets.includes(rol)) targets2.push(rol);
 
-    while (targets.length > 0) {
-        const user = targets.pop();
+    for (let user of targets){
         if (user.bot||user.presence.status === "offline") bool = true;
         else {
             await message.channel.send(createEmbed(message, user))
@@ -24,8 +23,7 @@ exports.run = async (client,message)=>{
     }
 
     if(targets2 !== null) {
-        while (targets2.length > 0) {
-            const user = targets2.pop();
+        for (let user of targets2){
             if (user.bot || user.presence.status !== "online") bool = true;
             else {
                 const channel = message.member.voice.channel

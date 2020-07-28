@@ -1,11 +1,15 @@
-const db = require('quick.db');
-const Server = new db.table('Server',null);
+const Keyv = require("keyv");
+const db = new Keyv('sqlite://json.sqlite', {
+    table:"Server",
+});
 const embed = require("../utils/embed")
 
 module.exports = async (client, message) => {
     if(message.author.bot) return;
 
-    let prefix = Server.fetch(`Server_${message.guild.id}`,{ target: '.prefix' });
+    let json = await db.get(`Server_${message.guild.id}`);
+    let prefix = json.prefix;
+
     let field = {
         name:"💁‍ You can always use the command \"" + prefix + "help\"",
         value:"There you can find anything you need🔰"

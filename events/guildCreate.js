@@ -1,23 +1,29 @@
-const db = require('quick.db');
-const Server = new db.table('Server',null);
+const Keyv = require("keyv");
+const db = new Keyv('sqlite://json.sqlite', {
+    table:"Server",
+});
+
+const ServerStats = new Keyv('sqlite://json.sqlite', {
+    table:"ServerStats",
+});
 
 
-module.exports = (client, guild) =>{
-    Server.set(`Server_${guild.id}`, {
+
+module.exports = async (client, guild) => {
+    await db.set(`Server_${guild.id}`, {
         prefix: "/",
         meme: "",
         food: ""
-    })
+    }).then()
 
-    let a = guild.channels.cache.find(channel =>
-        channel.name.includes("general") ||
-        channel.name.includes("welcome") ||
-        channel.name.includes("main") ||
-        channel.name.includes("lobby") ||
-        channel.name.includes("chat")
-    )
-
-    console.log(a)
+    await ServerStats.set(`Stats_${guild.id}`, {
+        guildId: guild.id,
+        totUsers: undefined,
+        memberCount: undefined,
+        botCount: undefined,
+        online: undefined,
+        categoryId: undefined
+    }).then()
 
     console.log("Joined a new guild: " + guild.name);
 };

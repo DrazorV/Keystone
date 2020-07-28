@@ -1,18 +1,30 @@
 const meme = require("../../app/commands/meme");
 const stats = require("../../app/commands/stats");
 const CronJob  = require('cron').CronJob;
-const db = require('quick.db');
-const Server = new db.table('Server',null);
+const Keyv = require("keyv");
+const db = new Keyv('sqlite://json.sqlite', {
+    table:"Server",
+});
+
+const ServerStats = new Keyv('sqlite://json.sqlite', {
+    table:"ServerStats",
+});
 
 
 module.exports = async client =>{
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
-        if (Server.fetch(`Server_${clan.id}`) === null){
-            Server.set(`Server_${clan.id}`, {
-                prefix: "/",
-                default: "",
+        if (await db.get(`Server_${clan.id}`) === undefined){
+            await db.set(`Server_${clan.id}`, {
+                prefix:"/",
+                meme: "",
+                food: ""
+            })
+        }
+        if (await ServerStats.get(`Stats_${clan.id}`) === undefined){
+            await ServerStats.set(`Stats_${clan.id}`, {
+                guildId: clan.id,
             })
         }
     }

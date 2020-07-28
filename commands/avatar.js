@@ -2,14 +2,12 @@ const embed = require("../utils/embed")
 
 exports.run = async (client,message)=>{
     let targets = message.mentions.users.array();
-
-    while (targets.length > 0){
-        const user = targets.pop();
+    for(let user of targets){
         let avatar;
         try {
             avatar = user.avatarURL()
         }catch (e) {
-            await message.channel.send("This user has no Avatar.")
+            await message.channel.send("❌ This user has no Avatar.")
         }
 
         let emb = await embed.create(

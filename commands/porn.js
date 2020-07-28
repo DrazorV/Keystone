@@ -1,12 +1,12 @@
 const embed = require("../utils/embed")
-const Pornsearch = require('pornsearch');
+const PornSearch = require('pornsearch');
 
 exports.run = async (client,message,args)=>{
     if(message.channel.nsfw) {
         let mes = args.join(" ");
         let result = null;
         if(mes==="") mes = "porn";
-        const Searcher = new Pornsearch(mes,"Pornhub");
+        const Searcher = new PornSearch(mes,"Pornhub");
         try {
             result = Searcher.gifs();
         }catch (error) {
@@ -30,12 +30,11 @@ exports.run = async (client,message,args)=>{
                     gif.url
                 )
 
-                message.channel.send(emb)
-                    .then(sent => {
-                        sent.delete({
-                            timeout: 600000
-                        })
+                message.channel.send(emb).then(sent => {
+                    sent.delete({
+                        timeout: 600000
                     })
+                })
             })
         }else{
             await message.channel.send("❌No results for '"+mes+"'.")
