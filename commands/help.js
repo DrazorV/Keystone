@@ -9,41 +9,41 @@ exports.run = async (client,message)=>{
     const prefix = json.prefix;
 
     let field = {
-        name: prefix + "avatar @mention",
+        name: "`" + prefix + "avatar @mention`",
         value: "🎴 Gives you a link with his avatar"
     }
     let field1 = {
-        name: prefix + "come @mention",
+        name: "`" + prefix + "invite @mention`",
         value: "🤙 Informs one or more server members that you are waiting for them in one of the voice channels"
     }
     let field2 = {
-        name: prefix + "setdefault [name/id]",
-        value: "🗓️ Sets the channel where the bot posts memes daily"
+        name: "`" + prefix + "setchannel meme` or `" + prefix + "setchannel food`",
+        value: "🗓️ Sets the channel where the bot posts daily"
     }
     let field3 = {
-        name: prefix + "meme",
+        name: "`" + prefix + "meme`",
         value: "🚧 To get a random meme from a huge collection"
     }
 
     let field8 = {
-        name: prefix + "food",
+        name: "`" + prefix + "food`",
         value: "🍔 To get a random food from a huge collection"
     }
 
     let field4 = {
-        name: prefix + "ping",
+        name: "`" + prefix + "ping`",
         value: "🏓 Checks the ping of the server"
     }
     let field5 = {
-        name: prefix + "porn [input]",
+        name: "`" + prefix + "porn [input]`",
         value: "🔞 To get a random porn gif based on the input"
     }
     let field6 = {
-        name: prefix + "prefix",
+        name: "`" + prefix + "prefix`",
         value: "🏷️ Lets you change the default prefix"
     }
     let field7 = {
-        name: "@Keystone",
+        name: "`@Keystone`",
         value: "💡 If you ever forget the bot prefix, just mention it!"
     }
 

@@ -3,7 +3,6 @@ const db = new Keyv('sqlite://json.sqlite', {
     table:"Server",
 });
 
-const setdefault = require("./setdefault")
 const embed = require("../utils/embed")
 const reddit = require("../utils/reddit")
 
@@ -15,10 +14,6 @@ const subreddits = {
 module.exports.run = async (client,message)=>{
     let json = await db.get(`Server_${message.guild.id}`);
     const defaultChannel = json.food;
-
-    if(defaultChannel === undefined || defaultChannel === ""){
-        await setdefault.food(client, message);
-    }
 
     const url = `https://www.reddit.com/r/${subreddits.en[reddit.randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
     let data = await reddit.build(url);
@@ -43,7 +38,10 @@ module.exports.run = async (client,message)=>{
         data.url
     )
 
-    await message.channel.send(emb);
+    if(defaultChannel === undefined || defaultChannel === "")
+        await message.channel.send(emb);
+    else
+        await message.guild.channels.cache.find(channel => channel.id === defaultChannel).send(emb)
 };
 
 
@@ -53,8 +51,8 @@ exports.job = async (client)=>{
         let json = await db.get(`Server_${clan.id}`);
         const defaultChannel = json.food;
 
-        if(defaultChannel !== undefined){
-            const url = `https://www.reddit.com/r/${subreddits.en[reddit.randomNumber(subreddits.en.length)]}/hot/.json?count=100`;
+        if(defaultChannel !== "" && defaultChannel !== undefined){
+            const url = `https://www.reddit.com/r/${subreddits.en[reddit.randomNumber(subreddits.en.length)]}/hot/.json?limit=100?count=` + (Math.floor(Math.random() * 1000) + 1);
 
             let data = await reddit.build(url);
 

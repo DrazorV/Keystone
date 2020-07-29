@@ -25,5 +25,7 @@ module.exports = async (client, guild) => {
         categoryId: undefined
     }).then()
 
+
+
     console.log("Joined a new guild: " + guild.name);
 };

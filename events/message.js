@@ -28,7 +28,7 @@ module.exports = async (client, message) => {
         "https://i.imgur.com/5Px5FeR.png",
         null
     )
-    if(message.mentions.has(client.user)) await message.channel.send(emb);
+    if(message.mentions.has(client.user) && !message.content.startsWith(prefix)) await message.channel.send(emb);
 
     if(!message.content.startsWith(prefix)) return;
 

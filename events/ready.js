@@ -26,6 +26,11 @@ module.exports = async client =>{
         if (await ServerStats.get(`Stats_${clan.id}`) === undefined){
             await ServerStats.set(`Stats_${clan.id}`, {
                 guildId: clan.id,
+                totUsers: undefined,
+                memberCount: undefined,
+                botCount: undefined,
+                online: undefined,
+                categoryId: undefined
             })
         }
     }
