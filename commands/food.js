@@ -39,7 +39,7 @@ module.exports.run = async (client,message)=>{
         "https://www.reddit.com" + data.permalink,
         message.member.roles.color.color,
         "Automated message",
-        data.thumbnail,
+        "https://i.imgur.com/5Px5FeR.png",
         data.url
     )
 
@@ -68,7 +68,7 @@ exports.job = async (client)=>{
             let emb = await embed.create(
                 null,
                 null,
-                "⚡food of the Day! 📦 ",
+                "⚡Food of the Day! 📦 ",
                 "🚛 Title: \n" + data.title,
                 fields,
                 "https://www.reddit.com" + data.permalink,

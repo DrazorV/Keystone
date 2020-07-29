@@ -76,7 +76,7 @@ exports.job = async (client)=>{
                 "https://www.reddit.com" + data.permalink,
                 '#017E2D',
                 "Automated message",
-                data.thumbnail,
+                "https://i.imgur.com/5Px5FeR.png",
                 data.url
             )
 

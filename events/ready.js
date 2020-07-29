@@ -2,6 +2,7 @@ const meme = require("../../app/commands/meme");
 const stats = require("../../app/commands/stats");
 const CronJob  = require('cron').CronJob;
 const Keyv = require("keyv");
+const food = require("../commands/food");
 const db = new Keyv('sqlite://json.sqlite', {
     table:"Server",
 });
@@ -35,6 +36,10 @@ module.exports = async client =>{
         .catch(console.error);
     new CronJob('0 0 18 * * *', function () {
         meme.job(client)
+    },null, true);
+
+    new CronJob('0 0 18 * * *', function () {
+        food.job(client)
     },null, true);
 
     new CronJob('30 * * * * *', function () {
