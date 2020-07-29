@@ -23,6 +23,7 @@
     "express": "4.17.1",
     "ffmpeg": "^0.0.4",
     "is-image-url": "^1.1.8",
+    "keyv": "^4.0.1",
     "libsodium": "^0.7.6",
     "memejsfork": "^1.0.4",
     "opusscript": "^0.0.7",
