@@ -16,7 +16,7 @@ module.exports = {
       repo : 'git@github.com:DrazorV/Keystone.git',
       path : '',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production && pm2 save',
+      'post-deploy' : "export PATH=$PATH:/home/pi/.nvm/v12.18.3/bin/" && 'npm install && pm2 reload ecosystem.config.js --env production && pm2 save',
       'pre-setup': ''
     }
   }
