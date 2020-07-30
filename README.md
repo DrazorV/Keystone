@@ -8,16 +8,6 @@
 
 ### [Click here to invite](https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot)
 
-## Goals ⚽
-* [X] Clean up the code a bit.
-    * [X] Clean up the code some more.
-    * [X] More modulating.
-* [ ] Add permissions to certain commands.
-    * [ ] Make permissions a little more advanced.
-* [X] Test and debug the new features.
-* [X] Clean up the root directory.
-* [ ] Create a very convenient music bot with great features.
-
 
 ## Features & Commands 👻
 * See anyone's avatar at full resolution.
@@ -34,7 +24,7 @@
 ## Disclaimer ⚠️
 + This is bot is maintained and developed only by me
 + Bugs and unintended actions may exists
-+ The bot is being hosted on www.heroku.com and thus limitations exist
++ The bot is being hosted on a raspberry pi on my local network and thus limitations exist
 + Any kind of help is very welcome
 + I will try my best to provide a well functioning discord bot
 + If you want to see any new commands/functions please contact me on my discord server or my email address: vagelisp.97@gmail.com
