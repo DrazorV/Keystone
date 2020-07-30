@@ -1,10 +1,10 @@
 module.exports = {
   apps : [
     {
-	name: 'Keystone',
-	script: 'bot.js',
-	env: {
-	   NODE_ENV: "development"
+      name: 'Keystone',
+      script: 'bot.js',
+      env: {
+        NODE_ENV: "development"
       },
       env_production: {
         NODE_ENV: "production"
