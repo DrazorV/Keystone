@@ -11,7 +11,7 @@ module.exports = {
 
   deploy : {
     production : {
-      user : 'SSH_USERNAME',
+      user : 'raspi',
       host : '192.168.1.200',
       ref  : 'origin/master',
       repo : 'git@github.com:DrazorV/Keystone.git',
