@@ -30,7 +30,6 @@ const init = async () => {
         });
     });
     client.login(process.env.TOKEN).catch(error => console.log(error));
-
 };
 
 app.get("/", (request, response) => {
@@ -41,7 +40,6 @@ app.listen(process.env.PORT);
 setInterval(() => {
     http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 },200000);
-
 
 init().then();
 
