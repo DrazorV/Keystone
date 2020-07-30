@@ -3,9 +3,8 @@ const client = new Discord.Client();
 const fs = require('fs');
 const Enmap = require("enmap");
 const http = require('http');
+require('dotenv').config()
 const app = require('express')();
-const { Player } = require("discord-music-player"); // Require the module
-const player = new Player(client, process.env.goggle_api);
 client.commands = new Enmap();
 
 const init = async () => {
