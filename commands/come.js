@@ -1,5 +1,4 @@
 const embed = require("../utils/embed")
-
 let options = {
     maxAge: 600,
     maxUses: 1,
