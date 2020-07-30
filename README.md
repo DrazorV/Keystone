@@ -8,16 +8,6 @@
 
 ### [Click here to invite](https://discord.com/api/oauth2/authorize?client_id=509836105932079133&permissions=8&scope=bot)
 
-## Goals ⚽
-* [X] Clean up the code a bit.
-    * [X] Clean up the code some more.
-    * [X] More modulating.
-* [ ] Add permissions to certain commands.
-    * [ ] Make permissions a little more advanced.
-* [X] Test and debug the new features.
-* [X] Clean up the root directory.
-* [ ] Create a very convenient music bot with great features.
-
 
 ## Features & Commands 👻
 * See anyone's avatar at full resolution.
