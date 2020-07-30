@@ -1,0 +1,9 @@
+{
+    "script": "bot.js",
+    "watch": true,
+    "ignore_watch": ["json.sqlite","node_modules"],
+    "watch_options": {
+        "followSymlinks": false
+    },
+    "name": "Keystone"
+}
