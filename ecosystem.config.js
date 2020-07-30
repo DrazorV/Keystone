@@ -1,14 +1,16 @@
 module.exports = {
-  apps : [{
-    name: 'Keystone',
-    script: 'bot.js',
-    watch: 'true',
-    ignore_watch: ['json.sqlite','node_modules'],
-    watch_options: {
-      "followSymlinks": false
+  apps : [
+    {
+	name: 'Keystone',
+	script: 'bot.js',
+	env: {
+	   NODE_ENV: "development"
+      },
+      env_production: {
+        NODE_ENV: "production"
+      }
     }
-  }],
-
+  ],
   deploy : {
     production : {
       user : 'raspi',
@@ -17,7 +19,7 @@ module.exports = {
       repo : 'git@github.com:DrazorV/Keystone.git',
       path : 'home/pi/Repos/Keystone',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production && pm2 save',
       'pre-setup': ''
     }
   }
