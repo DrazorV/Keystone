@@ -1,5 +1,5 @@
-const meme = require("../../app/commands/meme");
-const stats = require("../../app/commands/stats");
+const meme = require("../commands/meme");
+const stats = require("../commands/stats");
 const CronJob  = require('cron').CronJob;
 const Keyv = require("keyv");
 const food = require("../commands/food");
