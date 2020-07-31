@@ -28,7 +28,6 @@
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.1",
     "pornsearch": "^2.4.3",
-    "sqlite3": "^5.0.0",
     "ytdl-core": "^3.1.3"
   }
 }
