@@ -1,24 +1,23 @@
 FROM node:12-alpine
 
+LABEL author="Ryan Dowling" maintainer="ryan.dowling@atlauncher.com"
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-WORKDIR /home/node/app
+RUN mkdir -p /app \
+    && apk add --no-cache git
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+WORKDIR /app
 
+COPY package-lock.json /app
+COPY package.json /app
+COPY patches /app
 
-USER node
+RUN /usr/local/bin/npm install
 
+COPY . /app
 
-RUN npm install --build-from-source
-# If you are building your code for production
-# RUN npm ci --only=production
+RUN /usr/local/bin/npm run build
 
-# Bundle app source
-COPY --chown=node:node . .
+ENV NODE_ENV=production
 
-EXPOSE 8080
-CMD [ "node", "bot.js" ]
+ENTRYPOINT ["/usr/local/bin/npm"]
+CMD ["start"]
