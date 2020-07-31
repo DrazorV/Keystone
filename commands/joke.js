@@ -1,7 +1,7 @@
 const reddit = require("../utils/reddit")
 
 const subreddits = {
-    "en": ['jokes'],
+    "en": ['jokes','oneliners'],
 };
 
 
