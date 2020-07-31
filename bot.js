@@ -43,7 +43,6 @@ setInterval(() => {
 init().then();
 
 client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
-
 client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
 
 
