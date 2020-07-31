@@ -4,7 +4,6 @@ const subreddits = {
     "en": ['jokes','oneliners'],
 };
 
-
 module.exports.run = async (client,message)=>{
     const url = `https://www.reddit.com/r/${subreddits.en[reddit.randomNumber(subreddits.en.length)]}/new/.json?limit=100?count=` + (Math.floor(Math.random() * 1000) + 1);
     let data = await reddit.joke(url);
