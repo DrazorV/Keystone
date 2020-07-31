@@ -3,7 +3,6 @@ module.exports = {
         {
             name: 'Keystone',
             script: 'bot.js',
-            instances: 1,
             autorestart: true,
             watch: false,
             max_memory_restart: '1G',
@@ -18,7 +17,7 @@ module.exports = {
     deploy: {
         production: {
             user: 'node',
-            host: process.env.BOX_IP,
+            host: '192.168.1.200',
             ref: 'origin/master',
             repo: 'git@github.com:DrazorV/Keystone.git',
             path: '/home/node/Keystone',
