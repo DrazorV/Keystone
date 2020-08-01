@@ -13,6 +13,7 @@ const ServerStats = new Keyv('sqlite://json.sqlite', {
 
 
 module.exports = async client =>{
+    client.users.cache.get("183890143525076992").send("Restarted")
     let clans = client.guilds.cache.array();
     while (clans.length > 0) {
         let clan = clans.pop();
