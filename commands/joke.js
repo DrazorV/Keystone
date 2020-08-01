@@ -1,7 +1,7 @@
 const reddit = require("../utils/reddit")
 
 const subreddits = {
-    "en": ['jokes','oneliners'],
+    "en": ['jokes','oneliners','dirtyjokes','dadjokes'],
 };
 
 module.exports.run = async (client,message)=>{
