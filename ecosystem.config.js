@@ -3,7 +3,7 @@ module.exports = {
         {
             name: 'Keystone',
             script: 'bot.js',
-            watch: true,
+            watch: ['events','commands','utils','bot.js'],
             ignore_watch: ['node_modules', 'json.sqlite', 'README.md', 'LICENSE', '.gitignore'],
             watch_options: {
                 "followSymlinks": false
