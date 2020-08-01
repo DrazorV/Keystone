@@ -23,7 +23,11 @@ module.exports = {
             ref: 'origin/master',
             repo: 'git@github.com:DrazorV/Keystone.git',
             path: '/home/pi/Repos/Keystone',
+            "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
             'post-deploy': 'npm install; npm run build; pm2 startOrRestart ecosystem.config.js --env production && pm2 save',
+            "env"  : {
+                "NODE_ENV": "production"
+            }
         },
     },
 };
