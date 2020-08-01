@@ -3,8 +3,8 @@ module.exports = {
         {
             name: 'Keystone',
             script: 'bot.js',
-            autorestart: true,
-            max_memory_restart: '1G',
+            watch: true,
+            ignore_watch: ["node_modules", "json.sqlite", "README.md", "LICENSE", ".gitignore"],
             env: {
                 NODE_ENV: 'development',
             },
