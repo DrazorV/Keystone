@@ -1,5 +1,0 @@
-{
-  "watch": ["*.*"],
-  "ext": "ts,json,sqlite",
-  "exec": "ts-node src"
-}
