@@ -24,7 +24,6 @@
     "dotenv": "^8.2.0",
     "enmap": "^5.4.1",
     "express": "^4.17.1",
-    "githubhook": "^1.9.3",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.1",
     "pornsearch": "^2.4.3",
