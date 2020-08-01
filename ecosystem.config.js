@@ -3,11 +3,11 @@ module.exports = {
         {
             name: 'Keystone',
             script: 'bot.js',
-            watch: true,
-            ignore_watch: ['node_modules', 'json.sqlite', 'README.md', 'LICENSE', '.gitignore'],
+            watch: ['commands','events','utils','package.json','bot.js'],
             watch_options: {
                 "followSymlinks": false
             },
+            log_date_format  : "YYYY-MM-DD HH:mm Z",
             env: {
                 NODE_ENV: 'development',
             },
