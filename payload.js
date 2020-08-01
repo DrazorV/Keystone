@@ -9,8 +9,7 @@ const init = async () => {
             exec('git -C ~/Repos/Keystone reset --hard', execCallback);
             exec('git -C ~/Repos/Keystone  clean -df', execCallback);
             exec('git -C ~/Repos/Keystone  pull -f', execCallback);
-            exec('npm -C ~/Repos/Keystone  install --production', execCallback);
-            exec('tsc', execCallback);
+            exec('npm -C ~/Repos/Keystone  install', execCallback);
         }
     },null, true);
 }
