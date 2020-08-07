@@ -35,11 +35,11 @@ module.exports = async (client, message) => {
     if(!message.content.startsWith(prefix)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
+    const commandName = args.shift().toLowerCase();
 
     if (message.guild && !message.member) await message.guild.fetch(message.author);
 
-    const cmd = client.commands.get(command);
+    const cmd = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!cmd) return;
 
     cmd.run(client, message, args);

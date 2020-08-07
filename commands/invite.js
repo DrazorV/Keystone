@@ -6,36 +6,42 @@ let options = {
     unique: true
 };
 
-exports.run = async (client,message)=>{
-    if (message.channel.type === "dm") return;
-    let roles = [];
-    let bool = false, bool2 = true;
-    for(const rol of message.mentions.roles.array()) for(const mem of rol.members.array()) roles.push(mem.user);
-    let targets = message.mentions.users.array();
-    let targets2 = [];
-    for (const rol of roles) if (!targets.includes(rol)) targets2.push(rol);
+module.exports = {
+    name: 'invite',
+    description: '',
+    aliases: ['inv', 'come', 'cm'],
+    usage: '[@mention]',
+    async run(client, message) {
+        if (message.channel.type === "dm") return;
+        let roles = [];
+        let bool = false, bool2 = true;
+        for (const rol of message.mentions.roles.array()) for (const mem of rol.members.array()) roles.push(mem.user);
+        let targets = message.mentions.users.array();
+        let targets2 = [];
+        for (const rol of roles) if (!targets.includes(rol)) targets2.push(rol);
 
-    for (let user of targets){
-        if (user.bot||user.presence.status === "offline") bool = true;
-        else {
-            await message.channel.send(createEmbed(message, user))
-        }
-    }
-
-    if(targets2 !== null) {
-        for (let user of targets2){
-            if (user.bot || user.presence.status !== "online") bool = true;
+        for (let user of targets) {
+            if (user.bot || user.presence.status === "offline") bool = true;
             else {
-                const channel = message.member.voice.channel
-                if (channel == null && user !== message.author) bool2 = false;
-                else if (!channel.members.has(user.id)) bool2 = false;
                 await message.channel.send(createEmbed(message, user))
             }
         }
-    }
 
-    if(bool && bool2) await message.channel.send("❌ Inactive users and bots cannot be invited.");
-};
+        if (targets2 !== null) {
+            for (let user of targets2) {
+                if (user.bot || user.presence.status !== "online") bool = true;
+                else {
+                    const channel = message.member.voice.channel
+                    if (channel == null && user !== message.author) bool2 = false;
+                    else if (!channel.members.has(user.id)) bool2 = false;
+                    await message.channel.send(createEmbed(message, user))
+                }
+            }
+        }
+
+        if (bool && bool2) await message.channel.send("❌ Inactive users and bots cannot be invited.");
+    }
+}
 
 
 function createEmbed(message,user){
