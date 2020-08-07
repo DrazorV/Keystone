@@ -7,8 +7,12 @@ const embed = require("../utils/embed")
 module.exports = async (client, message) => {
     if(message.author.bot) return;
     if(message.webhookID) return;
-
-    let json = await db.get(`Server_${message.guild.id}`);
+    let json
+    try {
+        json = await db.get(`Server_${message.guild.id}`);
+    }catch (e){
+        console.log(e)
+    }
     let prefix = json.prefix;
 
     let field = {
