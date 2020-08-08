@@ -9,6 +9,8 @@ module.exports = {
     description: '',
     aliases: ['delete', 'remove','del','clr','rem'],
     usage: '[number]',
+    args: true,
+    cooldown: 5,
     async run(client, message, args) {
         let json = await Server.get(`Server_${message.guild.id}`), prefix = json.prefix
         if (!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`:x: You need **MANAGE_GUILD** permission to use this command.`)

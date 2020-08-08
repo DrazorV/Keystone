@@ -1,3 +1,4 @@
+const winston = require('../utils/winston');
 const Keyv = require("keyv");
 const db = new Keyv('sqlite://json.sqlite', {
     table:"Server",
@@ -27,5 +28,5 @@ module.exports = async (client, guild) => {
 
 
 
-    console.log("Joined a new guild: " + guild.name);
+    winston.info("Joined a new guild: " + guild.name);
 };

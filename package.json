@@ -16,6 +16,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
+    "winston": "^3.3.3",
     "@keyv/sqlite": "^2.0.2",
     "axios": "^0.19.2",
     "better-sqlite3": "^7.1.0",

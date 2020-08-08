@@ -1,3 +1,4 @@
+const winston = require('../utils/winston');
 const meme = require("../commands/meme");
 const stats = require("../commands/stats");
 const CronJob  = require('cron').CronJob;
@@ -36,10 +37,10 @@ module.exports = async client =>{
         }
     }
 
-    console.log("Keystone has been initialized...");
+    winston.info("Keystone has been initialized...");
     client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
-        .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
-        .catch(console.error);
+        .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
+        .catch(winston.error);
     new CronJob('0 0 18 * * *', function () {
         meme.job(client)
     },null, true);

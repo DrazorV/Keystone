@@ -9,6 +9,8 @@ module.exports = {
     description: '',
     aliases: [],
     usage: '[command]',
+    args: false,
+    cooldown: 30,
     async run(client, message) {
         if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("You need to be an admin to change the prefix of the bot.");
         await message.channel.send("💻 Please type the new prefix");

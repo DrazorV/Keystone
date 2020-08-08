@@ -9,6 +9,8 @@ module.exports = {
     description: '',
     aliases: ['h', 'info','i'],
     usage: '[command]',
+    args: false,
+    cooldown: 15,
     async run(client, message) {
         let json = await db.get(`Server_${message.guild.id}`);
         const prefix = json.prefix;

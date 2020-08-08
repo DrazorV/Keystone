@@ -9,6 +9,8 @@ module.exports = {
     description: '',
     aliases: ['j', 'jokes', 'pun'],
     usage: '[command]',
+    args: false,
+    cooldown: 5,
     async run(client, message) {
         const url = `https://www.reddit.com/r/${subreddits.en[reddit.randomNumber(subreddits.en.length)]}/new/.json?limit=100?count=` + (Math.floor(Math.random() * 1000) + 1);
         let data = await reddit.joke(url);

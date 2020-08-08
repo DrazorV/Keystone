@@ -1,3 +1,4 @@
+const winston = require('../utils/winston');
 const embed = require("../utils/embed")
 const PornSearch = require('pornsearch');
 
@@ -6,6 +7,8 @@ module.exports = {
     description: '',
     aliases: ['pornhub','prn','porno'],
     usage: '[command]',
+    args: true,
+    cooldown: 15,
     async run(client, message, args) {
         if (message.channel.nsfw) {
             let mes = args.join(" ");
@@ -15,7 +18,7 @@ module.exports = {
             try {
                 result = Searcher.gifs();
             } catch (error) {
-                console.log(error)
+                winston.error(error)
             }
             let emb;
             if (result != null) {

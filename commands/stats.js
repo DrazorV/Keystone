@@ -1,3 +1,4 @@
+const winston = require('../utils/winston');
 const Keyv = require("keyv");
 
 const Server = new Keyv('sqlite://json.sqlite', {
@@ -12,6 +13,8 @@ module.exports = {
     description: '',
     aliases: ['stat', 'st'],
     usage: '[command]',
+    args: true,
+    cooldown: 30,
     async run(client, message, args) {
         let json = await Server.get(`Server_${message.guild.id}`),
             StatsJson = await ServerStats.get(`Stats_${message.guild.id}`),
@@ -88,7 +91,7 @@ module.exports = {
                 await client.channels.cache.find(channel => channel.id === botCount).delete()
                 await client.channels.cache.find(channel => channel.id === online).delete()
                 await client.channels.cache.find(channel => channel.id === category).delete()
-                console.log("Stats deleted by id")
+                winston.info("Stats deleted by id")
             } catch (e) {
                 await finer(client, "Server Statistics");
                 await finer(client, "Total Users")
@@ -96,7 +99,7 @@ module.exports = {
                 await finer(client, "Bot Users")
                 await finer(client, "Online Users")
                 await finer(client, "Server Statistics")
-                console.log("Stats deleted by name")
+                winston.info("Stats deleted by name")
             }
 
             await ServerStats.set(`Stats_${message.guild.id}`, {
@@ -134,9 +137,9 @@ module.exports = {
                         await clan.channels.cache.find(channel => channel.id === memberCount).setName("🤵 Human Users  : " + humanSize)
                         await clan.channels.cache.find(channel => channel.id === botCount).setName("🤖 Bot Users : " + botSize)
                         await clan.channels.cache.find(channel => channel.id === online).setName("🔴 Online Users: " + onlineSize)
-                        console.log("------------------Stats updated for " + clan.name + "------------------")
+                        winston.info("------------------Stats updated for " + clan.name + "------------------")
                     } catch (e) {
-                        console.log("------------------Couldn't update " + clan.name + "------------------")
+                        winston.info("------------------Couldn't update " + clan.name + "------------------")
                     }
 
                 }

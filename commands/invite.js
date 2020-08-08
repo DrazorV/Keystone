@@ -1,3 +1,4 @@
+const winston = require('../utils/winston');
 const embed = require("../utils/embed")
 
 let options = {
@@ -11,6 +12,8 @@ module.exports = {
     description: '',
     aliases: ['inv', 'come', 'cm'],
     usage: '[@mention]',
+    args: false,
+    cooldown: 5,
     async run(client, message) {
         if (message.channel.type === "dm") return;
         let roles = [];
@@ -69,7 +72,7 @@ function createEmbed(message,user){
         user.send(emb)
             .then(message.member.voice.channel.createInvite(options)
                 .then(invite => user.send(invite.toString()))
-                .catch(console.error));
+                .catch(winston.error));
         return "✅ " + user.username + " has been informed!"
     }
 }

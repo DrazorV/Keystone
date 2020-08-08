@@ -1,45 +1,30 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
 const fs = require('fs');
-const Enmap = require("enmap");
-const http = require('http');
 require('dotenv').config()
-const app = require('express')();
-client.commands = new Enmap();
+const winston = require('./utils/winston');
 
-const init = async () => {
-    fs.readdir("./commands/",(err,files) =>{
-        if (err) return console.error(err);
-        files.forEach(file => {
-            if (!file.endsWith(".js")) return;
-            const command = require(`./commands/${file}`);
-            let commandName = file.split(".")[0];
-            console.log(`Attempting to load command ${commandName}`);
-            client.commands.set(commandName,command)
-        });
-    });
-    fs.readdir("./events/",(err,files) =>{
-        if (err) return console.error(err);
-        files.forEach(file => {
-            const event = require(`./events/${file}`);
-            let eventName  = file.split(".")[0];
-            console.log(`Attempting to load event ${eventName}`);
-            client.on(eventName ,event.bind(null,client));
-        });
-    });
-    client.login(process.env.TOKEN).catch(error => console.log(error));
-};
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-app.get("/", (request, response) => {
-    console.log(Date.now() + " Ping Received");
-    response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-},200000);
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 
-init().then();
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    winston.info(`Attempting to load command ${commandName}`);
+    client.commands.set(command.name, command);
+}
 
-client.on("disconnect",() => console.log("I just disconnected, just making sure you know, I will reconnect now.."));
-client.on("guildDelete", guild => {console.log("Left a guild: " + guild.name)});
+for (const file of eventFiles) {
+    const event = require(`./events/${file}`);
+    let eventName  = file.split(".")[0];
+    winston.info(`Attempting to load event ${eventName}`);
+    client.on(eventName ,event.bind(null,client));
+}
+
+
+client.on("disconnect",() => winston.info("I just disconnected, just making sure you know, I will reconnect now.."));
+client.on("guildDelete", guild => {winston.info("Left a guild: " + guild.name)});
+
+client.login(process.env.TOKEN).catch(error => winston.info(error));

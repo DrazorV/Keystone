@@ -5,6 +5,8 @@ module.exports = {
     description: '',
     aliases: ['icon', 'pfp','av','avat','ic','pic'],
     usage: '[@mention]',
+    args: false,
+    cooldown: 5,
     async run (client,message) {
         let targets = message.mentions.users.array();
         for(let user of targets){

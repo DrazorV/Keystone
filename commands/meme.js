@@ -16,6 +16,8 @@ module.exports = {
     description: '',
     aliases: ['memes', 'm'],
     usage: '[command]',
+    args: false,
+    cooldown: 5,
     async run(client, message) {
         let json = await db.get(`Server_${message.guild.id}`);
         const defaultChannel = json.meme;
