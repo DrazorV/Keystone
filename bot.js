@@ -4,9 +4,7 @@ client.commands = new Discord.Collection();
 const fs = require('fs');
 require('dotenv').config()
 const winston = require('./utils/winston');
-
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 
 for (const file of commandFiles) {
