@@ -63,15 +63,14 @@ function createEmbed(message,user){
         description = "You can choose one of the voice channels and he will join you ASAP";
         let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
         user.send(emb);
-        return  "✅ " + user.username + " has been informed!"
     } else {
-        description = ":arrow_down: Click the button bellow to join him :arrow_down:";
         if (channel.members.has(user.id)) return "❌ " + user.username + " is already in your voice channel!"
+        description = ":arrow_down: Click the button bellow to join him :arrow_down:";
         let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
         user.send(emb)
             .then(message.member.voice.channel.createInvite(options)
                 .then(invite => user.send(invite.toString()))
                 .catch(winston.error));
-        return "✅ " + user.username + " has been informed!"
     }
+    return "✅ " + user.username + " has been informed!"
 }
