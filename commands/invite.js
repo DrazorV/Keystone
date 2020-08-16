@@ -37,6 +37,7 @@ module.exports = {
                     const channel = message.member.voice.channel
                     if (channel == null && user !== message.author) bool2 = false;
                     else if (!channel.members.has(user.id)) bool2 = false;
+                    if (user === message.author) return  "❌ You can't invite yourself!"
                     await message.channel.send(createEmbed(message, user))
                 }
             }
@@ -60,13 +61,11 @@ function createEmbed(message,user){
 
     if (channel == null) {
         description = "You can choose one of the voice channels and he will join you ASAP";
-        if (user === message.author) return "❌ You can't invite yourself!"
         let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
         user.send(emb);
         return  "✅ " + user.username + " has been informed!"
     } else {
         description = ":arrow_down: Click the button bellow to join him :arrow_down:";
-        if (user === message.author) return  "❌ You can't invite yourself!"
         if (channel.members.has(user.id)) return "❌ " + user.username + " is already in your voice channel!"
         let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
         user.send(emb)
