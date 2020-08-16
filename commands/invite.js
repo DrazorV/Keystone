@@ -66,7 +66,7 @@ function createEmbed(message,user){
         return  "✅ " + user.username + " has been informed!"
     } else {
         description = ":arrow_down: Click the button bellow to join him :arrow_down:";
-        if (user === message.author) return "❌ You can't invite yourself!"
+        if (user === message.author) return  "❌ You can't invite yourself!"
         if (channel.members.has(user.id)) return "❌ " + user.username + " is already in your voice channel!"
         let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
         user.send(emb)
