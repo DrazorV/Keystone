@@ -41,7 +41,6 @@ module.exports = async client =>{
         .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
         .catch(winston.error);
 
-
     new CronJob('0 0 18 * * *', function () {
         meme.job(client)
     },null, true);
