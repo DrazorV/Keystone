@@ -12,7 +12,6 @@ const ServerStats = new Keyv('sqlite://json.sqlite', {
     table:"ServerStats",
 });
 
-
 module.exports = async client =>{
     client.users.cache.get("183890143525076992").send("Restarted")
     let clans = client.guilds.cache.array();
@@ -38,9 +37,12 @@ module.exports = async client =>{
     }
 
     winston.info("Keystone has been initialized...");
-    client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
-        .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
-        .catch(winston.error);
+    setInterval(() => {
+        client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
+            .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
+            .catch(winston.error);
+    }, 300000);
+
     new CronJob('0 0 18 * * *', function () {
         meme.job(client)
     },null, true);
