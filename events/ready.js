@@ -40,11 +40,7 @@ module.exports = async client =>{
     client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
         .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
         .catch(winston.error);
-    setInterval(() => {
-        client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
-            .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
-            .catch(winston.error);
-    }, 300000);
+
 
     new CronJob('0 0 18 * * *', function () {
         meme.job(client)
