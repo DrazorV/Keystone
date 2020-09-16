@@ -15,7 +15,6 @@
 * Set a channel to become your source of daily memes, as this bot will post memes daily.
 * Get a random meme from a big subreddit list.
 * Check the ping of the bot and its server.
-* Get hot porn gifs.
 * Change the prefix of the bot commands.
 * Get statistics for your server with live updates.
 * More to come!
