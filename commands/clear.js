@@ -22,12 +22,12 @@ module.exports = {
             if (user) {
                 while (amount >= 100) {
                     let messages = await message.channel.messages.fetch({limit: 100})
-                    messages = await messages.filter(m => m.author.id === user ? user.id : client.user.id).array().slice(0, 100);
+                    messages = await messages.filter(m => m.author.id === user.toString() ? user.id : client.user.id).array().slice(0, 100);
                     await message.channel.bulkDelete(messages)
                     amount -= 100;
                 }
                 let messages = await message.channel.messages.fetch({limit: 100})
-                messages = await messages.filter(m => m.author.id === user ? user.id : client.user.id).array().slice(0, amount);
+                messages = await messages.filter(m => m.author.id === user.toString() ? user.id : client.user.id).array().slice(0, amount);
                 await message.channel.bulkDelete(messages)
             } else {
                 while (amount >= 100) {
