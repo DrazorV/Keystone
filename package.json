@@ -16,9 +16,8 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
-    "@keyv/sqlite": "^2.0.2",
+    "@keyv/sqlite": "https://github.com/jdesboeufs/keyv-sqlite/tarball/master",
     "axios": "^0.21.1",
-    "better-sqlite3": "^7.1.2",
     "cron": "^1.8.2",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
@@ -27,8 +26,14 @@
     "git-needs-pull": "^2.1.0",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.3",
+    "node-pre-gyp": "^0.17.0",
     "pornsearch": "^2.4.3",
+    "sql": "^0.78.0",
+    "sqlite3": "^5.0.0",
     "winston": "^3.3.3",
     "ytdl-core": "^4.3.0"
+  },
+  "devDependencies": {
+    "npm-force-resolutions": "0.0.3"
   }
 }
