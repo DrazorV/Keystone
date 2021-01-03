@@ -1,11 +1,12 @@
-const Winston = require('winston');
+const winston = require("winston");
+const { createLogger, format, transports , addColors} = winston;
 
-let logger = new Winston.createLogger({
-    format: Winston.format.combine(
-        Winston.format.colorize(),
-        Winston.format.simple()
+let logger = new createLogger({
+    format: format.combine(
+        format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
+        format.simple()
     ),
-    color: Winston.addColors({
+    color: addColors({
         error: 'bold red',
         warn: 'bold yellow',
         info: 'bold cyan',
@@ -13,9 +14,16 @@ let logger = new Winston.createLogger({
     }),
     level: 'debug',
     transports: [
-        new Winston.transports.Console({
-            prettyPrint: true,
-            handleExceptions: true
+        new transports.Console({
+            format: format.combine(
+                format.colorize(),
+                format.simple(),
+        )}),
+        new transports.File({
+            filename: 'winston.json',
+            tailable: true,
+            exitOnError: false,
+            json: true,
         })
     ],
     exitOnError: false

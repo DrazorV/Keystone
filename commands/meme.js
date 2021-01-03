@@ -7,7 +7,7 @@ const embed = require("../utils/embed")
 const reddit = require("../utils/reddit")
 
 const subreddits = {
-    "en": ['memes', 'dankmemes', 'meirl'],
+    "en": ['memes', 'dankmemes'],
 };
 
 

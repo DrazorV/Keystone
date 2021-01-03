@@ -26,6 +26,7 @@
     "git-needs-pull": "^2.1.0",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.3",
+    "moment": "^2.29.1",
     "node-pre-gyp": "^0.17.0",
     "pornsearch": "^2.4.3",
     "sql": "^0.78.0",

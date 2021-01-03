@@ -3,7 +3,7 @@ const embed = require("../utils/embed")
 module.exports = {
     name: 'avatar',
     description: '',
-    aliases: ['icon', 'pfp','av','avat','ic','pic'],
+    aliases: ['icon', 'pfp','av','ic','pic'],
     usage: '[@mention]',
     args: false,
     cooldown: 5,
