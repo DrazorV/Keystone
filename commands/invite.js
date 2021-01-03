@@ -15,35 +15,33 @@ module.exports = {
     args: false,
     cooldown: 5,
     async run(client, message) {
+        //ignore private messages
         if (message.channel.type === "dm") return;
-        let roles = [];
-        let bool = false, bool2 = true;
-        for (const rol of message.mentions.roles.array()) for (const mem of rol.members.array()) roles.push(mem.user);
-        let targets = message.mentions.users.array();
-        let targets2 = [];
-        for (const rol of roles) if (!targets.includes(rol)) targets2.push(rol);
 
-        for (let user of targets) {
-            if (user.bot || user.presence.status === "offline") bool = true;
-            else {
-                await message.channel.send(createEmbed(message, user))
-            }
-        }
+        let mentionedRoleMembers = [];
 
-        if (targets2 !== null) {
-            for (let user of targets2) {
-                if (user.bot || user.presence.status !== "online") bool = true;
-                else {
-                    const channel = message.member.voice.channel
-                    if (channel == null && user !== message.author) bool2 = false;
-                    else if (!channel.members.has(user.id)) bool2 = false;
-                    if (user === message.author) await message.channel.send("❌ You can't invite yourself!")
-                    else await message.channel.send(createEmbed(message, user))
-                }
-            }
-        }
+        //Cache all online user from the @mentioned role
+        for (const role of message.mentions.roles.array())
+            for (const member of role.members.array())
+                if(!member.user.bot && member.user.presence.status === "online")
+                    mentionedRoleMembers.push(member.user);
 
-        if (bool && bool2) await message.channel.send("❌ Inactive users and bots cannot be invited.");
+        //Cache all @mentioned users
+        let mentioned = message.mentions.users.array();
+
+        //Collect all
+        for (const member of mentionedRoleMembers)
+            if (!mentioned.includes(member))
+                mentioned.push(member);
+
+
+        if (mentioned.length === 0) return message.channel.send("❌ Inactive users and bots cannot be invited.");
+        if (mentioned.length === 1 && mentioned[0] === message.author)
+            await message.channel.send("❌ You can't invite yourself!")
+        else
+            for (let user of mentioned)
+                if (user !== message.author)
+                    await message.channel.send(createEmbed(message, user))
     }
 }
 

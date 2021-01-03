@@ -5,7 +5,7 @@ const PornSearch = require('pornsearch');
 module.exports = {
     name: 'porn',
     description: '',
-    aliases: ['pornhub','prn','porno'],
+    aliases: ['pornhub','prn','porno',"p"],
     usage: '[command]',
     args: true,
     cooldown: 15,
@@ -46,6 +46,5 @@ module.exports = {
                 })
             } else await message.channel.send("❌No results for '" + mes + "'.")
         } else await message.channel.send("❌You have to be in a NSFW🔞 channel to use this command")
-
     }
 }
