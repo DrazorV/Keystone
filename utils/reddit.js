@@ -4,7 +4,6 @@ exports.randomNumber = (nm) =>{
     return Math.floor(Math.random() * nm);
 }
 
-
 exports.checkURL = (url) => {
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
 }

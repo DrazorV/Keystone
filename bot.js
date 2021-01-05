@@ -21,7 +21,6 @@ for (const file of eventFiles) {
     client.on(eventName ,event.bind(null,client));
 }
 
-
 client.on("disconnect",() => winston.info("I just disconnected, just making sure you know, I will reconnect now.."));
 client.on("guildDelete", guild => {winston.info("Left a guild: " + guild.name)});
 

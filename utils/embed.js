@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 
-
-
 exports.create = (author, authorUrl, title, description, fields , url, color, footerText, footerUrl, img) => {
     const embed = new Discord.MessageEmbed();
     if (fields !== null){

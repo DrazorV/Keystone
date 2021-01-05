@@ -2,7 +2,7 @@ const winston = require('../utils/winston');
 const embed = require("../utils/embed")
 
 let options = {
-    maxAge: 600,
+    maxAge: 6000,
     maxUses: 1,
     unique: true
 };
