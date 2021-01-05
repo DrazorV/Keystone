@@ -27,7 +27,10 @@ module.exports = {
                     mentionedRoleMembers.push(member.user);
 
         //Cache all @mentioned users
-        let mentioned = message.mentions.users.array();
+        let mentioned;
+        for (const user of message.mentions.users.array())
+            if(!user.bot)
+                mentioned.push(user);
 
         //Collect all
         for (const member of mentionedRoleMembers)
@@ -35,7 +38,7 @@ module.exports = {
                 mentioned.push(member);
 
 
-        if (mentioned.length === 0) return message.channel.send("❌ Inactive users and bots cannot be invited.");
+        if (mentioned === undefined) return message.channel.send("❌ Inactive users and bots cannot be invited.");
         if (mentioned.length === 1 && mentioned[0] === message.author)
             await message.channel.send("❌ You can't invite yourself!")
         else
@@ -52,19 +55,18 @@ function createEmbed(message,user){
         authorUrl = message.author.avatarURL({"format":"png","dynamic":true,"size":4096}),
         title = "Join the voice chat on " + message.guild.name,
         color = message.member.roles.color.color,
-        url = "https://github.com/DrazorV/Keystone",
         footerText = "Automated message",
         footerValue = message.guild.iconURL(),
         channel = message.member.voice.channel
 
     if (channel == null) {
         description = "You can choose one of the voice channels and he will join you ASAP";
-        let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
+        let emb = embed.create(author, authorUrl, title, description, null, null, color, footerText, footerValue)
         user.send(emb);
     } else {
         if (channel.members.has(user.id)) return "❌ " + user.username + " is already in your voice channel!"
         description = ":arrow_down: Click the button bellow to join him :arrow_down:";
-        let emb = embed.create(author, authorUrl, title, description, null, url, color, footerText, footerValue)
+        let emb = embed.create(author, authorUrl, title, description, null, null, color, footerText, footerValue)
         user.send(emb)
             .then(message.member.voice.channel.createInvite(options)
                 .then(invite => user.send(invite.toString()))
