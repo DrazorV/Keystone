@@ -12,6 +12,8 @@ const init = async () => {
             exec('git -C ~/Repos/Keystone  pull -f', execCallback);
             exec('npm -C ~/Repos/Keystone  install --production', execCallback);
             exec('tsc', execCallback);
+        }else{
+            winston.warn('Code is up to date!');
         }
     },null, true);
 }

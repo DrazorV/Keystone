@@ -8,13 +8,7 @@
   },
   "author": "DrazorV",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/discordjs/discord.js.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
+  "repository": "github:DrazorV/Keystone",
   "dependencies": {
     "@keyv/sqlite": "https://github.com/jdesboeufs/keyv-sqlite/tarball/master",
     "axios": "^0.21.1",
