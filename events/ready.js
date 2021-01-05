@@ -20,7 +20,7 @@ module.exports = async client =>{
         let clan = clans.pop();
         if (await db.get(`Server_${clan.id}`) === undefined){
             await db.set(`Server_${clan.id}`, {
-                prefix:"/",
+                prefix:"-",
                 meme: "",
                 food: ""
             })
