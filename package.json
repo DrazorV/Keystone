@@ -18,7 +18,6 @@
     "dotenv": "^8.2.0",
     "enmap": "^5.8.2",
     "express": "^4.17.1",
-    "git-needs-pull": "^2.1.0",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.3",
     "moment": "^2.29.1",
