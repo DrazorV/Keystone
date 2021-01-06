@@ -8,16 +8,6 @@ let exec = require('child_process').exec;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.htm');
-    winston.info('get /');
-});
-
-app.get('/payload', function (req, res) {
-    res.sendStatus(200);
-    winston.info('get /payload');
-});
-
 app.post('/payload', function (req, res) {
     //verify that the payload is a push from the correct repo
     //verify repository.name == 'wackcoon-device' or repository.full_name = 'DanielEgan/wackcoon-device'
@@ -25,19 +15,11 @@ app.post('/payload', function (req, res) {
 
     winston.info('pulling code from GitHub...');
 
-    // reset any changes that have been made locally
-    exec('git -C ~/projects/wackcoon-device reset --hard', execCallback);
-
-    // and ditch any files that have been added locally too
-    exec('git -C ~/projects/wackcoon-device clean -df', execCallback);
-
-    // now pull down the latest
-    exec('git -C ~/projects/wackcoon-device pull -f', execCallback);
-
-    // and npm install with --production
-    exec('npm -C ~/projects/wackcoon-device install --production', execCallback);
-
-    // and run tsc
+    winston.warn('pulling code from GitHub...');
+    exec('git -C ~/Repos/Keystone reset --hard', execCallback);
+    exec('git -C ~/Repos/Keystone  clean -df', execCallback);
+    exec('git -C ~/Repos/Keystone  pull -f', execCallback);
+    exec('npm -C ~/Repos/Keystone  install --production', execCallback);
     exec('tsc', execCallback);
 });
 
