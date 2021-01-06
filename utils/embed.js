@@ -16,5 +16,6 @@ exports.create = (author, authorUrl, title, description, fields , url, color, fo
     embed.setTimestamp(new Date());
     if (footerText !== null) embed.setFooter(footerText, footerUrl);
     if (img !== null) embed.setImage(img)
+
     return embed;
 };
