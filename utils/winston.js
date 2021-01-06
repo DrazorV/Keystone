@@ -21,6 +21,8 @@ let logger = new createLogger({
         )}),
         new transports.File({
             filename: 'winston.json',
+            maxsize: 1000000,
+            maxFiles: 10,
             tailable: true,
             exitOnError: false,
             json: true,

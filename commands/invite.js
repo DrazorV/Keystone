@@ -27,7 +27,7 @@ module.exports = {
                     mentionedRoleMembers.push(member.user);
 
         //Cache all @mentioned users
-        let mentioned;
+        let mentioned = [];
         for (const user of message.mentions.users.array())
             if(!user.bot)
                 mentioned.push(user);
