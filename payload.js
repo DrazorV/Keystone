@@ -13,7 +13,6 @@ app.post('/payload', function (req, res) {
     //verify that the payload is a push from the correct repo
     //verify repository.name == 'wackcoon-device' or repository.full_name = 'DanielEgan/wackcoon-device'
     winston.info(req.body.pusher.name + ' just pushed to ' + req.body.repository.name);
-
     winston.warn('pulling code from GitHub...');
     exec('git -C ~/Repos/Keystone reset --hard', execCallback);
     exec('git -C ~/Repos/Keystone  clean -df', execCallback);
