@@ -23,5 +23,4 @@ for (const file of eventFiles) {
 
 client.on("disconnect",() => winston.info("I just disconnected, just making sure you know, I will reconnect now.."));
 client.on("guildDelete", guild => {winston.info("Left a guild: " + guild.name)});
-
 client.login(process.env.TOKEN).catch(error => winston.info(error));
