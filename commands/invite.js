@@ -32,12 +32,12 @@ module.exports = {
             if(!user.bot)
                 mentioned.push(user);
 
-        //Collect all
+        //Merge arrays
         for (const member of mentionedRoleMembers)
             if (!mentioned.includes(member))
                 mentioned.push(member);
 
-
+        //If empty list return
         if (mentioned === undefined) return message.channel.send("❌ Inactive users and bots cannot be invited.");
         if (mentioned.length === 1 && mentioned[0] === message.author)
             await message.channel.send("❌ You can't invite yourself!")
