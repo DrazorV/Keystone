@@ -9,7 +9,7 @@ module.exports = {
     aliases: ['set','setdefault','setdaily','daily'],
     usage: '[command]',
     args: true,
-    cooldown: 60,
+    cooldown: 15,
     async run(client, message, args) {
         let channel;
         let json = await db.get(`Server_${message.guild.id}`),

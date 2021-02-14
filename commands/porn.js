@@ -5,10 +5,10 @@ const PornSearch = require('pornsearch');
 module.exports = {
     name: 'porn',
     description: '',
-    aliases: ['pornhub','prn','porno',"p"],
+    aliases: ['pornhub','prn','porno'],
     usage: '[command]',
     args: true,
-    cooldown: 15,
+    cooldown: 5,
     async run(client, message, args) {
         if (message.channel.nsfw) {
             let mes = args.join(" ");

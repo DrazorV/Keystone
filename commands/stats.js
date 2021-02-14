@@ -14,7 +14,7 @@ module.exports = {
     aliases: ['stat', 'st'],
     usage: '[command]',
     args: true,
-    cooldown: 10,
+    cooldown: 5,
     async run(client, message, args) {
         let json = await Server.get(`Server_${message.guild.id}`),
             StatsJson = await ServerStats.get(`Stats_${message.guild.id}`),

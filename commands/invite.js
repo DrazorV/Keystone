@@ -13,7 +13,7 @@ module.exports = {
     aliases: ['inv', 'come', 'cm'],
     usage: '[@mention]',
     args: false,
-    cooldown: 5,
+    cooldown: 1,
     async run(client, message) {
         //ignore private messages
         if (message.channel.type === "dm") return;

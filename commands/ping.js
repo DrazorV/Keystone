@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['echo', 'ms'],
     usage: '[command]',
     args: false,
-    cooldown: 5,
+    cooldown: 1,
     async run(client, message) {
         message.channel.send("Pinging ...").then((msg) => msg.delete());
         let field = {
