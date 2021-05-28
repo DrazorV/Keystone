@@ -14,9 +14,9 @@
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "cron": "^1.8.2",
-    "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0",
-    "enmap": "^5.8.2",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.6.0",
+    "enmap": "^5.8.5",
     "express": "^4.17.1",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.3",
@@ -24,9 +24,8 @@
     "node-pre-gyp": "^0.17.0",
     "pornsearch": "^2.4.3",
     "sql": "^0.78.0",
-    "sqlite3": "^5.0.0",
-    "winston": "^3.3.3",
-    "ytdl-core": "^4.3.0"
+    "sqlite3": "^5.0.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "npm-force-resolutions": "0.0.3"
