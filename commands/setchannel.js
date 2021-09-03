@@ -47,6 +47,6 @@ module.exports = {
                 }
             }
         }
-        return await message.channel.send("❌ This channel does not exist!");
+        return message.channel.send("❌ This channel does not exist!");
     }
 }

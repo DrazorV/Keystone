@@ -16,7 +16,7 @@
     "cron": "^1.8.2",
     "discord.js": "^12.5.3",
     "dotenv": "^8.6.0",
-    "enmap": "^5.8.5",
+    "enmap": "^5.8.7",
     "express": "^4.17.1",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.3",
@@ -25,7 +25,8 @@
     "pornsearch": "^2.4.3",
     "sql": "^0.78.0",
     "sqlite3": "^5.0.2",
-    "winston": "^3.3.3"
+    "winston": "^3.3.3",
+    "tar": ">=4.4.18"
   },
   "devDependencies": {
     "npm-force-resolutions": "0.0.3"
