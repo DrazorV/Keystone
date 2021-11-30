@@ -11,7 +11,7 @@
   "repository": "github:DrazorV/Keystone",
   "dependencies": {
     "@keyv/sqlite": "https://github.com/jdesboeufs/keyv-sqlite/tarball/master",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "body-parser": "^1.19.0",
     "cron": "^1.8.2",
     "discord.js": "^12.5.3",
@@ -19,14 +19,14 @@
     "enmap": "^5.8.7",
     "express": "^4.17.1",
     "is-image-url": "^1.1.8",
-    "keyv": "^4.0.3",
+    "keyv": "^4.0.4",
     "moment": "^2.29.1",
     "node-pre-gyp": "^0.17.0",
     "pornsearch": "^2.4.3",
     "sql": "^0.78.0",
     "sqlite3": "^5.0.2",
-    "winston": "^3.3.3",
-    "tar": ">=4.4.18"
+    "tar": ">=4.4.18",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "npm-force-resolutions": "0.0.3"
