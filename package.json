@@ -10,6 +10,7 @@
   "license": "ISC",
   "repository": "github:DrazorV/Keystone",
   "dependencies": {
+    "nth-check": ">=2.0.1",
     "@keyv/sqlite": "https://github.com/jdesboeufs/keyv-sqlite/tarball/master",
     "axios": "^0.21.4",
     "body-parser": "^1.19.0",
