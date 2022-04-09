@@ -21,7 +21,7 @@
     "express": "^4.17.1",
     "is-image-url": "^1.1.8",
     "keyv": "^4.0.4",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "node-pre-gyp": "^0.17.0",
     "pornsearch": "^2.4.3",
     "sql": "^0.78.0",
