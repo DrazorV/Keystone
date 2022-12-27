@@ -41,7 +41,6 @@ module.exports = async client =>{
     client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
         .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
         .catch(winston.error);
-
     new CronJob('0 0 18 * * *', function () {
         meme.job(client)
     },null, true);
@@ -52,5 +51,8 @@ module.exports = async client =>{
 
     new CronJob('30 * * * * *', function () {
         stats.job(client)
+        client.user.setActivity("🍑Extra Mythicc🍑",{type: 'WATCHING'})
+            .then(presence => winston.info(`Activity set to ${presence.activities[0].name}`))
+            .catch(winston.error);
     },null, true);
 };
